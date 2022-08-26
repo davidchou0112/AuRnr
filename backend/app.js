@@ -46,15 +46,11 @@ app.use(
 );
 
 
-
 //Add the routes to the Express application by importing with the other imports in backend/app.js and connecting the exported router to app after all the middlewares.
 // backend/app.js
 const routes = require('./routes');
 
-
-
 app.use(routes); // Connect all the routes
-
 
 // VVV ERROR HANDLERS VVV
 
@@ -97,11 +93,6 @@ app.use((err, _req, res, _next) => {
         stack: isProduction ? null : err.stack
     });
 });
-
-
-
-
-
 
 
 //export app
