@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       return { id, username, email };
     }
 
+    validatePassword(password) {
+      return bcrypt.compareSync(password, this.hashedPassword.toString());
+    }
+
     static associate(models) {
       // define association here
     }
@@ -92,9 +96,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
 
-      validatePassword(password) {
-        return bcrypt.compareSync(password, this.hashedPassword.toString());
-      },
 
     }
   );
