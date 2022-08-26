@@ -1,5 +1,28 @@
 {
   "dependencies": {
     "bcryptjs": "^2.4.3"
-  }
+  },
+  "name": "authenticate-me",
+  "description": "<a href=\"https://drive.google.com/uc?export=view&id=1t4ZJbND9DU2KAQl3UJCespOsv-PjNZJQ\"><img src=\"https://drive.google.com/uc?export=view&id=1t4ZJbND9DU2KAQl3UJCespOsv-PjNZJQ\" style=\"width: 650px; max-width: 100%; height: auto\" title=\"Click to enlarge picture\" />",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "install": "npm --prefix backend install backend",
+    "dev:backend": "npm install --prefix backend start",
+    "sequelize": "npm run --prefix backend sequelize",
+    "sequelize-cli": "npm run --prefix backend sequelize-cli",
+    "start": "npm start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidchou0112/API-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidchou0112/API-Project/issues"
+  },
+  "homepage": "https://github.com/davidchou0112/API-Project#readme"
 }
