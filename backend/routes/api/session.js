@@ -31,7 +31,11 @@ router.post(
     }
   );
 
+<<<<<<< HEAD
   // Log out
+=======
+// Log out
+>>>>>>> signup
 router.delete(
     '/',
     (_req, res) => {
@@ -39,7 +43,10 @@ router.delete(
       return res.json({ message: 'success' });
     }
   );
+<<<<<<< HEAD
 
+=======
+>>>>>>> signup
 
 
 module.exports = router;
