@@ -14,13 +14,31 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Bookings.init({
-    id: DataTypes.INTEGER,
-    spotId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER,
-    startDate: DataTypes.INTEGER,
-    endDate: DataTypes.INTEGER,
-    createAt: DataTypes.DATE,
-    updateAt: DataTypes.DATE
+    spotId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      // references: {
+      //   model: 'Spots', key: 'id'
+      },
+
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      // references: {
+      //   model: 'Users', key: 'id'
+      },
+
+    startDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+      // need validations (starts after "current time" and must end after start time)
+    },
+    endDate: {
+      type: DataTypes.DATE,
+      allowNull: false
+      // need validations (starts after "current time" and must end after start time)
+
+    }
   }, {
     sequelize,
     modelName: 'Bookings',
