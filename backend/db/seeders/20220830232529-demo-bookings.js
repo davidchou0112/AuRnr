@@ -11,18 +11,24 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   await queryInterface.bulkInsert('Reviews', [
+   await queryInterface.bulkInsert('Bookings', [
     {
-      reviewId: 1,
-      url: 'string'
+      spotId: 1,
+      userId: 1,
+      startDate:'2022-08-31',
+      endDate: '2022-09-09'
     },
     {
-      reviewId: 2,
-      url: 'string'
+      spotId: 2,
+      userId: 2,
+      startDate:'2022-09-29',
+      endDate: '2022-10-11'
     },
     {
-      reviewId: 3,
-      url: 'string'
+      spotId: 3,
+      userId: 3,
+      startDate:'2022-11-11',
+      endDate: '2022-11-20'
     }
    ])
   },
@@ -34,6 +40,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Reviews', null, {});
+    await queryInterface.bulkDelete('Bookings', null, {})
   }
 };
