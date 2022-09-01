@@ -31,18 +31,43 @@ router.post(
 
     const user = await User.login({ credential, password });
 
-    if (!user) {
-      const err = new Error('Login failed');
-      err.status = 401;
-      err.title = 'Login failed';
-      err.errors = ['The provided credentials were invalid.'];
-      return next(err);
+    // if (!user) {
+    //   const err = new Error('Login failed');
+    //   err.status = 401;
+    //   err.title = 'Login failed';
+    //   err.errors = ['The provided credentials were invalid.'];
+    //   return next(err);
+    // }
+
+    if( !user) {
+      res.status(401)
+      res.json({
+        "message": "Invalid credentials",
+        "statusCode": 401
+      });
     }
+
+    // // Token return
+    // let token = await setTokenCookie(res, user);
+    // const userObj = user.toJSON();
+    // userObj.token = "";
+
+    // return res.json(
+    //   userObj,
+    // );
 
     await setTokenCookie(res, user);
 
+    const userInfo = {};
+    userInfo.id = user.id;
+    userInfo.firstName = user.firstName;
+    userInfo.lastName = user.lastName;
+    userInfo.email = user.email;
+    userInfo.username = user.username;
+    userInfo.token = "";
+
     return res.json({
-      user
+        ...userInfo
     });
   }
 );
@@ -50,27 +75,48 @@ router.post(
 
 // Log out
 
-router.delete(
-  '/',
-  (_req, res) => {
+router.delete('/', (_req, res) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
   }
 );
 
 // Restore session user
-router.get(
-  '/',
-  restoreUser,
-  (req, res) => {
-    const { user } = req;
-    if (user) {
-      return res.json({
-        user: user.toSafeObject()
-      });
-    } else return res.json({});
-  }
-);
+router.get('/', restoreUser, async (req, res) => {
+    const {
+      user
+    } = req;
 
+//     if (user) {
+//       return res.json({
+//         user: user.toSafeObject()
+//       });
+//     } else return res.json({});
+
+//   }
+// );
+
+// const userInfo = await User.findByPk(user.id)
+
+//   if (user) {
+//       return res.json(userInfo);
+//   } else return res.json({});
+
+  await setTokenCookie(res, user);
+
+  const userInfo = {};
+  userInfo.id = user.id;
+  userInfo.firstName = user.firstName;
+  userInfo.lastName = user.lastName;
+  userInfo.email = user.email;
+  userInfo.username = user.username;
+  
+
+  return res.json({
+      ...userInfo
+  });
+
+
+});
 
 module.exports = router;

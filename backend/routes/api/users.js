@@ -32,60 +32,72 @@ const validateSignup = [
 
 // Sign up
 router.post("/", validateSignup, async (req, res) => {
-    const {
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    username
+  } = req.body;
+
+  const existingEmail = await User.findOne({
+    where: { email }
+  });
+
+  const existingUsername = await User.findOne({
+    where: { username }
+  });
+
+  // If email already exists
+  if (existingEmail) {
+    res.status(403)
+    res.json({
+      "message": "User already exists",
+      "statusCode": 403,
+      "errors": {
+        "email": "User with that email already exists"
+      }
+    })
+    // if username already exists
+  } else if (existingUsername) {
+    res.status(403)
+    res.json({
+      "message": "User already exists",
+      "statusCode": 403,
+      "errors": {
+        "username": "User with that username already exists"
+      }
+    });
+    // Create new user
+  } else {
+    const user = await User.signup({
       firstName,
       lastName,
       email,
-      password,
-      username
-    } = req.body;
-
-    const existingEmail = await User.findOne({
-      where: {email}
+      username,
+      password
     });
 
-    const existingUsername = await User.findOne({
-      where: {username}
+
+    // Response body
+    await setTokenCookie(res, user);
+
+    const userInfo = {};
+    userInfo.id = user.id;
+    userInfo.firstName = user.firstName;
+    userInfo.lastName = user.lastName;
+    userInfo.email = user.email;
+    userInfo.username = user.username;
+    userInfo.token = "";
+
+    return res.json({
+      ...userInfo
     });
-
-    // If email already exists
-    if (existingEmail) {
-      res.status(403)
-      res.json({
-        "message": "User already exists",
-        "statusCode": 403,
-        "errors": {
-          "email": "User with that email already exists"
-        }
-      })
-    // if username already exists
-    } else if (existingUsername) {
-      res.status(403)
-      res.json({
-        "message": "User already exists",
-        "statusCode": 403,
-        "errors": {
-          "username": "User with that username already exists"
-        }
-      });
-      // Create new user
-    } else {
-      const user = await User.signup({
-        firstName,
-        lastName,
-        email,
-        username,
-        password
-      });
-
-      await setTokenCookie(res, user);
-
-      return res.json({
-        user,
-      });
-    }
   }
+}
 );
+
+
 
 
 
