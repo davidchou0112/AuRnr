@@ -110,7 +110,7 @@ router.get('/', restoreUser, async (req, res) => {
   userInfo.lastName = user.lastName;
   userInfo.email = user.email;
   userInfo.username = user.username;
-  
+
 
   return res.json({
       ...userInfo
