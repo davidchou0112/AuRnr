@@ -11,7 +11,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 
 // Get all Spots
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
 
     let {size, page} = req.query
 
@@ -48,6 +48,7 @@ router.get('/', async (req, res, next) => {
         let imageUrl = await SpotImage.findByPk(key.id, {where: { preview: true }, attributes: ['url'] })
 
         let data = key.toJSON()
+        // console.log(data, '---------data')
         // console.log(allRating, '-- this is allRating')
 
         data.avgRating= allRating[0].avgRating
@@ -57,62 +58,13 @@ router.get('/', async (req, res, next) => {
              }
             res.json({
         Spots: spot,
-        page:page,
-        size:size
+        // page:page,
+        // size:size
 
     })
 });
 
 
-
-// //Get all Spots ------------------------------------------
-// router.get("/", requireAuth, async (req, res) => {
-//     // console.log(req)
-//     const spots = await Spot.findAll({
-//         // include: [{
-//         //     model: Review,
-//         //     attributes: []
-//         // },
-//         // {
-//         //     model: SpotImage,
-//         //     attributes: ["url",]
-//         // }
-//         // ],
-//         // attributes: {
-//         //     include: [
-//         //         [sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]
-//         //     ]
-//         // },
-//         // group: ["Spot.id"],
-//         // raw: true
-//     });
-//     return res.json({ Spots: spots });
-// })
-
-
-
-// // Get all Spots
-// router.get('/', async (req, res) => {
-//     const spots = await Spot.findAll({
-//         attributes: [
-//             'id',
-//             'ownerId',
-//             'address',
-//             'city',
-//             'state',
-//             'country',
-//             'lat',
-//             'lng',
-//             'name',
-//             'description',
-//             'price',
-//             'createdAt',
-//             'updatedAt'
-//         ]
-//     })
-//     // console.log('this is spots : ' ,spots)
-//     res.json({ Spots: spots })
-// });
 
 // Create a spot ----------DONE-------------------------------------------------------
 router.post('/', requireAuth, async (req, res) => {
@@ -145,7 +97,7 @@ router.post('/', requireAuth, async (req, res) => {
     return res.json(spotInfo);
 });
 
-// // Create an Image for a Spot
+// // Create an Image for a Spot -----------------------------------------------------------
 // router.post('/:spotId/images', requireAuth, async (req, res) => {
 
 // })
@@ -169,7 +121,8 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
         const addImageToSpot = await SpotImage.create({
             "spotId": spotId,
             "url": url,
-            preview
+            preview: preview
+            // preview: { 'raw': true}
         })
 
         res.json(await SpotImage.findByPk(addImageToSpot.id, {
@@ -180,7 +133,11 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
             ]
         }))
     }
+})
 
+// Get Spots of Current User -----------------------------------------------------------------
+router.get('/current', requireAuth, async (req, res) => {
+    
 })
 
 // Export ------------------------------------------------------------------------
