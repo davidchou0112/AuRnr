@@ -8,6 +8,9 @@ const { User } = require("../../db/models");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 
+
+// ---------------------------------------------------------------
+
 const validateSignup = [
   check("email")
     .exists({ checkFalsy: true })
@@ -30,7 +33,7 @@ const validateSignup = [
 
 
 
-// Sign up
+// Sign up ---------------------------------------------------------------
 router.post("/", validateSignup, async (req, res) => {
   const {
     firstName,
@@ -43,11 +46,10 @@ router.post("/", validateSignup, async (req, res) => {
   const existingEmail = await User.findOne({
     where: { email }
   });
-
   const existingUsername = await User.findOne({
     where: { username }
   });
-
+  
   // If email already exists
   if (existingEmail) {
     res.status(403)
@@ -77,8 +79,6 @@ router.post("/", validateSignup, async (req, res) => {
       username,
       password
     });
-
-
     // Response body
     await setTokenCookie(res, user);
 
@@ -99,6 +99,5 @@ router.post("/", validateSignup, async (req, res) => {
 
 
 
-
-
+// Exports ---------------------------------------------------------------
 module.exports = router;
