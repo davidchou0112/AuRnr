@@ -98,6 +98,43 @@ router.get('/current', requireAuth, async (req, res) => {
     res.json({ Reviews: result })
 })
 
+// Edit a Review ---------------------------------------------------------------------------------
+router.put('/:reviewId', requireAuth, async (req, res) => {
+    const {
+        review,
+        stars
+    } = req.body
+    const { reviewId } = req.params
+    const { user } = req
+
+    const reviewEdit = await Review.findByPk(reviewId)
+
+    if (!reviewEdit) {
+        res.statusCode = 404
+        res.json({
+            "message": "Review couldn't be found",
+            "statusCode": 404
+        })
+    }
+
+    if (reviewEdit.userId !== user.id) {
+        res.statusCode = 403
+        res.json({
+            "message": "Review must belong to the current user",
+            "statusCode": 403
+        })
+    }
+
+    reviewEdit.set({
+        review,
+        stars
+    })
+
+    await reviewEdit.save()
+    res.json(reviewEdit)
+})
+
+// Delete a review --------------------------------------------------------------------------
 
 // Export --------------------------------------------------------------------------------
 module.exports = router;

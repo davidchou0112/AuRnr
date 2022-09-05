@@ -32,13 +32,6 @@ router.post('/', validateLogin, async (req, res, next) => {
 
   const user = await User.login({ credential, password });
 
-  // if (!user) {
-  //   const err = new Error('Login failed');
-  //   err.status = 401;
-  //   err.title = 'Login failed';
-  //   err.errors = ['The provided credentials were invalid.'];
-  //   return next(err);
-  // }
 
   if (!user) {
     res.status(401)
@@ -48,16 +41,11 @@ router.post('/', validateLogin, async (req, res, next) => {
     });
   }
 
-  // // Token return
-  // let token = await setTokenCookie(res, user);
-  // const userObj = user.toJSON();
-  // userObj.token = "";
 
-  // return res.json(
-  //   userObj,
-  // );
 
-  await setTokenCookie(res, user);
+  const token = await setTokenCookie(res, user);
+  user.token = token;
+
 
   const userInfo = {};
   userInfo.id = user.id;
@@ -65,7 +53,7 @@ router.post('/', validateLogin, async (req, res, next) => {
   userInfo.lastName = user.lastName;
   userInfo.email = user.email;
   userInfo.username = user.username;
-  userInfo.token = "";
+  userInfo.token = token;
 
   return res.json({
     ...userInfo
