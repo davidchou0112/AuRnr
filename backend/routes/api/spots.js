@@ -242,6 +242,28 @@ router.get('/current', requireAuth, async (req, res) => {
             ownerId: currentId
         }
     })
+
+    for (let spot of spots) {
+        const starts = await Review.findAll({
+            where: {
+                spotId: spot.id
+            },
+            attributes: [[sequelize.fn('AVG', sequelize.col('stars')), 'avgRating']]
+        })
+        let avgRating = starts[0].dataValues.avgRating;
+        spot.dataValues.avgRating = Number(avgRating).toFixed(1);
+
+        let previewImage = await SpotImage.findOne({
+            where: {
+                spotId: spot.id
+            }
+        })
+        if (previewImage) {
+            spot.dataValues.previewImage = previewImage.dataValues.url;
+        }
+    }
+
+
     res.json({ spots });
 })
 
@@ -481,7 +503,7 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
 
     if (spot.ownerId !== user.id) {
         const newBooking = await Booking.create({
-            "spotId": spotId,
+            "spotId": spot.id,
             "userId": user.id,
             startDate,
             endDate
