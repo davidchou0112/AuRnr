@@ -90,9 +90,9 @@ router.get('/current', requireAuth, async (req, res) => {
     })
 
     for (let review of currentReview) {
-        let spotimage = await SpotImage.findByPk(review.id, { where: { preview: true }, attributes: ['url'] })
+        let spotimage = await SpotImage.findByPk(review.id, { where: { preview: true }, attributes: ['url'], raw: true })
         let reviewInfo = review.toJSON()
-        // reviewInfo.Spot.previewImage = spotimage.url
+        reviewInfo.Spot.previewImage = spotimage
         result.push(reviewInfo)
     }
     res.json({ Reviews: result })
@@ -135,18 +135,18 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
 })
 
 // Delete a review --------------------------------------------------------------------------
-router.delete('/:reviewId', restoreUser, requireAuth, async(req, res, next) => {
-    const {reviewId} = req.params
-    const {user} = req
+router.delete('/:reviewId', restoreUser, requireAuth, async (req, res, next) => {
+    const { reviewId } = req.params
+    const { user } = req
     const deleteReview = await Review.findByPk(reviewId)
-    if(!deleteReview) {
+    if (!deleteReview) {
         res.statusCode = 404
         res.json({
             "message": "Review couldn't be found",
             "statusCode": 404
         })
     }
-    if(deleteReview.userId === user.id) {
+    if (deleteReview.userId === user.id) {
         await deleteReview.destroy()
         res.json({
             "message": "Successfully deleted",
@@ -157,8 +157,8 @@ router.delete('/:reviewId', restoreUser, requireAuth, async(req, res, next) => {
         res.json({
             "message": "Review must belong to the current user",
             "statusCode": 403
-    })
-}
+        })
+    }
 })
 // Export --------------------------------------------------------------------------------
 module.exports = router;
