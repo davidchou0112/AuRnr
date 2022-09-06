@@ -245,43 +245,83 @@ router.get('/current', requireAuth, async (req, res) => {
     res.json({ spots });
 })
 
-// Get Details of a Spot by Id -----------User needs to show as Owner, Preview still Null??-----------------------------------
-//
-router.get('/:spotId', requireAuth, async (req, res) => {
+// // Get Details of a Spot by Id -----------User needs to show as Owner, Preview still Null??-----------------------------------
+// //
+// router.get('/:spotId', requireAuth, async (req, res) => {
 
-    // If no spot exists error
-    const spot = await Spot.findByPk(req.params.spotId, {
-        include: [
-            { model: SpotImage, attributes: ['id', 'url', 'preview'] },
-            { model: User, attributes: ['id', 'firstName', 'lastName'] }
-        ]
-    });
-    if (!spot) {
+//     // If no spot exists error
+//     const spot = await Spot.findByPk(req.params.spotId, {
+//         include: [
+//             { model: SpotImage, attributes: ['id', 'url', 'preview'] },
+//             { model: User, attributes: ['id', 'firstName', 'lastName'] }
+//         ]
+//     });
+//     if (!spot) {
+//         res.status(404)
+//         res.json({
+//             "message": "Spot couldn't be found",
+//             "statusCode": 404
+//         })
+//     }
+
+//     const countReview = await Spot.findByPk(req.params.spotId, {
+//         include: {
+//             model: Review,
+//             attributes: [],
+//         },
+//         attributes: [
+//             [sequelize.fn("COUNT", sequelize.col("review")), "numReviews"],
+//             [sequelize.fn("AVG", sequelize.col("stars")), "avgStarRating"],
+//         ],
+//         raw: true
+//     });
+//     let spotJSON = spot.toJSON();
+//     spotJSON.numReviews = countReview.numReviews;
+
+//     const avgRating = countReview.avgStarRating;
+//     spotJSON.avgStarRating = Number(avgRating).toFixed(1);
+
+//     res.json(spotJSON);
+// })
+
+//Get details of a Spot from an id
+router.get("/:spotId", async (req, res) => {
+    const { spotId } = req.params;
+    const spotDetails = await Spot.findByPk(spotId);
+
+    if (!spotDetails) {
         res.status(404)
         res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
     }
+const owner = await User.findByPk(spotDetails.ownerId,{
+    attributes:["id","firstName","lastName"]
+})
 
-    const countReview = await Spot.findByPk(req.params.spotId, {
-        include: {
-            model: Review,
-            attributes: [],
-        },
-        attributes: [
-            [sequelize.fn("COUNT", sequelize.col("review")), "numReviews"],
-            [sequelize.fn("AVG", sequelize.col("stars")), "avgStarRating"],
-        ],
-        // raw: true
-    });
-    let spotJSON = spot.toJSON();
-    spotJSON.numReviews = countReview.numReviews;
+const spotImages = await SpotImage.findAll({
+    where:{
+spotId:spotId
+    },
+    attributes:["id","url","preview"]
+})
 
-    const avgRating = countReview.avgStarRating;
-    spotJSON.avgStarRating = Number(avgRating).toFixed(1);
-
-    res.json(spotJSON);
+const numReviews = await Review.count( {
+    where: {spotId: spotId},
+    raw: true
+})
+const averageRating = await Review.findOne({
+    attributes: [[sequelize.fn('ROUND',sequelize.fn("AVG", sequelize.col("stars")),2), "avgRating"]],
+    where: {spotId: spotId},
+    raw: true
+})
+const details = spotDetails.toJSON()
+details.numReviews = numReviews
+details.avgStarRating = averageRating.avgStarRating
+details.SpotImages  = spotImages
+details.Owner = owner
+return res.json(details)
 })
 
 // Edit a Spot ----------DONE--------------------------------------------------------------
@@ -429,14 +469,14 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
     // if booking already exists under spotid
     if (existingBooking[0]) {
         res.status(403)
-            .json({
-                "message": "Sorry, this spot is already booked for the specified dates",
-                "statusCode": 403,
-                "errors": {
-                    "startDate": "Start date conflicts with an existing booking",
-                    "endDate": "End date conflicts with an existing booking"
-                }
-            })
+        res.json({
+            "message": "Sorry, this spot is already booked for the specified dates",
+            "statusCode": 403,
+            "errors": {
+                "startDate": "Start date conflicts with an existing booking",
+                "endDate": "End date conflicts with an existing booking"
+            }
+        })
     }
 
     if (spot.ownerId !== user.id) {
@@ -457,5 +497,43 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
     }
 })
 
+// get all bookings for a spot by id
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
+    const spot = await Spot.findByPk(req.params.spotId);
+
+    if (!spot) {
+      res.status(404)
+      res.json({
+        "message": "Spot couldn't be found",
+        "statusCode": 404
+      })
+    }
+
+    if (req.user.id !== spot.ownerId) {
+      const bookings = await Booking.findAll({
+        where: {
+          spotId: spot.id
+        },
+        attributes: ['spotId', 'startDate', 'endDate']
+      })
+      res.json({ Bookings: bookings })
+    }
+
+    if (req.user.id === spot.ownerId) {
+      const bookings = await Booking.findAll({
+        include: {
+            model: User,
+            // attributes: ['spotId', 'startDate', 'endDate']
+
+            attributes: ['id', 'firstName', 'lastName']
+        },
+        where: {
+          spotId: spot.id
+        }
+      })
+      res.json({ Bookings: bookings })
+      console.log(Booking, '-------------Bookings---------')
+    }
+  })
 // Export ------------------------------------------------------------------------
 module.exports = router;
