@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   Spot.init({
     ownerId: {
       type: DataTypes.INTEGER,
+      onDelete: 'CASCADE'
       // allowNull: false
     },
     address: {
