@@ -511,7 +511,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     })
     if (reviewExists) {
         res.statusCode = 403
-        res.json({
+        return res.json({
             message: "User already has a review for this spot",
             statusCode: res.statusCode
         })
@@ -525,7 +525,7 @@ router.post('/:spotId/reviews', requireAuth, async (req, res) => {
         stars: req.body.stars
     });
     res.status(201)
-    res.json(review)
+    return res.json(review)
 })
 
 // Get reviews by Spot id ----------------------------------------------------------------
@@ -576,7 +576,7 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(spotId)
     if (!spot) {
         res.statusCode = 404
-        res.json({
+        return res.json({
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
@@ -594,7 +594,7 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
     // if booking already exists under spotid
     if (existingBooking[0]) {
         res.status(403)
-        res.json({
+        return res.json({
             "message": "Sorry, this spot is already booked for the specified dates",
             "statusCode": 403,
             "errors": {
@@ -615,7 +615,7 @@ router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
 
     } else {
         res.statusCode = 403
-        res.json({
+        return res.json({
             "message": "Spot must belong to the current user",
             "statusCode": 403,
         })

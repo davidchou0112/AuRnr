@@ -107,8 +107,8 @@ router.get("/current", requireAuth, async (req, res) => {
     const { user } = req;
     console.log(req)
     const allReviews = await Review.findAll({
-        where:{
-userId:user.id
+        where: {
+            userId: user.id
         },
         include: [{
             model: User,
@@ -123,25 +123,25 @@ userId:user.id
             attributes: ["id", "url"]
         }]
     });
-    let newArray=[];
+    let newArray = [];
     let reviewObject;
-    for(let i=0;i<allReviews.length;i++){
-        reviewObject=allReviews[i].toJSON();
-        const previewImage = await SpotImage.findByPk(allReviews[i].id,{
-            where:{preview:true},
-            attributes:["url"],
-            raw:true
+    for (let i = 0; i < allReviews.length; i++) {
+        reviewObject = allReviews[i].toJSON();
+        const previewImage = await SpotImage.findByPk(allReviews[i].id, {
+            where: { preview: true },
+            attributes: ["url"],
+            raw: true
         });
         //console.log("PI",previewImage);
-        if(!previewImage){
+        if (!previewImage) {
             reviewObject.Spot.previewImage = ""
         }
-        if(previewImage){
+        if (previewImage) {
             reviewObject.Spot.previewImage = previewImage.url
         }
-newArray.push(reviewObject)
+        newArray.push(reviewObject)
     }
-    return res.json({"Reviews":newArray})
+    return res.json({ "Reviews": newArray })
 })
 
 
