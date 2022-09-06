@@ -51,52 +51,99 @@ router.post("/:reviewId/images", requireAuth, async (req, res) => {
     return res.json(reviewImage)
 })
 
-// Get Reviews of Current User -- Unable to read previewImage URL---2nd User shows up??----------------------------------------------------------
-router.get('/current', requireAuth, async (req, res) => {
-    const { user } = req
+// Get Reviews of Current User -- Unable to read previewImage URL-------------------------------------------------------------
+// router.get('/current', requireAuth, async (req, res) => {
+//     const { user } = req
 
-    let result = []
-    const currentReview = await Review.findAll({
-        where: {
-            userId: user.id
+//     let result = []
+//     const currentReview = await Review.findAll({
+//         where: {
+//             userId: user.id
+//         },
+//         include: [
+//             {
+//                 model: User,
+//                 attributes: [
+//                     'id',
+//                     'firstName',
+//                     'lastName'
+//                 ]
+//             },
+//             {
+//                 model: Spot,
+//                 attributes: {
+//                     exclude: [
+//                         'description',
+//                         'createdAt',
+//                         'updatedAt'
+//                     ]
+//                 }
+//             },
+//             {
+//                 model: ReviewImage,
+//                 attributes: [
+//                     'id',
+//                     'url'
+//                 ]
+//             }
+//         ]
+//     })
+
+//     for (let review of currentReview) {
+//         let spotimage = await SpotImage.findByPk(review.id, {
+//             where: { preview: true },
+//             attributes: ['url'],
+//         raw: true
+//     })
+//         let reviewInfo = review.toJSON()
+//         reviewInfo.Spot.previewImage = spotimage
+//         result.push(reviewInfo)
+//     }
+//     res.json({ Reviews: result })
+// })
+
+//Get all Reviews of the Current User
+router.get("/current", requireAuth, async (req, res) => {
+    const { user } = req;
+    console.log(req)
+    const allReviews = await Review.findAll({
+        where:{
+userId:user.id
         },
-        include: [
-            {
-                model: User,
-                attributes: [
-                    'id',
-                    'firstName',
-                    'lastName'
-                ]
-            },
-            {
-                model: Spot,
-                attributes: {
-                    exclude: [
-                        'description',
-                        'createdAt',
-                        'updatedAt'
-                    ]
-                }
-            },
-            {
-                model: ReviewImage,
-                attributes: [
-                    'id',
-                    'url'
-                ]
-            }
-        ]
-    })
-
-    for (let review of currentReview) {
-        let spotimage = await SpotImage.findByPk(review.id, { where: { preview: true }, attributes: ['url'], raw: true })
-        let reviewInfo = review.toJSON()
-        reviewInfo.Spot.previewImage = spotimage
-        result.push(reviewInfo)
+        include: [{
+            model: User,
+            attributes: ["id", "firstName", "lastName"]
+        },
+        {
+            model: Spot,
+            attributes: ["id", "ownerId", "address", "city", "state", "country", "lat", "lng", "name", "price"] // to include preview image
+        },
+        {
+            model: ReviewImage,
+            attributes: ["id", "url"]
+        }]
+    });
+    let newArray=[];
+    let reviewObject;
+    for(let i=0;i<allReviews.length;i++){
+        reviewObject=allReviews[i].toJSON();
+        const previewImage = await SpotImage.findByPk(allReviews[i].id,{
+            where:{preview:true},
+            attributes:["url"],
+            raw:true
+        });
+        //console.log("PI",previewImage);
+        if(!previewImage){
+            reviewObject.Spot.previewImage = ""
+        }
+        if(previewImage){
+            reviewObject.Spot.previewImage = previewImage.url
+        }
+newArray.push(reviewObject)
     }
-    res.json({ Reviews: result })
+    return res.json({"Reviews":newArray})
 })
+
 
 // Edit a Review ---------------------------------------------------------------------------------
 router.put('/:reviewId', requireAuth, async (req, res) => {
