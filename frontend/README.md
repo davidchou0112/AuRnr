@@ -1,3 +1,4 @@
+testing since vsc reinstallation 10/14/2022 (only this line)
 
 # Create React App Template
 
