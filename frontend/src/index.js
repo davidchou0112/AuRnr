@@ -9,23 +9,11 @@ import App from './App';
 
 import configureStore from './store';
 
-import { restoreCSRF, csrfFetch } from './store/csrf';
-
 const store = configureStore();
 
-
 if (process.env.NODE_ENV !== 'production') {
-  restoreCSRF();
-
-  window.csrfFetch = csrfFetch;
   window.store = store;
 }
-
-// Phase 0
-// QUESTION: do I need this (V) ? I believe it is duped..
-// if (process.env.NODE_ENV !== 'production') {
-//   window.store = store;
-// }
 
 function Root() {
   return (

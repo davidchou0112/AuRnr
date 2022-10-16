@@ -102,9 +102,9 @@ router.use('/review-images', reviewImagesRouter);
 
 
 
-// Phase 0 complete, no longer need testing api
-// router.post('/test', (req, res) => {
-//   res.json({ requestBody: req.body });
-// });
+
+router.post('/test', (req, res) => {
+  res.json({ requestBody: req.body });
+});
 
 module.exports = router;
