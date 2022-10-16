@@ -70,43 +70,58 @@ router.delete('/', (_req, res) => {
 );
 
 // Restore session user --------------------------------------------
-router.get('/', restoreUser, async (req, res) => {
-  const {
-    user
-  } = req;
+// router.get('/', restoreUser, async (req, res) => {
+//   const {
+//     user
+//   } = req;
 
-  //     if (user) {
-  //       return res.json({
-  //         user: user.toSafeObject()
-  //       });
-  //     } else return res.json({});
+//   //     if (user) {
+//   //       return res.json({
+//   //         user: user.toSafeObject()
+//   //       });
+//   //     } else return res.json({});
 
-  //   }
-  // );
+//   //   }
+//   // );
 
-  // const userInfo = await User.findByPk(user.id)
+//   // const userInfo = await User.findByPk(user.id)
 
-  //   if (user) {
-  //       return res.json(userInfo);
-  //   } else return res.json({});
+//   //   if (user) {
+//   //       return res.json(userInfo);
+//   //   } else return res.json({});
 
-  await setTokenCookie(res, user);
+//   await setTokenCookie(res, user);
 
-  const userInfo = {};
-  userInfo.id = user.id;
-  userInfo.firstName = user.firstName;
-  userInfo.lastName = user.lastName;
-  userInfo.email = user.email;
-  userInfo.username = user.username;
+//   const userInfo = {};
+//   userInfo.id = user.id;
+//   userInfo.firstName = user.firstName;
+//   userInfo.lastName = user.lastName;
+//   userInfo.email = user.email;
+//   userInfo.username = user.username;
 
 
-  return res.json({
-    ...userInfo
+//   return res.json({
+//     ...userInfo
+//   });
+
+
+// });
+
+router.get(
+  '/',
+  restoreUser,
+  async (req, res) => {
+    const { user } = req;
+    // console.log('IN THE API SESSION ROUTE', user)
+    // const currentUser = await User.findByPk(user.id)
+
+    if (user) {
+      const currentUser = await User.findByPk(user.id)
+      return res.json(currentUser);
+    } else {
+      return res.json(null)
+    };
   });
-
-
-});
-
 
 // Export -----------------------------------------------------------
 module.exports = router;
