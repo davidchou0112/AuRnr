@@ -21,7 +21,7 @@ export const getAllSpots = () => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
-        console.log('this is data -------', data)
+        // console.log('this is data -------', data)
         dispatch(displayAllSpots(data));
 
     }
