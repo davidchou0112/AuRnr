@@ -16,7 +16,7 @@ const DisplayAllSpots = () => {
 
     return Object.values(spot).map(spotId => spotId.city);
 
-    // console.log('this is spot--------------------------------', spot)
+    // console.log(spot, 'this is spot--------------------------------')
 
 };
 
