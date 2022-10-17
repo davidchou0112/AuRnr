@@ -288,7 +288,7 @@ router.post("/:spotId/images", requireAuth, async (req, res) => {
 // need user.id, ownerId
 router.get('/current', requireAuth, async (req, res) => {
     const currentId = req.user.id;
-    console.log(currentId);
+    // console.log(currentId);
 
     const spots = await Spot.findAll({
         where: {

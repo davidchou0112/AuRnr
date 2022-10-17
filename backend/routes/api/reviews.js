@@ -27,7 +27,7 @@ router.post("/:reviewId/images", requireAuth, async (req, res) => {
 
     // can only have a maximum of 10 images
     const imageCount = await ReviewImage.count({ where: { reviewId: review.id } })
-    console.log(imageCount, '-------------this is count-----------')
+    // console.log(imageCount, '-------------this is count-----------')
     if (imageCount > 10) {
         res.status(403)
         res.json({
@@ -105,7 +105,7 @@ router.post("/:reviewId/images", requireAuth, async (req, res) => {
 //Get all Reviews of the Current User
 router.get("/current", requireAuth, async (req, res) => {
     const { user } = req;
-    console.log(req)
+    // console.log(req)
     const allReviews = await Review.findAll({
         where: {
             userId: user.id
