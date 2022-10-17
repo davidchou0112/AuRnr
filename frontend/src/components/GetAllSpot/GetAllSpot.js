@@ -1,24 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, useParams } from 'react-router-dom';
-import { getAllSpots } from '../store/session';
+import { getAllSpots } from '../../store/spots';
 
 const DisplayAllSpots = () => {
     const dispatch = useDispatch();
 
-    const { spotId } = useParams();
-    const spot = useSelector(state => {
-        return state.spot.spots.map(spotId => state.spot[spotId]);
-    });
+    const spot = useSelector(state => state.spots)
+
+    // console.log(spot, '==============this is spot==============')
 
     useEffect(() => {
         dispatch(getAllSpots())
     }, [dispatch]);
 
-    if (!spot) {
-        return null;
-    }
+    return Object.values(spot).map(spotId => spotId.city);
 
+    // console.log('this is spot--------------------------------', spot)
 
 };
+
 export default DisplayAllSpots;
