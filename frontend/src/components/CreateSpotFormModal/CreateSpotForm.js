@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/session";
+// import { Redirect } from "react-router-dom";
+import * as sessionActions from "../../store/spots";
+import { useHistory } from "react-router-dom";
 
 import './CreateSpotForm.css';
 
-function CreateSpotForm() {
+function CreateSpotForm({ hideForm }) {
     const dispatch = useDispatch();
-    const sessionUser = useSelector((state) => state.session.user);
+    // const sessionUser = useSelector((state) => state.session.user);
+    const history = useHistory();
 
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
@@ -19,11 +21,28 @@ function CreateSpotForm() {
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
 
-    if (!sessionUser) return <Redirect to='/' />;
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const spotInfo = {
+            address,
+            city,
+            state,
+            country,
+            lat,
+            lng,
+            name,
+            description,
+            price
+        }
+        let newSpot = await dispatch(sessionActions.actionAddOneSpot(spotInfo))
 
-    const handleSubmit = (e) => {
+        if (newSpot) {
+            history.push(`/spots/${newSpot.id}`);
+            hideForm()
+        }
+    };
 
-    }
+    cost handleCancelClick = (e)
 
 }
 
