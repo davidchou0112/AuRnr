@@ -24,7 +24,8 @@ module.exports = {
       },
       {
         spotId: 3,
-        url: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ef578838-1c6b-4489-b475-c5e9c68b033a/dbngtk7-896ff5b8-fbe2-42fc-899e-def4f81a5f62.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2VmNTc4ODM4LTFjNmItNDQ4OS1iNDc1LWM1ZTljNjhiMDMzYVwvZGJuZ3RrNy04OTZmZjViOC1mYmUyLTQyZmMtODk5ZS1kZWY0ZjgxYTVmNjIuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.T1Y6lmDzYNAvfhr6LrQu4gE1j3S8i3HWi5LK8UJM9Hc",
+        url: "https://www.applesfromny.com/wp-content/uploads/2020/06/SnapdragonNEW.png",
+
         preview: true
       }
     ])
