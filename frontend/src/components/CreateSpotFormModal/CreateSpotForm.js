@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 import './CreateSpotForm.css';
 
-function CreateSpotForm({ hideForm }) {
+function CreateSpotForm() {
     const dispatch = useDispatch();
     // const sessionUser = useSelector((state) => state.session.user);
     const history = useHistory();
@@ -20,6 +20,7 @@ function CreateSpotForm({ hideForm }) {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,11 +39,88 @@ function CreateSpotForm({ hideForm }) {
 
         if (newSpot) {
             history.push(`/spots/${newSpot.id}`);
-            hideForm()
+            // hideForm()
         }
     };
 
-    cost handleCancelClick = (e)
+    const handleCancelClick = (e) => {
+        e.preventDefault();
+        // hideForm();
+    };
+
+
+    return (
+        <section className="new-form-holder centered middled">
+            <form className="create-spot-form" onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    placeholder="Address"
+                    min="1"
+                    required
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="City"
+                    min="0"
+                    max="100"
+                    required
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="State"
+                    min="0"
+                    max="100"
+                    required
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Country"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                />
+                <input
+                    type="number"
+                    placeholder="Latitude"
+                    value={lat}
+                    onChange={(e) => setLat(e.target.value)}
+                />
+                <input
+                    type="number"
+                    placeholder="Longitude"
+                    value={lng}
+                    onChange={(e) => setLng(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+                <input
+                    type="number"
+                    placeholder="Price"
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                />
+
+                <button type="submit">Create new Spot</button>
+                <button type="button" onClick={handleCancelClick}>Cancel</button>
+            </form>
+        </section>
+
+    )
 
 }
 

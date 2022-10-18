@@ -7,6 +7,8 @@ import Navigation from "./components/Navigation";
 
 import DisplayAllSpots from './components/GetAllSpot/GetAllSpot';
 
+
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);

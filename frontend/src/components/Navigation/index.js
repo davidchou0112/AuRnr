@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal'
+import SignupFormModal from '../SignupFormModal';
+import CreateSpotFormModal from '../CreateSpotFormModal';
 
 
 import './Navigation.css';
@@ -15,13 +16,14 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <ProfileButton user={sessionUser} />
+            <ProfileButton user={sessionUser} CreateSpotFormModal />
         );
     } else {
         sessionLinks = (
             <>
                 <LoginFormModal />
                 <SignupFormModal />
+                <CreateSpotFormModal />
             </>
         );
     }
