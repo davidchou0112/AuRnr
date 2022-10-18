@@ -11,6 +11,8 @@ function CreateSpotFormModal() {
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <CreateSpotForm />
+                    {/* <button onClick={() => setShowModal(false)}>Cancel</button> */}
+
                 </Modal>
             )}
         </>

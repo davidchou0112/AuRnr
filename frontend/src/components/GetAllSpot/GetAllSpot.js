@@ -8,7 +8,7 @@ const DisplayAllSpots = () => {
 
     const spot = useSelector(state => state.spots)
 
-    // console.log(spot, '==============this is spot==============')
+    console.log(spot, '==============this is spot==============')
 
     useEffect(() => {
         dispatch(getAllSpots())

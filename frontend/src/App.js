@@ -19,11 +19,12 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <Switch>
 
-        <Route path={['/', '/spots']}>
-          <DisplayAllSpots />
-        </Route>
+      <Route path={['/', '/spots']}>
+        <DisplayAllSpots />
+      </Route>
+
+      <Switch>
 
         <Route>
         </Route>
