@@ -18,11 +18,13 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       <Switch>
+
         <Route path={['/', '/spots']}>
           <DisplayAllSpots />
         </Route>
 
-        <Route></Route>
+        <Route>
+        </Route>
 
       </Switch>
     </>

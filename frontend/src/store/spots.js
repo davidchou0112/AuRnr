@@ -1,11 +1,15 @@
-// import { csrfFetch } from './csrf';
+import { csrfFetch } from './csrf';
 
 // CONSTANTS TO AVOID DEBUGGING TYPOS -----------------------------------------
 
 const GET_ALL_SPOTS = 'spots/displayAllSpots';
+const ADD_ONE_SPOT = 'spots/addOneSpot';
+const UPDATE_SPOT = 'spots/updateSpot';
+const DELETE_SPOT = 'spots/deleteSpot';
 
 // REGULAR ACTION CREATOR------------------------------------------------------
 
+// Display all spots
 const displayAllSpots = (spots) => {
     return {
         type: GET_ALL_SPOTS,
@@ -13,9 +17,33 @@ const displayAllSpots = (spots) => {
     }
 }
 
+// Create a single new spot
+const addOneSpot = (spots) => {
+    return {
+        type: ADD_ONE_SPOT,
+        spots
+    }
+}
+
+// Edit a spot
+const updateSpot = (spots) => {
+    return {
+        type: UPDATE_SPOT,
+        spots
+    }
+}
+
+// Delete a spot
+const deleteSpot = (spotId) => {
+    return {
+        type: DELETE_SPOT,
+        spotId
+    }
+}
+
 // THUNK ACTION CREATORS-------------------------------------------------------
 
-// THUNK action creator for getting/display all available spots 
+// Getting/display all spots 
 export const getAllSpots = () => async dispatch => {
     const response = await fetch(`/api/spots`);
 
@@ -24,6 +52,24 @@ export const getAllSpots = () => async dispatch => {
         // console.log('this is data -------', data)
         dispatch(displayAllSpots(data));
 
+    }
+}
+
+// Creating a spot (did not add new image option)
+export const actionAddOneSpot = (newSpot) => async dispatch => {
+    const response = await csrfFetch(`/api/spots`, {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newSpot)
+    })
+
+    const newSpotData = await response.json();
+
+    if (response.ok) {
+        dispatch(addOneSpot(newSpotData));
     }
 }
 
@@ -39,10 +85,12 @@ const initialState = { spots: [] };
 // };
 
 const spotsReducer = (state = initialState, action) => {
+    let newState = {};
+
     switch (action.type) {
 
+        // Display all spots
         case GET_ALL_SPOTS:
-            let newState = {};
             action.spots.Spots.forEach(spot => {
                 newState[spot.id] = spot;
                 // console.log('this is spot from sessionReducer()-------------------------------------', spot)
@@ -51,6 +99,23 @@ const spotsReducer = (state = initialState, action) => {
                 ...newState,
                 ...state,
                 spot: action.spots
+            }
+
+        // Create a spot
+        case ADD_ONE_SPOT:
+            if (!state[action.spots.Spots.id]) {
+                const addSpot = {
+                    ...state,
+                    [action.spot.id]: action.spots.Spots
+                }
+                return addSpot
+            }
+            return {
+                ...state,
+                [action.spot.id]: {
+                    ...state[action.spots.Spots.id],
+                    ...action.spot
+                }
             }
 
         default:
