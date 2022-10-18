@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -22,7 +22,7 @@ module.exports = {
         lng: -122.4730327,
         name: 'App Academy',
         description: 'Place where web developers are created',
-        price: 69
+        price: 5000
       },
       {
         ownerId: 2,
@@ -46,12 +46,12 @@ module.exports = {
         lng: 48.35,
         name: 'Humboldt Grown',
         description: 'Grass is greener on this side',
-        price: 420
+        price: 4999
       }
     ])
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
