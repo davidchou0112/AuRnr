@@ -191,7 +191,6 @@ router.post("/:spotId/images", requireAuth, async (req, res) => {
 
 
 // Get Spots of Current User -------------------------------------------------------
-// need user.id, ownerId
 router.get('/current', requireAuth, async (req, res) => {
     const currentId = req.user.id;
     // console.log(currentId);
@@ -394,7 +393,7 @@ router.get('/:spotId/reviews', async (req, res) => {
     res.json({ Reviews: allReviews, ReviewImages: reviewImage })
 })
 
-//create a booking from a spot based on the spots id ----------Error handler for existing booking doesn't work----------------------
+//create a booking from a spot based on the spots id --------------------------------
 router.post('/:spotId/bookings', restoreUser, requireAuth, async (req, res) => {
     const { spotId } = req.params
     const { user } = req
@@ -489,7 +488,6 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     }
 })
 
-// //GET all bookings for a spot based on spot's id
 //delete a Spot
 router.delete('/:spotId', requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
