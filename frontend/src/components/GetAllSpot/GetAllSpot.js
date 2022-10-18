@@ -21,11 +21,13 @@ const DisplayAllSpots = () => {
             <>
                 {Object.values(spot).map(spotId => (
                     <ul>
-                        <img src={spotId.previewImage} alt={'Your stay is loading...'} />
-                        <li>{spotId.address}</li>
-                        <li>{spotId.avgRating}</li>
-                        <li>{spotId.city}</li>
-                        <li>{spotId.country}</li>
+                        <img key={spotId.previewImage} src={spotId.previewImage} alt={'Your stay is loading...'} />
+                        <li key={spotId.address}>{spotId.address}</li>
+                        <li key={spotId.avgRating}>{spotId.avgRating}</li>
+                        <li key={spotId.city}>{spotId.city}</li>
+                        <li key={spotId.country}>{spotId.country}</li>
+                        <li key={spotId.description}>{spotId.description}</li>
+                        <li key={spotId.price}>{spotId.price}</li>
                     </ul>
                 ))}
             </>
