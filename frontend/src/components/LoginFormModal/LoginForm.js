@@ -9,6 +9,17 @@ function LoginForm() {
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
+    // Creating a demo user button for quicker login
+    const [passwordError, setPasswordError] = useState('')
+    const [credentialError, setCredentialError] = useState('')
+    const demoUserButton = (e) => {
+        setPasswordError('');
+        setCredentialError('');
+        setCredential('Demo-lition');
+        setPassword('password');
+    }
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
@@ -46,6 +57,7 @@ function LoginForm() {
                 />
             </label>
             <button type="submit">Log In</button>
+            <button type="submit" onClick={demoUserButton}>Demo User Log In</button>
         </form>
     );
 }
