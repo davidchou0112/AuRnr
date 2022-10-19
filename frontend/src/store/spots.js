@@ -9,7 +9,7 @@ const DELETE_SPOT = 'spots/deleteSpot';
 
 // REGULAR ACTION CREATOR------------------------------------------------------
 
-// Display all spots
+// Display all spots (x)
 const displayAllSpots = (spots) => {
     return {
         type: GET_ALL_SPOTS,
@@ -17,7 +17,7 @@ const displayAllSpots = (spots) => {
     }
 }
 
-// Create a single new spot
+// Create a single new spot (\) check notes
 const addOneSpot = (spots) => {
     return {
         type: ADD_ONE_SPOT,
@@ -25,7 +25,7 @@ const addOneSpot = (spots) => {
     }
 }
 
-// Edit a spot
+// Edit a spot ()
 const updateSpot = (spots) => {
     return {
         type: UPDATE_SPOT,
@@ -73,6 +73,24 @@ export const actionAddOneSpot = (newSpot) => async dispatch => {
     }
 }
 
+// Editing a spot
+export const actionUpdateSpot = (update, spotId) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(update)
+    })
+
+    const updatedSpot = await response.json();
+
+    if (response.ok) {
+        dispatch(updateSpot(updatedSpot));
+    }
+}
+
 // STATE OBJECT ---------------------------------------------------------
 
 const initialState = { spots: [] };
@@ -110,6 +128,24 @@ const spotsReducer = (state = initialState, action) => {
                 }
                 return addSpot
             }
+            return {
+                ...state,
+                [action.spot.id]: {
+                    ...state[action.spots.Spots.id],
+                    ...action.spot
+                }
+            }
+
+        // Edit a spot
+        case UPDATE_SPOT:
+            if (!state[action.spots.Spots.id]) {
+                const editSpot = {
+                    ...state,
+                    [action.spot.id]: action.spots.Spots
+                }
+                return editSpot
+            }
+
             return {
                 ...state,
                 [action.spot.id]: {
