@@ -22,3 +22,8 @@ p {
     font-size: 20px;
     line-height: 5px;
 }
+
+.singleSpots-nav {
+    text-decoration: none;
+    color: inherit;
+}

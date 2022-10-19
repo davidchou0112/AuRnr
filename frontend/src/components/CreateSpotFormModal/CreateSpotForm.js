@@ -51,6 +51,7 @@ function CreateSpotForm() {
             window.location.reload();
             // hideForm()
         }
+        history.push('/');
     };
 
 

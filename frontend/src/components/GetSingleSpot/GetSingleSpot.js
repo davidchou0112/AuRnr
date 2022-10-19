@@ -9,18 +9,21 @@ const DisplaySingleSpot = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
     console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
-    const spot = useSelector(state => state.spots)
-    console.log(spot, '~~~~~~~~~~~~~~~~~~spot~~~~~~~~~')
+    const spots = useSelector(state => state.spot)
+    console.log(spots, '~~~~~~~~~~~~~~~~~~spot~~~~~~~~~')
 
     useEffect((spotId) => {
         dispatch(actionGetOneSpot(spotId))
-    }, [dispatch, spotId])
+    }, [dispatch])
 
     return (
         <div>
             <p>
-                ???????????????
 
+
+                <h1>
+                    why are my spots undefined...............
+                </h1>
                 {/* <div className='single-spot-div'>
                     <img className='single-spotImage' key={spotId.previewImage} src={spotId.previewImage} alt={'Your stay is loading...'} />
                     <div className='single-spotDetails'>
