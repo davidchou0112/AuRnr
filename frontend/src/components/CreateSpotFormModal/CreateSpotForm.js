@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 // import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/spots";
+// import * as sessionActions from "../../store/spots";
+
 import { useHistory } from "react-router-dom";
+import { actionAddOneSpot } from "../../store/spots";
 
 import './CreateSpotForm.css';
 
@@ -26,6 +28,7 @@ function CreateSpotForm() {
 
 
     const handleSubmit = async (e) => {
+        // console.log('a;lsdkjfao;isdjfaoisdjfasldf')
         e.preventDefault();
         const spotInfo = {
             address,
@@ -38,13 +41,18 @@ function CreateSpotForm() {
             description,
             price
         }
-        let newSpot = await dispatch(sessionActions.actionAddOneSpot(spotInfo))
+        // let newSpot = await dispatch(sessionActions.actionAddOneSpot(spotInfo))
+        let newSpot = await actionAddOneSpot(spotInfo)(dispatch)
+        // dispatch(newSpot);
+        // dispatch(actionAddOneSpot(spotInfo))
+
 
         if (newSpot) {
-            history.push(`/spots/${newSpot.id}`);
+            window.location.reload();
             // hideForm()
         }
     };
+
 
     const handleCancelClick = (e) => {
         e.preventDefault();
@@ -57,7 +65,7 @@ function CreateSpotForm() {
 
     return (
         <section className="new-form-holder centered middled">
-            <form className="create-spot-form" >
+            <form onSubmit={handleSubmit} className="create-spot-form" >
                 <label> Address
                     <input
                         type="text"
@@ -104,21 +112,21 @@ function CreateSpotForm() {
 
                 {/* <label> Latitude
                     <input
-                        type="number"
+                    type="number"
                         placeholder="Latitude"
                         value={lat}
                         onChange={(e) => setLat(e.target.value)}
-                    />
-                </label>
-
-                <label> Longitude
-                    <input
+                        />
+                        </label>
+                        
+                        <label> Longitude
+                        <input
                         type="number"
                         placeholder="Longitude"
                         value={lng}
                         onChange={(e) => setLng(e.target.value)}
-                    />
-                </label> */}
+                        />
+                    </label> */}
 
                 <label> Name
                     <input
@@ -147,7 +155,7 @@ function CreateSpotForm() {
                     />
                 </label>
 
-                <button onSubmit={handleSubmit} type="submit">Create new Spot</button>
+                <button type="submit">Create new Spot</button>
                 <button onClick={handleCancelClick} type="button">Cancel</button>
             </form>
             {/* <button onClick={() => setShowModal(false)}>Cancel</button> */}
