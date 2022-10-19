@@ -19,14 +19,14 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-
-      <Route exact path={['/', '/spots']}>
-        <DisplayAllSpots />
-      </Route>
-
       <Switch>
 
-        <Route path='/spots/:spotId'>
+        <Route exact path={['/api/spots/', '/spots/', '/', 'api/']}>
+          <DisplayAllSpots />
+        </Route>
+
+
+        <Route exact path={['/api/spots/:spotId', '/spots/:spotId', '/:spotId']}>
           <DisplaySingleSpot />
         </Route>
 

@@ -9,8 +9,8 @@ const DisplaySingleSpot = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
     console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
-    // const spot = useSelector(state => state.spots)
-    // console.log(spot, '~~~~~~~~~~~~~~~~~~spot~~~~~~~~~')
+    const spot = useSelector(state => state.spots)
+    console.log(spot, '~~~~~~~~~~~~~~~~~~spot~~~~~~~~~')
 
     useEffect((spotId) => {
         dispatch(actionGetOneSpot(spotId))

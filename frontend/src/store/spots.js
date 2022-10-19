@@ -19,10 +19,10 @@ const displayAllSpots = (spots) => {
 }
 
 // Display single spot ()
-const displaySingleSpot = (spots) => {
+const displaySingleSpot = (singleSpot) => {
     return {
         type: GET_SINGLE_SPOT,
-        spots
+        singleSpot
     }
 }
 
