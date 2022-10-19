@@ -24,7 +24,7 @@ const DisplaySingleSpot = () => {
                 <h1>
                     why are my spots undefined...............
                 </h1>
-                {/* <div className='single-spot-div'>
+                <div className='single-spot-div'>
                     <img className='single-spotImage' key={spotId.previewImage} src={spotId.previewImage} alt={'Your stay is loading...'} />
                     <div className='single-spotDetails'>
                         <p key={spotId.address}>{spotId.address} </p>
@@ -34,7 +34,7 @@ const DisplaySingleSpot = () => {
                         <p key={spotId.description}>{spotId.description} </p>
                         <p key={spotId.price}>{spotId.price} </p>
                     </div>
-                </div> */}
+                </div>
 
             </p>
         </div>

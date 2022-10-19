@@ -8,7 +8,9 @@ import { actionAddOneSpot } from "../../store/spots";
 
 import './CreateSpotForm.css';
 
-function CreateSpotForm() {
+
+
+function CreateSpotForm({ setShowModal }) {
     const dispatch = useDispatch();
     // const sessionUser = useSelector((state) => state.session.user);
     const history = useHistory();
@@ -48,10 +50,13 @@ function CreateSpotForm() {
 
 
         if (newSpot) {
-            window.location.reload();
+
+            // window.location.reload();
+            history.push('/');
+            setShowModal(false)
+
             // hideForm()
         }
-        history.push('/');
     };
 
 
@@ -61,6 +66,7 @@ function CreateSpotForm() {
         // hideForm(true);
         // setShowModal(false);
         // console.log(setShowModal(), 'this is setShowModal() on console log ------------------------')
+        setShowModal(false);
     };
 
 
