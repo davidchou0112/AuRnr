@@ -6,7 +6,6 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
 import DisplayAllSpots from './components/GetAllSpot/GetAllSpot';
-import DisplaySingleSpot from "./components/GetSingleSpot/GetSingleSpot";
 
 
 
@@ -20,15 +19,14 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+
+      <Route path={['/', '/spots']}>
+        <DisplayAllSpots />
+      </Route>
+
       <Switch>
 
-        <Route exact path={['/', '/spots']}>
-          <DisplayAllSpots />
-        </Route>
-
-
-        <Route path='/spots/:spotId'>
-          <DisplaySingleSpot />
+        <Route>
         </Route>
 
       </Switch>
