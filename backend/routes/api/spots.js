@@ -129,6 +129,9 @@ router.get('/', async (req, res, next) => {
 
 // Create a spot ----------DONE-------------------------------------------------------
 router.post('/', requireAuth, async (req, res) => {
+
+    // console.log(';alksdjhf;aoisdjfasdoif')
+
     const {
         address,
         city,
