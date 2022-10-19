@@ -19,18 +19,18 @@ const displayAllSpots = (spots) => {
 }
 
 // Display single spot ()
-const displaySingleSpot = (singleSpot) => {
+const displaySingleSpot = (spots) => {
     return {
         type: GET_SINGLE_SPOT,
-        singleSpot
+        spots
     }
 }
 
 // Create a single new spot (\) check notes
-const addOneSpot = (spots) => {
+const addOneSpot = (spotId) => {
     return {
         type: ADD_ONE_SPOT,
-        spots
+        spotId
     }
 }
 
@@ -69,8 +69,8 @@ export const actionGetOneSpot = (spotId) => async dispatch => {
     const response = await fetch(`/api/spots/${spotId}`);
 
     if (response.ok) {
-        const singleSpot = await response.json();
-        dispatch(displaySingleSpot(singleSpot))
+        const data = await response.json();
+        dispatch(displaySingleSpot(data))
     }
 }
 
