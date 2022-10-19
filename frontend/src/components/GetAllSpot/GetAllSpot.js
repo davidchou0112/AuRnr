@@ -21,7 +21,7 @@ const DisplayAllSpots = () => {
     } else {
         return (
             <>
-                {Object.values(spot).map(spotId => (
+                {/* {Object.values(spot).map(spotId => (
                     <div>
                         <div>
                             <img className='spotImage' key={spotId.previewImage} src={spotId.previewImage} alt={'Your stay is loading...'} />
@@ -39,6 +39,21 @@ const DisplayAllSpots = () => {
                             </div>
                         </div>
                     </div>
+                ))} */}
+                {Object.values(spot).map(spotId => (
+
+                    <div className='spot-div'>
+                        <img className='spotImage' key={spotId.previewImage} src={spotId.previewImage} alt={'Your stay is loading...'} />
+                        <div className='spotDetails'>
+                            <p key={spotId.address}>{spotId.address} </p>
+                            <p key={spotId.avgRating}>{spotId.avgRating} </p>
+                            <p key={spotId.city}>{spotId.city} </p>
+                            <p key={spotId.country}>{spotId.country} </p>
+                            <p key={spotId.description}>{spotId.description} </p>
+                            <p key={spotId.price}>{spotId.price} </p>
+                        </div>
+                    </div>
+
                 ))}
             </>
         )

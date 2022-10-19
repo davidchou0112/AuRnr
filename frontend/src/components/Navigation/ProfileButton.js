@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
+// import { useSelector } from 'react-redux';
+// import CreateSpotFormModal from '../CreateSpotFormModal';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
@@ -30,6 +32,17 @@ function ProfileButton({ user }) {
         dispatch(sessionActions.logout());
     };
 
+
+    // const sessionUser = useSelector(state => state.session.user);
+    // let sessionLinks
+    // if (sessionUser) {
+    //     sessionLinks = (
+    //         <div>
+    //             <CreateSpotFormModal />
+    //         </div>
+    //     );
+    // }
+
     return (
         <>
             <button onClick={openMenu}>
@@ -38,19 +51,22 @@ function ProfileButton({ user }) {
             {showMenu && (
                 <ul className="profile-dropdown">
 
-                    <li>
+                    <p>
                         {user.username}
-                    </li>
+                    </p>
 
 
-                    <li>
+                    <p>
                         {user.email}
-                    </li>
+                    </p>
+                    {/* 
+                    <p>
+                        {sessionLinks}
+                    </p> */}
 
-
-                    <li>
+                    <p>
                         <button onClick={logout}>Log Out</button>
-                    </li>
+                    </p>
 
                 </ul>
             )}

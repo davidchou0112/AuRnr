@@ -16,10 +16,10 @@ function Navigation({ isLoaded }) {
     let sessionLinks;
     if (sessionUser) {
         sessionLinks = (
-            <>
+            <div>
                 <CreateSpotFormModal />
-                <ProfileButton user={sessionUser} CreateSpotFormModal />
-            </>
+                <ProfileButton user={sessionUser} />
+            </div>
         );
     } else {
         sessionLinks = (
@@ -32,15 +32,15 @@ function Navigation({ isLoaded }) {
 
     return (
         <div className='nav-bar'>
-            <div>
+            <div className='nav-home-profile'>
 
                 <div>
-                    <NavLink exact to="/">Home</NavLink>
+                    <NavLink exact to="/spots">Home</NavLink>
                 </div>
-
                 <div>
                     {isLoaded && sessionLinks}
                 </div>
+
             </div>
         </div>
 

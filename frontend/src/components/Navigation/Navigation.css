@@ -1,4 +1,12 @@
 .nav-bar {
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+
+}
+
+.nav-home-profile {
 
     justify-content: space-between;
+    display: inline;
 }

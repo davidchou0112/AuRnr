@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 // CONSTANTS TO AVOID DEBUGGING TYPOS -----------------------------------------
 
 const GET_ALL_SPOTS = 'spots/displayAllSpots';
+const GET_SINGLE_SPOT = 'spots/displaySingleSpot'
 const ADD_ONE_SPOT = 'spots/addOneSpot';
 const UPDATE_SPOT = 'spots/updateSpot';
 const DELETE_SPOT = 'spots/deleteSpot';
@@ -14,6 +15,14 @@ const displayAllSpots = (spots) => {
     return {
         type: GET_ALL_SPOTS,
         spots
+    }
+}
+
+// Display single spot ()
+const displaySingleSpot = (singleSpot) => {
+    return {
+        type: GET_SINGLE_SPOT,
+        singleSpot
     }
 }
 
@@ -46,8 +55,6 @@ const deleteSpot = (spotId) => {
 // Getting/display all spots 
 export const getAllSpots = () => async dispatch => {
     const response = await fetch(`/api/spots`);
-    // method: 'GET',
-
 
     if (response.ok) {
         const data = await response.json();
@@ -57,9 +64,18 @@ export const getAllSpots = () => async dispatch => {
     }
 }
 
+// Getting Details of a Spot by Id
+export const actionGetOneSpot = (spotId) => async dispatch => {
+    const response = await fetch(`/api/spots/${spotId}`);
+
+    if (response.ok) {
+        const singleSpot = await response.json();
+        dispatch(displaySingleSpot(singleSpot))
+    }
+}
+
 // Creating a spot (did not add new image option)
 export const actionAddOneSpot = (newSpot) => async dispatch => {
-    // console.log('a;lsdjifa;osijfaosdifjalsdfj')
     const response = await csrfFetch(`/api/spots`, {
 
         method: 'POST',
@@ -120,9 +136,7 @@ const initialState = { spots: [] };
 
 const spotsReducer = (state = initialState, action) => {
     let newState = {};
-
     switch (action.type) {
-
         // Display all spots
         case GET_ALL_SPOTS:
             action.spots.Spots.forEach(spot => {
@@ -136,21 +150,22 @@ const spotsReducer = (state = initialState, action) => {
                 spot: action.spots
             };
 
+
+        //  Display single spot
+        case GET_SINGLE_SPOT:
+            const oneSpot = {
+                ...state,
+                [action.spots.id]: action.spots
+            }
+            return oneSpot
+
+
         // Create a spot
         case ADD_ONE_SPOT:
-            // if (!state[action.spots.Spots]) {
-            //     // console.log({ action })
-            //     const addSpot = {
-            //         ...state,
-            //         [action.spots.id]: action.spots.Spots
-            //     }
-            //     return addSpot
-            // }
             const addSpot = {
                 ...state,
                 [action.spots.id]: action.spots
             }
-
             return addSpot
 
 
@@ -171,11 +186,13 @@ const spotsReducer = (state = initialState, action) => {
                 }
             };
 
+
         // Delete a spot 
         case DELETE_SPOT:
             const deleteMe = { ...state };
             delete deleteMe[action.spotId];
             return deleteMe;
+
 
         default:
             return state;

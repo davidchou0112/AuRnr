@@ -9,3 +9,16 @@
     max-width: 350px;
     border-radius: 10px;
 }
+
+.spot-div {
+    display: block;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    line-height: 5px;
+}
