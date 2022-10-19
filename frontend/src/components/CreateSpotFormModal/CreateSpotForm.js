@@ -64,10 +64,10 @@ function CreateSpotForm() {
 
 
     return (
-        <section className="new-form-holder centered middled">
+        <section className="entire-form">
             <form onSubmit={handleSubmit} className="create-spot-form" >
-                <label> Address
-                    <input
+                <label className='input-label'>
+                    <input className="input"
                         type="text"
                         placeholder="Address"
                         min="1"
@@ -77,8 +77,8 @@ function CreateSpotForm() {
                     />
                 </label>
 
-                <label> City
-                    <input
+                <label className='input-label'>
+                    <input className="input"
                         type="text"
                         placeholder="City"
                         min="0"
@@ -89,8 +89,8 @@ function CreateSpotForm() {
                     />
                 </label>
 
-                <label> State
-                    <input
+                <label className='input-label'>
+                    <input className="input"
                         type="text"
                         placeholder="State"
                         min="0"
@@ -99,16 +99,16 @@ function CreateSpotForm() {
                         value={state}
                         onChange={(e) => setState(e.target.value)}
                     />
-                </label>
+                </label >
 
-                <label> Country
-                    <input
+                <label className='input-label'>
+                    <input className="input"
                         type="text"
                         placeholder="Country"
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
                     />
-                </label>
+                </label >
 
                 {/* <label> Latitude
                     <input
@@ -128,38 +128,39 @@ function CreateSpotForm() {
                         />
                     </label> */}
 
-                <label> Name
-                    <input
+                <label label className='input-label'>
+                    < input className="input"
                         type="text"
                         placeholder="Name"
                         value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => setName(e.target.value)
+                        }
                     />
-                </label>
+                </label >
 
-                <label> Description
-                    <input
+                <label className='input-label'>
+                    <input className="input"
                         type="text"
                         placeholder="Description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
-                </label>
+                </label >
 
-                <label> Price
-                    <input
+                <label className='input-label'>
+                    <input className="input"
                         type="number"
                         placeholder="Price"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                     />
-                </label>
+                </label >
 
-                <button type="submit">Create new Spot</button>
-                <button onClick={handleCancelClick} type="button">Cancel</button>
-            </form>
+                <button className="button" type="submit">Create new Spot</button>
+                <button className="button" onClick={handleCancelClick} type="button">Cancel</button>
+            </form >
             {/* <button onClick={() => setShowModal(false)}>Cancel</button> */}
-        </section>
+        </section >
 
     )
 

@@ -1,0 +1,11 @@
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.spotImage {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+}

@@ -31,12 +31,19 @@ function Navigation({ isLoaded }) {
     }
 
     return (
-        <ul>
-            <NavLink exact to="/">Home</NavLink>
+        <div className='nav-bar'>
             <div>
-                {isLoaded && sessionLinks}
+
+                <div>
+                    <NavLink exact to="/">Home</NavLink>
+                </div>
+
+                <div>
+                    {isLoaded && sessionLinks}
+                </div>
             </div>
-        </ul>
+        </div>
+
     );
 }
 

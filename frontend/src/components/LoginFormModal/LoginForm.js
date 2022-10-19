@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 
+import './LoginForm.css';
+
 function LoginForm() {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState("");
@@ -32,33 +34,39 @@ function LoginForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
-                {errors.map((error, idx) => (
-                    <li key={idx}>{error}</li>
-                ))}
-            </ul>
-            <label>
-                Username or Email
-                <input
-                    type="text"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Password
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button type="submit">Log In</button>
-            <button type="submit" onClick={demoUserButton}>Demo User Log In</button>
-        </form>
+        <section className="entire-form">
+            <form onSubmit={handleSubmit}>
+                <ul>
+                    {errors.map((error, idx) => (
+                        <li key={idx}>{error}</li>
+                    ))}
+                </ul>
+                <div className='label-and-input'>
+                    <label className="input-label">
+
+                    </label>
+                    <input className="input-field"
+                        type="text"
+                        value={credential}
+                        onChange={(e) => setCredential(e.target.value)}
+                        required
+                        placeholder='Username or Email'
+                    />
+                    <label className="input-label">
+
+                    </label>
+                    <input className="input-field"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        placeholder='Password'
+                    />
+                    <button className="buttons-login" type="submit">Log In</button>
+                    <button className="buttons-login" type="submit" onClick={demoUserButton}>Demo User Log In</button>
+                </div>
+            </form>
+        </section>
     );
 }
 

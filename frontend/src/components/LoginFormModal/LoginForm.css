@@ -1,0 +1,24 @@
+/* need to ask if were allowed to used same classname across all css to style? */
+
+.label-and-input {
+    display: block;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.buttons-login {
+    background-color: #de1561;
+    color: #f8c5d5;
+    width: 60%;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 5px;
+    margin-top: 15px;
+}
+
+.input-field {
+    width: 90%;
+    height: 7px;
+    padding: 1em;
+}
