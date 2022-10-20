@@ -10,7 +10,7 @@ const DisplayAllSpots = () => {
 
     const allSpot = useSelector(state => state.spots.allSpots)
 
-    // console.log(allSpot, '==============this is allSpot==============')
+    console.log(allSpot, '==============this is allSpot==============')
 
     useEffect(() => {
         dispatch(getAllSpots())
@@ -19,20 +19,21 @@ const DisplayAllSpots = () => {
     if (!allSpot) {
         return null
     } else {
+        // the map is now maping through id, it was originally maping through object. it was never desconstructing it (now it is)
         return (
             <>
-                {Object.values(allSpot).map(spotId => (
+                {Object.values(allSpot).map(spot => (
 
                     <div className='allSpot-div'>
-                        <NavLink className='singleSpots-nav' to={`spots/${spotId}`}>
-                            <img className='spotImage' key={spotId.previewImage} src={spotId.previewImage} alt='Your stay is loading...' />
+                        <NavLink className='singleSpots-nav' to={`spots/${spot.id}`}>
+                            <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt='Your stay is loading...' />
                             <div className='spotDetails'>
-                                <p key={spotId.address}>{spotId.address} </p>
-                                <p key={spotId.avgRating}>{spotId.avgRating} </p>
-                                <p key={spotId.city}>{spotId.city} </p>
-                                <p key={spotId.country}>{spotId.country} </p>
-                                <p key={spotId.description}>{spotId.description} </p>
-                                <p key={spotId.price}>{spotId.price} </p>
+                                <p key={spot.address}>{spot.address} </p>
+                                <p key={spot.avgRating}>{spot.avgRating} </p>
+                                <p key={spot.city}>{spot.city} </p>
+                                <p key={spot.country}>{spot.country} </p>
+                                <p key={spot.description}>{spot.description} </p>
+                                <p key={spot.price}>{spot.price} </p>
                             </div>
                         </NavLink>
                     </div>

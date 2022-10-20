@@ -29,7 +29,7 @@ function App() {
         </Route>
 
 
-        <Route exact path={['/api/spots/:spotId', '/spots/:spotId', '/:spotId']}>
+        <Route exact path='/spots/:spotId'>
           <DisplaySingleSpot />
           <EditSpotForm />
         </Route>

@@ -10,15 +10,16 @@ const DisplaySingleSpot = () => {
 
     const { spotId } = useParams();
 
-    // console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
+    console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
 
     // const { spot } = useParams();
     // console.log(spot, '------------------------spot----------------'); //undefined
 
 
     // const oneSpot = useSelector(state => state.singleSpot)
-    const oneSpot = useSelector(state => state)
-    // console.log(oneSpot, '~~~~~~~~~~~~~~~~~~oneSpot~~~~~~~~~')
+    const oneSpot = useSelector(state => state.spots.singleSpot)
+    console.log(oneSpot, '~~~~~~~~~~~~~~~~~~oneSpot~~~~~~~~~')
+    console.log(oneSpot.SpotImages, `~~~~~~~~~~~~~~~~~~~~~~~~~~~this is~~~~~~~~~`)
     // const oneSpot1 = useSelector(state => state.spots)
     // console.log(oneSpot1, '~~~~~~~~~~~~~~~~~~oneSpot1~~~~~~~~~')
 
@@ -37,14 +38,14 @@ const DisplaySingleSpot = () => {
                 why is my oneSpot undefined...............
             </h1> */}
             <div className='single-spot-div'>
-                {/* <img className='single-spotImage' key={oneSpot.spots.singleSpot.SpotImage[0].url} src={oneSpot.spots.singleSpot.SpotImage[0].url} alt={'Your stay is loading...'} /> */}
+                <img className='single-spotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Your stay is loading...'} />
                 <div className='single-spotDetails'>
-                    <p key={oneSpot.spots.singleSpot.address}>{oneSpot.spots.singleSpot.address} </p>
-                    <p key={oneSpot.spots.singleSpot.avgRating}>{oneSpot.spots.singleSpot.avgRating} </p>
-                    <p key={oneSpot.spots.singleSpot.city}>{oneSpot.spots.singleSpot.city} </p>
-                    <p key={oneSpot.spots.singleSpot.country}>{oneSpot.spots.singleSpot.country} </p>
-                    <p key={oneSpot.spots.singleSpot.description}>{oneSpot.spots.singleSpot.description} </p>
-                    <p key={oneSpot.spots.singleSpot.price}>{oneSpot.spots.singleSpot.price} </p>
+                    <p key={oneSpot.address}>{oneSpot.address} </p>
+                    <p key={oneSpot.avgRating}>{oneSpot.avgRating} </p>
+                    <p key={oneSpot.city}>{oneSpot.city} </p>
+                    <p key={oneSpot.country}>{oneSpot.country} </p>
+                    <p key={oneSpot.description}>{oneSpot.description} </p>
+                    <p key={oneSpot.price}>{oneSpot.price} </p>
                 </div>
             </div>
         </div>
