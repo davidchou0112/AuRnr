@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { NavLink } from "react-router-dom";
 
 // import { useSelector } from 'react-redux';
 // import CreateSpotFormModal from '../CreateSpotFormModal';
@@ -59,10 +60,14 @@ function ProfileButton({ user }) {
                     <p>
                         {user.email}
                     </p>
-                    {/* 
+
                     <p>
-                        {sessionLinks}
-                    </p> */}
+                        <NavLink to="/current">
+                            <button className="logout-button">
+                                My Spots
+                            </button>
+                        </NavLink>
+                    </p>
 
                     <p>
                         <button onClick={logout}>Log Out</button>

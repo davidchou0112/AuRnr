@@ -10,6 +10,7 @@ import DisplaySingleSpot from "./components/GetSingleSpot/GetSingleSpot";
 // import CreateSpotForm from "./components/CreateSpotFormModal/CreateSpotForm";
 import CreateSpotFormModal from "./components/CreateSpotFormModal";
 import EditSpotForm from "./components/EditSpot/EditSpot";
+import MySpots from "./components/UserSpots/UserSpots";
 
 
 function App() {
@@ -22,23 +23,32 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <Switch>
+      {isLoaded && (
+        <Switch>
 
-        <Route exact path={['/api/spots/', '/spots/', '/', 'api/']}>
-          <DisplayAllSpots />
-        </Route>
+          <Route exact path='/'>
+            <DisplayAllSpots />
+          </Route>
+
+          <Route path='/spots/:spotId'>
+            <DisplaySingleSpot />
+          </Route>
+
+          <Route path='/spots/:spotId/edit'>
+            <EditSpotForm />
+          </Route>
+
+          <Route path='/spots/create'>
+            <CreateSpotFormModal />
+          </Route>
+
+          <Route path='/current'>
+            <MySpots />
+          </Route>
 
 
-        <Route exact path='/spots/:spotId'>
-          <DisplaySingleSpot />
-          <EditSpotForm />
-        </Route>
-
-        <Route exact path={['/spots/create', '/:spotId/images']}>
-          <CreateSpotFormModal />
-        </Route>
-
-      </Switch>
+        </Switch>
+      )}
     </>
   );
 }

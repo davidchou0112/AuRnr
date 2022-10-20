@@ -83,7 +83,18 @@ export const actionGetOneSpot = (spotId) => async dispatch => {
     }
 }
 
-// Creating a spot (did not add new image option)
+// Get Spots of the Current User
+export const getCurrentUserSpots = () => async dispatch => {
+    const response = await csrfFetch('/api/spots/current')
+
+    if (response.ok) {
+        const userSpots = await response.json()
+        dispatch(displayAllSpots(userSpots))
+        return userSpots
+    }
+}
+
+// Creating a spot 
 export const actionAddOneSpot = (newSpot, imgData) => async dispatch => {
     // Adding a spot data
     const response = await csrfFetch(`/api/spots`, {
@@ -143,6 +154,7 @@ export const actionAddImg = (imgData, spotId) => async dispatch => {
 // Editing a spot
 export const actionUpdateSpot = (update, spotId) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}`, {
+
 
         method: 'PUT',
         headers: {
@@ -237,24 +249,30 @@ const spotsReducer = (state = initialState, action) => {
 
         // Edit a spot
         case UPDATE_SPOT:
+            // newState = {
+            //     ...state,
+            //     singleSpot: action.spots
+            // }
+            // if (!newState) {
+            //     newState = {
+            //         ...state,
+            //         singleSpot: action.spots
+            //     }
+            //     return newState
+            // } else {
+            //     newState = {
+            //         ...state,
+            //         singleSpot: action.spots
+            //     }
+            //     newState.singleSpot = action.spots
+            // }
+            // return newState;
             newState = {
                 ...state,
                 singleSpot: action.spots
             }
-            if (!newState) {
-                newState = {
-                    ...state,
-                    singleSpot: action.spots
-                }
-                return newState
-            } else {
-                newState = {
-                    ...state,
-                    singleSpot: action.spots
-                }
-                newState.singleSpot = action.spots
-            }
-            return newState;
+            newState.singleSpot = action.spots
+            return newState
 
 
         // Delete a spot 

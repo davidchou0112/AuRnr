@@ -14,15 +14,15 @@ const EditSpotForm = () => {
     const spot = useSelector(state => state.spots.singleSpot);
     // console.log(spot, `~~~~~~~~~this is 'spot' from EditSpot`)
 
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [country, setCountry] = useState('');
-    // const [lat, setLat] = useState('');
-    // const [lng, setLng] = useState('');
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
-    const [price, setPrice] = useState('');
+    const [address, setAddress] = useState(spot.address);
+    const [city, setCity] = useState(spot.city);
+    const [state, setState] = useState(spot.state);
+    const [country, setCountry] = useState(spot.country);
+    // const [lat, setLat] = useState(spot.lat);
+    // const [lng, setLng] = useState(spot.lng);
+    const [name, setName] = useState(spot.name);
+    const [description, setDescription] = useState(spot.description);
+    const [price, setPrice] = useState(spot.price);
     const [url, setUrl] = useState('');
 
     useEffect(() => {
@@ -31,27 +31,28 @@ const EditSpotForm = () => {
 
     // console.log(actionGetOneSpot(spotId))
 
-    useEffect(() => {
-        if (spot) {
-            setAddress(spot.address);
-            setCity(spot.city);
-            setState(spot.state);
-            setCountry(spot.country);
-            // setLat(spot.lat);
-            // setLng(spot.lng);
-            setName(spot.name);
-            setDescription(spot.description);
-            setPrice(spot.price);
-            // setUrl(spot.SpotImages[0]['url']);
-            // console.log(spot.SpotImages[0]['url'], `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`)
-        }
-    }, [spot]);
+    // useEffect(() => {
+    //     if (spot) {
+    //         setAddress(spot.address);
+    //         setCity(spot.city);
+    //         setState(spot.state);
+    //         setCountry(spot.country);
+    //         // setLat(spot.lat);
+    //         // setLng(spot.lng);
+    //         setName(spot.name);
+    //         setDescription(spot.description);
+    //         setPrice(spot.price);
+    //         // setUrl(spot.SpotImages[0]['url']);
+    //         // console.log(spot.SpotImages[0]['url'], `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`)
+    //     }
+    // }, [spot]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         // payload = spots
         const spots = {
+            id: spotId,
             address,
             city,
             state,
@@ -63,7 +64,7 @@ const EditSpotForm = () => {
             price,
             url
         }
-        let newSpot = await actionUpdateSpot(spots);
+        let newSpot = await actionUpdateSpot(spots, spotId);
 
         if (newSpot) {
             history.push(`/api/spots/${spotId}`);
@@ -75,6 +76,10 @@ const EditSpotForm = () => {
         history.push('/');
     };
 
+
+    // if (!spot.address) {
+    //     return 'Loading...'
+    // } else {
     return (
         <section className="entire-form">
             <form onSubmit={handleSubmit} className="Edit-form" >
@@ -191,4 +196,5 @@ const EditSpotForm = () => {
     )
 
 }
+// }
 export default EditSpotForm;
