@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { actionGetOneSpot, actionUpdateSpot } from '../../store/spots';
 
 import './EditSpot.css';
@@ -9,7 +9,7 @@ const EditSpotForm = ({ spotId }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    console.log(spotId, `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~spotId from EditSpot`)
+    // console.log(spotId, `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~spotId from EditSpot`)
     const spot = useSelector(state => state.spots.singleSpot);
     // console.log(spot, `~~~~~~~~~this is 'spot' from EditSpot`)
 

@@ -166,7 +166,7 @@ export const actionUpdateSpot = (update, spotId) => async dispatch => {
 
     if (response.ok) {
         const updatedSpot = await response.json();
-        console.log(`~~~~~~~~~~~~~updatedSpot from THUNK~~`, updatedSpot);
+        // console.log(`~~~~~~~~~~~~~updatedSpot from THUNK~~`, updatedSpot);
         dispatch(updateSpot(updatedSpot));
 
         return updateSpot;
@@ -204,7 +204,7 @@ const spotsReducer = (state = initialState, action) => {
             newState = {
                 ...state,
                 //                  this allSpots is within our initial state object with key of allSpots
-                allSpots: { ...state.allSpots }
+                allSpots: { ...action.spots }
             }
             action.spots.Spots.forEach(spot => {
                 // console.log({ action })
@@ -226,7 +226,7 @@ const spotsReducer = (state = initialState, action) => {
             // action.spots.forEach(spot => {
             //     oneSpot[spot.id] = spot;
             // })
-            console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~newState from edit reducer~~~~~~~~~~~~~~`, newState)
+            // console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~newState from edit reducer~~~~~~~~~~~~~~`, newState)
             return newState
 
         // Add an Image
