@@ -60,8 +60,8 @@ function CreateSpotForm({ setShowModal }) {
 
         if (newSpot) {
 
-            // window.location.reload();
-            history.push(`/api/spots/${newSpot.id}`);
+            window.location.reload();
+            history.push(`/`);
             setShowModal(false)
 
             // hideForm()
@@ -181,17 +181,16 @@ function CreateSpotForm({ setShowModal }) {
                     />
                 </label >
 
-                <label className="preview-image-label" > Preview Image?
+                {/* <label className="preview-image-label" > Preview Image?
                     <select className='true-false' onChange={(e) => setPreview(e.target.value)}>
                         <option key='true'>true</option>
                         <option key='false'>false</option>
                     </select >
-                </label>
+                </label> */}
 
                 <button className="button" type="submit">Create new Spot</button>
                 <button className="button" onClick={handleCancelClick} type="button">Cancel</button>
             </form >
-            {/* <button onClick={() => setShowModal(false)}>Cancel</button> */}
         </section >
 
     )

@@ -222,9 +222,8 @@ const spotsReducer = (state = initialState, action) => {
                 ...state,
                 newImage: { ...state.singleSpot }
             }
-            action.spots.forEach(spot => {
-                newImage[spot.id] = spot;
-            })
+            console.log(action, `!!!!!!~~~~~~~~~~~~~~!!!!!!!!!!!action`)
+            newState.singleSpot = action.newImage
             return newState
 
         // Create a spot
