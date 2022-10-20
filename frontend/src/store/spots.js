@@ -209,9 +209,11 @@ const spotsReducer = (state = initialState, action) => {
                 oneSpot: { ...state.singleSpot }
             }
 
-            action.spots.forEach(spot => {
-                oneSpot[spot.id] = spot;
-            })
+            console.log(action, `!!!!!!~~~~~~~~~~~~~~!!!!!!!!!!!action`)
+            newState.singleSpot = action.oneSpot
+            // action.spots.forEach(spot => {
+            //     oneSpot[spot.id] = spot;
+            // })
 
             return newState
 
@@ -222,7 +224,6 @@ const spotsReducer = (state = initialState, action) => {
                 ...state,
                 newImage: { ...state.singleSpot }
             }
-            console.log(action, `!!!!!!~~~~~~~~~~~~~~!!!!!!!!!!!action`)
             newState.singleSpot = action.newImage
             return newState
 

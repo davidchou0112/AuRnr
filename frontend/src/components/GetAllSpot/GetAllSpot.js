@@ -10,7 +10,7 @@ const DisplayAllSpots = () => {
 
     const allSpot = useSelector(state => state.spots.allSpots)
 
-    console.log(allSpot, '==============this is allSpot==============')
+    // console.log(allSpot, '==============this is allSpot==============')
 
     useEffect(() => {
         dispatch(getAllSpots())

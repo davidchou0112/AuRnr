@@ -55,16 +55,14 @@ function CreateSpotForm({ setShowModal }) {
         // dispatch(newSpot);
         // dispatch(actionAddOneSpot(spotInfo))
 
-        console.log(imgInfo, '!!!!!!!this is imgInfo~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        console.log(newSpot, '@@@@@@@@@this is newSpot~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        // console.log(imgInfo, '!!!!!!!this is imgInfo~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        // console.log(newSpot, '@@@@@@@@@this is newSpot~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
         if (newSpot) {
 
             window.location.reload();
             history.push(`/`);
             setShowModal(false)
-
-            // hideForm()
         }
     };
 
@@ -72,9 +70,7 @@ function CreateSpotForm({ setShowModal }) {
     const handleCancelClick = (e) => {
         e.preventDefault();
         history.push('/');
-        // hideForm(true);
-        // setShowModal(false);
-        // console.log(setShowModal(), 'this is setShowModal() on console log ------------------------')
+
         setShowModal(false);
     };
 
