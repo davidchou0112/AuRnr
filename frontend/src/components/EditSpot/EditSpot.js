@@ -42,7 +42,8 @@ const EditSpotForm = () => {
             setName(spot.name);
             setDescription(spot.description);
             setPrice(spot.price);
-            // setUrl(spot.url);
+            // setUrl(spot.SpotImages[0]['url']);
+            // console.log(spot.SpotImages[0]['url'], `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`)
         }
     }, [spot]);
 

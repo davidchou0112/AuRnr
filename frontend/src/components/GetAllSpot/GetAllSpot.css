@@ -27,3 +27,10 @@ p {
     text-decoration: none;
     color: inherit;
 }
+
+.allSpot-div {
+    display: inline-block;
+    height: fit-content;
+    padding: 20px;
+    position: relative;
+}
