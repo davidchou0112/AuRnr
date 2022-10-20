@@ -141,7 +141,8 @@ router.post('/', requireAuth, async (req, res) => {
         lng,
         name,
         description,
-        price
+        price,
+        url
     } = req.body;
 
     const userId = req.user.id;
@@ -156,7 +157,8 @@ router.post('/', requireAuth, async (req, res) => {
         lng: lng,
         name: name,
         description: description,
-        price: price
+        price: price,
+        url: url
     });
     res.status(201);
     res.json(spotInfo);

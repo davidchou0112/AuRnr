@@ -27,7 +27,7 @@ const displaySingleSpot = (singleSpot) => {
     }
 }
 
-// Create a single new spot (x)
+// Create a single new spot (\)
 const addOneSpot = (spots) => {
     return {
         type: ADD_ONE_SPOT,
@@ -109,13 +109,14 @@ export const actionAddOneSpot = (newSpot, imgData) => async dispatch => {
 
     const images = await imgResponse.json();
 
-    // console.log(response, '----------------------------------response')
+    console.log(addImg(images), '----------------------------------addImg(images)')
+    console.log(newSpotData, '`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~newSpotData')
 
     if (response.ok && imgResponse.ok) {
         dispatch(addOneSpot(newSpotData));
         dispatch(addImg(images));
 
-        newSpotData['SpotImage'] = [images]
+        newSpotData.previewImages = images
         return newSpotData
     }
 }
@@ -208,12 +209,23 @@ const spotsReducer = (state = initialState, action) => {
                 oneSpot: { ...state.singleSpot }
             }
 
-            action.spots.Spots.forEach(spot => {
+            action.spots.forEach(spot => {
                 oneSpot[spot.id] = spot;
             })
 
             return newState
 
+        // Add an Image
+        case ADD_IMG:
+            let newImage = {};
+            newState = {
+                ...state,
+                newImage: { ...state.singleSpot }
+            }
+            action.spots.forEach(spot => {
+                newImage[spot.id] = spot;
+            })
+            return newState
 
         // Create a spot
         case ADD_ONE_SPOT:

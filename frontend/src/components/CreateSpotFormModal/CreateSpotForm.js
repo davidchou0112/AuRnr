@@ -44,21 +44,24 @@ function CreateSpotForm({ setShowModal }) {
             name,
             description,
             price,
-            url
+            url,
+            preview: true
         }
 
-        const imgInfo = { url, preview };
+        const imgInfo = { url, preview: true };
 
         // let newSpot = await dispatch(sessionActions.actionAddOneSpot(spotInfo))
         let newSpot = await actionAddOneSpot(spotInfo, imgInfo)(dispatch)
         // dispatch(newSpot);
         // dispatch(actionAddOneSpot(spotInfo))
 
+        console.log(imgInfo, '!!!!!!!this is imgInfo~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        console.log(newSpot, '@@@@@@@@@this is newSpot~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
         if (newSpot) {
 
-            window.location.reload();
-            history.push('/');
+            // window.location.reload();
+            history.push(`/api/spots/${newSpot.id}`);
             setShowModal(false)
 
             // hideForm()
