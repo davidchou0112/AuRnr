@@ -26,66 +26,57 @@ const MySpots = () => {
     }
 
     const ownedSpots = spotsData?.filter((spot) => spot.ownerId === sessionUser.id);
-    // console.log('Owned Spot - UserSpots Component', ownedSpots)
-
-    // if (!ownedSpots || !ownedSpots.length) {
-    //   return <h2 className="no-spot"> MEOWMEOW No Spots! </h2>
-    // }
+    console.log('~~~~~~~~~~~~~~~~~ownedSpots~~~~~~~~~~~~~~~~~~~', ownedSpots)
 
 
+    if (spotsData.length === 0) {
+        return 'my data is still showing up EMPTY post hard refresh..'
+    } else {
 
-    // const deleteUserSpot = async (spotId) => {
-    //   await dispatch(actionDeleteSpot(spotId))
-    // }
+        return (
+            <div >
 
-    return (
-        <div className="mother">
-
-            {spotsData < 1 && <h2 className="user-spot-message">Manage Your Listings Meow!!!</h2>}
-            <div className="spot-mother">
-                {ownedSpots?.map((spot) => (
-                    <div className="all-owned-spot">
-                        <NavLink className="spots" to={`/spots/${spot.id}`}>
-                            <div className="individual-spots">
-                                <div>
-                                    <img className="user-spot-image" key={spot.previewImage} src={spot.previewImage} alt={spot.previewImage} />
-                                </div>
-                                <div className="user-spot-info">
-                                    <div>{spot.name}</div>
-                                    <div className="address-star" key={spot.name}>{spot.city}, {spot.state}</div>
+                {spotsData < 1 && <h2 >my data is still showing up EMPTY</h2>}
+                <div >
+                    {ownedSpots?.map((spot) => (
+                        <div className='allSpot-div'>
+                            <NavLink to={`/spots/${spot.id}`}>
+                                <div >
                                     <div>
-                                        <strong>
-                                            ${spot.price}
-                                        </strong>
-                                        &nbsp;
-                                        night
+                                        <img key={spot.previewImage} src={spot.previewImage} alt={spot.previewImage} />
+                                    </div>
+                                    <div >
+                                        <div>{spot.name}</div>
+                                        <div key={spot.name}>{spot.city}, {spot.state}</div>
+                                        <div>
+                                            <strong>
+                                                ${spot.price}
+                                            </strong>
+                                            &nbsp;
+                                            night
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </NavLink>
+                            </NavLink>
 
-                        <div className="delete-edit-buttons">
-                            <div>
-                                <NavLink to={`/spots/${spot.id}/edit`}>
-                                    <button className="delete-edit">
-                                        Edit
-                                    </button>
-                                </NavLink>
-                                {/* <button className="logout-button" onClick={() => history.push('/my-spots')}>My Spot</button> */}
+                            <div >
+                                <div>
+                                    <NavLink to={`/spots/${spot.id}/edit`}>
+                                        <button >
+                                            Edit
+                                        </button>
+                                    </NavLink>
+                                </div>
+                                <button >
+                                    onClick={() => dispatch(actionDeleteSpot(spot.id))}>
+                                    Delete
+                                </button>
                             </div>
-                            <button className="delete-edit"
-                                onClick={() => dispatch(actionDeleteSpot(spot.id))}>
-                                Delete
-                            </button>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-
-            <div className="review-mother">
-                {/* {allReviewsArr < 1 && <h3>No reviews MEOWMEOW!</h3>} */}
-            </div>
-        </div>
-    )
+        )
+    }
 }
 export default MySpots;

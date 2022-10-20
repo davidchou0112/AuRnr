@@ -21,12 +21,12 @@ const DisplayAllSpots = () => {
     } else {
         // the map is now maping through id, it was originally maping through object. it was never desconstructing it (now it is)
         return (
-            <>
+            <div>
                 {Object.values(allSpot).map(spot => (
 
                     <div className='allSpot-div'>
                         <NavLink className='singleSpots-nav' to={`spots/${spot.id}`}>
-                            <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt='Your stay is loading...' />
+                            <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt='Your pic is broken...' />
                             <div className='spotDetails'>
                                 <p key={spot.address}>{spot.address} </p>
                                 <p key={spot.avgRating}>{spot.avgRating} </p>
@@ -39,7 +39,7 @@ const DisplayAllSpots = () => {
                     </div>
 
                 ))}
-            </>
+            </div>
         )
     }
 };
