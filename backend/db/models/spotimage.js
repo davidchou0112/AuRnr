@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      SpotImage.belongsTo(models.Spot, {foreignKey: 'spotId'})
+      SpotImage.belongsTo(models.Spot, { foreignKey: 'spotId' })
     }
   }
   SpotImage.init({
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     },
     url: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(1000),
       allowNull: false
     },
     preview: {

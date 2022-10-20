@@ -18,19 +18,21 @@ function CreateSpotForm({ setShowModal }) {
     // const [showModal, setShowModal] = useState(true);
 
 
-    const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
-    const [country, setCountry] = useState('')
-    // const [lat, setLat] = useState('')
-    // const [lng, setLng] = useState('')
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState('')
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [country, setCountry] = useState('');
+    // const [lat, setLat] = useState('');
+    // const [lng, setLng] = useState('');
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [price, setPrice] = useState('');
 
+    // for adding images
+    const [url, setUrl] = useState('');
+    const [preview, setPreview] = useState('');
 
     const handleSubmit = async (e) => {
-        // console.log('a;lsdkjfao;isdjfaoisdjfasldf')
         e.preventDefault();
         const spotInfo = {
             address,
@@ -41,17 +43,21 @@ function CreateSpotForm({ setShowModal }) {
             // lng,
             name,
             description,
-            price
+            price,
+            url
         }
+
+        const imgInfo = { url, preview };
+
         // let newSpot = await dispatch(sessionActions.actionAddOneSpot(spotInfo))
-        let newSpot = await actionAddOneSpot(spotInfo)(dispatch)
+        let newSpot = await actionAddOneSpot(spotInfo, imgInfo)(dispatch)
         // dispatch(newSpot);
         // dispatch(actionAddOneSpot(spotInfo))
 
 
         if (newSpot) {
 
-            // window.location.reload();
+            window.location.reload();
             history.push('/');
             setShowModal(false)
 
@@ -162,6 +168,22 @@ function CreateSpotForm({ setShowModal }) {
                         onChange={(e) => setPrice(e.target.value)}
                     />
                 </label >
+
+                <label className='input-label'>
+                    <input className="input"
+                        type="test"
+                        placeholder="Image Url"
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
+                    />
+                </label >
+
+                <label className="preview-image-label" > Preview Image?
+                    <select className='true-false' onChange={(e) => setPreview(e.target.value)}>
+                        <option key='true'>true</option>
+                        <option key='false'>false</option>
+                    </select >
+                </label>
 
                 <button className="button" type="submit">Create new Spot</button>
                 <button className="button" onClick={handleCancelClick} type="button">Cancel</button>

@@ -8,43 +8,24 @@ import './GetAllSpot.css'
 const DisplayAllSpots = () => {
     const dispatch = useDispatch();
 
-    const spot = useSelector(state => state.spots)
+    const allSpot = useSelector(state => state.spots.allSpots)
 
-    console.log(spot, '==============this is spot==============')
+    console.log(allSpot, '==============this is allSpot==============')
 
     useEffect(() => {
         dispatch(getAllSpots())
     }, [dispatch]);
 
-    if (!spot) {
+    if (!allSpot) {
         return null
     } else {
         return (
             <>
-                {/* {Object.values(spot).map(spotId => (
-                    <div>
-                        <div>
-                            <img className='spotImage' key={spotId.previewImage} src={spotId.previewImage} alt={'Your stay is loading...'} />
-                            <div key={spotId.address}>{spotId.address}
-                                <div key={spotId.avgRating}>{spotId.avgRating}
-                                    <div key={spotId.city}>{spotId.city}
-                                        <div key={spotId.country}>{spotId.country}
-                                            <div key={spotId.description}>{spotId.description}
-                                                <div key={spotId.price}>{spotId.price}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))} */}
-                {Object.values(spot).map(spotId => (
+                {Object.values(allSpot).map(spotId => (
 
-                    <div className='spot-div'>
+                    <div className='allSpot-div'>
                         <NavLink className='singleSpots-nav' to={`spots/${spotId}`}>
-                            <img className='spotImage' key={spotId.previewImage} src={spotId.previewImage} alt={'Your stay is loading...'} />
+                            <img className='spotImage' key={spotId.previewImage} src={spotId.previewImage} alt='Your stay is loading...' />
                             <div className='spotDetails'>
                                 <p key={spotId.address}>{spotId.address} </p>
                                 <p key={spotId.avgRating}>{spotId.avgRating} </p>

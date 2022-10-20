@@ -1,10 +1,11 @@
 import { csrfFetch } from './csrf';
 
 // CONSTANTS TO AVOID DEBUGGING TYPOS -----------------------------------------
-
+//        type      =   payload  / action creator
 const GET_ALL_SPOTS = 'spots/displayAllSpots';
 const GET_SINGLE_SPOT = 'spots/displaySingleSpot'
 const ADD_ONE_SPOT = 'spots/addOneSpot';
+const ADD_IMG = 'spots/addImg';
 const UPDATE_SPOT = 'spots/updateSpot';
 const DELETE_SPOT = 'spots/deleteSpot';
 
@@ -18,7 +19,7 @@ const displayAllSpots = (spots) => {
     }
 }
 
-// Display single spot ()
+// Display single spot (-)
 const displaySingleSpot = (singleSpot) => {
     return {
         type: GET_SINGLE_SPOT,
@@ -26,11 +27,19 @@ const displaySingleSpot = (singleSpot) => {
     }
 }
 
-// Create a single new spot (\) check notes
+// Create a single new spot (x)
 const addOneSpot = (spots) => {
     return {
         type: ADD_ONE_SPOT,
         spots
+    }
+}
+
+// Add an Image
+const addImg = (imgData) => {
+    return {
+        type: ADD_IMG,
+        imgData
     }
 }
 
@@ -75,7 +84,8 @@ export const actionGetOneSpot = (spotId) => async dispatch => {
 }
 
 // Creating a spot (did not add new image option)
-export const actionAddOneSpot = (newSpot) => async dispatch => {
+export const actionAddOneSpot = (newSpot, imgData) => async dispatch => {
+    // Adding a spot data
     const response = await csrfFetch(`/api/spots`, {
 
         method: 'POST',
@@ -87,11 +97,45 @@ export const actionAddOneSpot = (newSpot) => async dispatch => {
 
     const newSpotData = await response.json();
 
+    // Adding an image data
+    const { url, preview } = imgData;
+    const imgResponse = await csrfFetch(`/api/spots/${newSpotData.id}/images`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url, preview })
+    });
+
+    const images = await imgResponse.json();
+
     // console.log(response, '----------------------------------response')
 
-    if (response.ok) {
+    if (response.ok && imgResponse.ok) {
         dispatch(addOneSpot(newSpotData));
+        dispatch(addImg(images));
+
+        newSpotData['SpotImage'] = [images]
         return newSpotData
+    }
+}
+
+
+// Add an Image
+export const actionAddImg = (imgData, spotId) => async dispatch => {
+    const { url, preview } = imgData;
+    const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ url, preview })
+    })
+
+    const images = await response.json();
+    if (response.ok) {
+        dispatch(addImg(images))
+        return images
     }
 }
 
@@ -125,7 +169,7 @@ export const actionDeleteSpot = (spotId) => async dispatch => {
 
 // STATE OBJECT ---------------------------------------------------------
 
-const initialState = { spots: [] };
+const initialState = { allSpots: {}, singleSpot: {} };
 
 // for getting all spots
 // const sortSpot = (spots) => {
@@ -139,25 +183,36 @@ const spotsReducer = (state = initialState, action) => {
     switch (action.type) {
         // Display all spots
         case GET_ALL_SPOTS:
+            let allMySpots = {};
+            // spreading in current state, and initial state with the object key allSpots
+            newState = {
+                ...state,
+                //                  this allSpots is within our initial state object with key of allSpots
+                allSpots: { ...state.allSpots }
+            }
             action.spots.Spots.forEach(spot => {
                 // console.log({ action })
-                newState[spot.id] = spot;
+                allMySpots[spot.id] = spot;
                 // console.log('this is spot from sessionReducer()------------------', spot)
             });
-            return {
-                ...newState,
-                ...state,
-                spot: action.spots
-            };
+            newState.allSpots = allMySpots
+            return newState
 
 
         //  Display single spot
         case GET_SINGLE_SPOT:
-            const oneSpot = {
+            let oneSpot = {};
+
+            newState = {
                 ...state,
-                [action.spots.id]: action.spots
+                oneSpot: { ...state.singleSpot }
             }
-            return oneSpot
+
+            action.spots.Spots.forEach(spot => {
+                oneSpot[spot.id] = spot;
+            })
+
+            return newState
 
 
         // Create a spot
