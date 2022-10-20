@@ -1,8 +1,9 @@
 // frontend/src/components/Navigation/ProfileButton.js
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { NavLink } from "react-router-dom";
+// import EditSpotFormModal from "../EditSpot";
 
 // import { useSelector } from 'react-redux';
 // import CreateSpotFormModal from '../CreateSpotFormModal';
@@ -10,6 +11,9 @@ import { NavLink } from "react-router-dom";
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
+
+
+    // const sessionUser = useSelector(state => state.session.user);
 
     const openMenu = () => {
         if (showMenu) return;
@@ -68,6 +72,13 @@ function ProfileButton({ user }) {
                             </button>
                         </NavLink>
                     </p>
+
+                    {/* <div className="edit-button">
+
+
+                        <EditSpotFormModal />
+
+                    </div> */}
 
                     <p>
                         <button onClick={logout}>Log Out</button>
