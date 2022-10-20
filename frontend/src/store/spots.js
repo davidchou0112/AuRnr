@@ -79,7 +79,7 @@ export const actionGetOneSpot = (spotId) => async dispatch => {
     if (response.ok) {
         const data = await response.json();
         dispatch(displaySingleSpot(data))
-        console.log(displaySingleSpot(data), `111~~~~~~~displaySingleSpot(data)~~~~1111111`)
+        // console.log(displaySingleSpot(data), `111~~~~~~~displaySingleSpot(data)~~~~1111111`)
     }
 }
 
@@ -109,8 +109,8 @@ export const actionAddOneSpot = (newSpot, imgData) => async dispatch => {
 
     const images = await imgResponse.json();
 
-    console.log(addImg(images), '----------------------------------addImg(images)')
-    console.log(newSpotData, '`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~newSpotData')
+    // console.log(addImg(images), '----------------------------------addImg(images)')
+    // console.log(newSpotData, '`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~newSpotData')
 
     if (response.ok && imgResponse.ok) {
         dispatch(addOneSpot(newSpotData));
@@ -208,12 +208,12 @@ const spotsReducer = (state = initialState, action) => {
                 singleSpot: { ...state.singleSpot }
             }
 
-            console.log(state.singleSpot, `!!!!!!~~~~~~~~~~~~~~!!!!!!!!!!!action.data~~~~~~~~`)
+            // console.log(state.singleSpot, `!!!!!!~~~~~~~~~~~~~~!!!!!!!!!!!action.data~~~~~~~~`)
             newState.singleSpot = action.singleSpot
             // action.spots.forEach(spot => {
             //     oneSpot[spot.id] = spot;
             // })
-            console.log(newState, `~~~~~~~~~~~~~~~~~~~~~~~~~~newState~~~~~~~~~~~~~~`)
+            // console.log(newState, `~~~~~~~~~~~~~~~~~~~~~~~~~~newState~~~~~~~~~~~~~~`)
             return newState
 
         // Add an Image

@@ -10,7 +10,7 @@ const DisplaySingleSpot = () => {
 
     const { spotId } = useParams();
 
-    console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
+    // console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
 
     // const { spot } = useParams();
     // console.log(spot, '------------------------spot----------------'); //undefined
@@ -18,14 +18,14 @@ const DisplaySingleSpot = () => {
 
     // const oneSpot = useSelector(state => state.singleSpot)
     const oneSpot = useSelector(state => state)
-    console.log(oneSpot, '~~~~~~~~~~~~~~~~~~oneSpot~~~~~~~~~')
+    // console.log(oneSpot, '~~~~~~~~~~~~~~~~~~oneSpot~~~~~~~~~')
     // const oneSpot1 = useSelector(state => state.spots)
     // console.log(oneSpot1, '~~~~~~~~~~~~~~~~~~oneSpot1~~~~~~~~~')
 
     // const oneSpot2 = useSelector(state => state)
     // console.log(oneSpot2, '~~~~~~~~~~~~~~~~~~oneSpot2~~~~~~~~~')
 
-    console.log(oneSpot.spots.singleSpot, '~~~~!!~~~~~~~~~oneSpot.singleSpot~~~~~~!!!~~~')
+    // console.log(oneSpot.spots.singleSpot, '~~~~!!~~~~~~~~~oneSpot.singleSpot~~~~~~!!!~~~')
 
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId))

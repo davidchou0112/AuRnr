@@ -10,9 +10,9 @@ const EditSpotForm = () => {
     const history = useHistory();
 
     const { spotId } = useParams();
-    console.log(spotId, `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~spotId from EditSpot`)
-    const spot = useSelector(state => state.spots.allSpots);
-    console.log(spot, `~~~~~~~~~this is 'spot' from EditSpot`)
+    // console.log(spotId, `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~spotId from EditSpot`)
+    const spot = useSelector(state => state.spots.singleSpot);
+    // console.log(spot, `~~~~~~~~~this is 'spot' from EditSpot`)
 
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
@@ -29,7 +29,7 @@ const EditSpotForm = () => {
         dispatch(actionGetOneSpot(spotId));
     }, [dispatch, spotId]);
 
-    console.log(actionGetOneSpot(spotId))
+    // console.log(actionGetOneSpot(spotId))
 
     useEffect(() => {
         if (spot) {
@@ -65,7 +65,7 @@ const EditSpotForm = () => {
         let newSpot = await actionUpdateSpot(spots);
 
         if (newSpot) {
-            history.push(`/`);
+            history.push(`/api/spots/${spotId}`);
         }
     }
 
