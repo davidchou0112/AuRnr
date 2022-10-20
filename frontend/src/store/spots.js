@@ -76,10 +76,10 @@ export const getAllSpots = () => async dispatch => {
 // Getting Details of a Spot by Id
 export const actionGetOneSpot = (spotId) => async dispatch => {
     const response = await fetch(`/api/spots/${spotId}`);
-
     if (response.ok) {
         const data = await response.json();
         dispatch(displaySingleSpot(data))
+        console.log(displaySingleSpot(data), `111~~~~~~~displaySingleSpot(data)~~~~1111111`)
     }
 }
 
@@ -151,10 +151,11 @@ export const actionUpdateSpot = (update, spotId) => async dispatch => {
         body: JSON.stringify(update)
     })
 
-    const updatedSpot = await response.json();
 
     if (response.ok) {
+        const updatedSpot = await response.json();
         dispatch(updateSpot(updatedSpot));
+        return updateSpot;
     }
 }
 
@@ -202,56 +203,58 @@ const spotsReducer = (state = initialState, action) => {
 
         //  Display single spot
         case GET_SINGLE_SPOT:
-            let oneSpot = {};
-
             newState = {
                 ...state,
-                oneSpot: { ...state.singleSpot }
+                singleSpot: { ...state.singleSpot }
             }
 
-            console.log(action, `!!!!!!~~~~~~~~~~~~~~!!!!!!!!!!!action`)
-            newState.singleSpot = action.oneSpot
+            console.log(state.singleSpot, `!!!!!!~~~~~~~~~~~~~~!!!!!!!!!!!action.data~~~~~~~~`)
+            newState.singleSpot = action.singleSpot
             // action.spots.forEach(spot => {
             //     oneSpot[spot.id] = spot;
             // })
-
+            console.log(newState, `~~~~~~~~~~~~~~~~~~~~~~~~~~newState~~~~~~~~~~~~~~`)
             return newState
 
         // Add an Image
         case ADD_IMG:
-            let newImage = {};
             newState = {
                 ...state,
-                newImage: { ...state.singleSpot }
+                singleSpot: { ...state.singleSpot }
             }
-            newState.singleSpot = action.newImage
+            newState.singleSpot = action.imgData
             return newState
 
         // Create a spot
         case ADD_ONE_SPOT:
-            const addSpot = {
+            newState = {
                 ...state,
-                [action.spots.id]: action.spots
+                singleSpot: action.spots
             }
-            return addSpot
+            newState.singleSpot = action.spots
+            return newState
 
 
         // Edit a spot
         case UPDATE_SPOT:
-            if (!state[action.spots.Spots.id]) {
-                const editSpot = {
-                    ...state,
-                    [action.spot.id]: action.spots.Spots
-                }
-                return editSpot
-            }
-            return {
+            newState = {
                 ...state,
-                [action.spot.id]: {
-                    ...state[action.spots.Spots.id],
-                    ...action.spot
+                singleSpot: action.spots
+            }
+            if (!newState) {
+                newState = {
+                    ...state,
+                    singleSpot: action.spots
                 }
-            };
+                return newState
+            } else {
+                newState = {
+                    ...state,
+                    singleSpot: action.spots
+                }
+                newState.singleSpot = action.spots
+            }
+            return newState;
 
 
         // Delete a spot 

@@ -9,6 +9,7 @@ import DisplayAllSpots from './components/GetAllSpot/GetAllSpot';
 import DisplaySingleSpot from "./components/GetSingleSpot/GetSingleSpot";
 // import CreateSpotForm from "./components/CreateSpotFormModal/CreateSpotForm";
 import CreateSpotFormModal from "./components/CreateSpotFormModal";
+import EditSpotForm from "./components/EditSpot/EditSpot";
 
 
 function App() {
@@ -30,9 +31,10 @@ function App() {
 
         <Route exact path={['/api/spots/:spotId', '/spots/:spotId', '/:spotId']}>
           <DisplaySingleSpot />
+          <EditSpotForm />
         </Route>
 
-        <Route exact path='/spots/create'>
+        <Route exact path={['/spots/create', '/:spotId/images']}>
           <CreateSpotFormModal />
         </Route>
 
