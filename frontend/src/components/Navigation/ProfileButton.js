@@ -56,6 +56,7 @@ function ProfileButton({ user }) {
                 <button onClick={openMenu}>
                     <i className="fas fa-user-circle" />
                 </button>
+
                 {showMenu && (
                     <ul className="profile-dropdown">
 
@@ -68,8 +69,8 @@ function ProfileButton({ user }) {
                             {user.email}
                         </p>
 
-                        <p className="options">
-                            <NavLink to="/current">
+                        <p className="options" >
+                            <NavLink to="/current" >
                                 <button className="logout-button">
                                     My Spots
                                 </button>

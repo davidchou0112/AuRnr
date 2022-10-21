@@ -26,6 +26,7 @@ const EditSpotForm = ({ spotId }) => {
 
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId));
+        return () => dispatch(actionGetOneSpot(spotId))
     }, [dispatch, spotId]);
 
     // console.log(actionGetOneSpot(spotId))
@@ -69,7 +70,7 @@ const EditSpotForm = ({ spotId }) => {
         // let newSpot = await actionUpdateSpot(spots, spots.id);
 
         if (newSpot) {
-
+            // window.location.reload();
             history.push(`/spots/${spotId}`);
 
         }

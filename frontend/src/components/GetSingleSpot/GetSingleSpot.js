@@ -23,7 +23,7 @@ const DisplaySingleSpot = () => {
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId))
         // console.log(oneSpot.SpotImages[0].url, `~~~~~~~~~~~~~~~~~~~~~`)
-    }, [dispatch, spotId])
+    }, [dispatch, spotId, oneSpot.price])
 
 
     // const spotImgArr = spot?.SpotImages;

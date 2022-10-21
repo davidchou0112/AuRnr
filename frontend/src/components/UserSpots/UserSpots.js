@@ -17,27 +17,27 @@ const MySpots = () => {
 
     const sessionUser = useSelector(state => state.session.user);
 
+    const ownedSpots = spotsData?.filter((spot) => spot.ownerId === sessionUser.id);
 
     useEffect(() => {
         dispatch(getCurrentUserSpots())
-    }, [dispatch])
+        // return () => dispatch(getCurrentUserSpots())
+    }, [dispatch, ownedSpots])
 
     if (!sessionUser) {
         return <Redirect to="/" />
     }
 
-    const ownedSpots = spotsData?.filter((spot) => spot.ownerId === sessionUser.id);
     // console.log('~~~~~~~~~~~~~~~~~ownedSpots~~~~~~~~~~~~~~~~~~~', ownedSpots)
 
 
-    if (spotsData.length === 0) {
+    if (!spotsData) {
         return 'my data is still showing up EMPTY post hard refresh..'
     } else {
-
+        // window.location.reload();
+        <Redirect to="/current" />
         return (
             <div >
-
-                {spotsData < 1 && <h2 >my data is still showing up EMPTY</h2>}
                 <div >
                     {ownedSpots?.map((spot) => (
                         <div className='allSpot-div'>
@@ -59,13 +59,9 @@ const MySpots = () => {
                                     </div>
                                 </div>
                             </NavLink>
-
                             <div >
                                 <div>
-
                                     <EditSpotFormModal spotId={spot.id} />
-
-
                                 </div>
                                 <button
                                     onClick={() => dispatch(actionDeleteSpot(spot.id))}>
