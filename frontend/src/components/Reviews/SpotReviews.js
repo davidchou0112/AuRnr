@@ -37,9 +37,9 @@ const SpotReviews = () => {
     return (
         <div>
             <div className="review-title">
-                <i className="fa-sharp fa-solid fa-star"></i>
+                <i>Average Rating:</i>
                 <span>{' '}{spot.avgStarRating === "NaN" ? `No Rating` : spot.avgStarRating}{` · `}</span>
-                <label>{currSpotReviews.length}{' '}reviews{' '}</label>
+                <i>{currSpotReviews.length}{' '}reviews{' '}</i>
             </div>
             <div className="create-review">{
                 currUser &&
