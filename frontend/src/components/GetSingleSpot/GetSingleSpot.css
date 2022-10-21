@@ -1,0 +1,10 @@
+.singleSpotImage {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 15px;
+}
+
+.singleSpotParent {
+    width: auto;
+    margin: auto;
+}

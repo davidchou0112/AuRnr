@@ -7,10 +7,10 @@ import Navigation from "./components/Navigation";
 
 import DisplayAllSpots from './components/GetAllSpot/GetAllSpot';
 import DisplaySingleSpot from "./components/GetSingleSpot/GetSingleSpot";
-// import CreateSpotForm from "./components/CreateSpotFormModal/CreateSpotForm";
 import CreateSpotFormModal from "./components/CreateSpotFormModal";
 import EditSpotForm from "./components/EditSpot/EditSpot";
 import MySpots from "./components/UserSpots/UserSpots";
+import SpotReviews from "./components/Reviews/SpotReviews";
 
 
 function App() {
@@ -46,6 +46,10 @@ function App() {
             <MySpots />
           </Route>
 
+          {/* <Route path='/spots/:spotId/reviews'> */}
+          <Route path='/my-reviews'>
+            <SpotReviews />
+          </Route>
 
         </Switch>
       )}

@@ -37,8 +37,8 @@ const DisplayAllSpots = () => {
                     //         </div>
                     //     </NavLink>
                     // </div>                    
-                    <div className='allSpot-div'>
-                        <NavLink className='singleSpots-nav' to={`spots/${spot.id}`}>
+                    <NavLink className='singleSpots-nav' to={`spots/${spot.id}`}>
+                        <div className='allSpot-div'>
                             <img className='spotImage' src={spot.previewImage} alt='Your pic is broken...' />
                             <div className='spotDetails'>
                                 <p >{spot.address} </p>
@@ -48,8 +48,8 @@ const DisplayAllSpots = () => {
                                 <p >{spot.description} </p>
                                 <p >{spot.price} </p>
                             </div>
-                        </NavLink>
-                    </div>
+                        </div>
+                    </NavLink>
 
                 ))}
             </div>

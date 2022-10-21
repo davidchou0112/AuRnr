@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
+import SpotReviews from '../Reviews/SpotReviews';
 import { actionGetOneSpot } from '../../store/spots';
 import './GetSingleSpot.css'
+// import { getAllReviews } from '../../store/reviews';
 
 const DisplaySingleSpot = () => {
     const dispatch = useDispatch();
@@ -19,7 +20,8 @@ const DisplaySingleSpot = () => {
     // console.log(`~~~~~~~~spot from spot detail component~~~`, oneSpot)
 
     useEffect(() => {
-        dispatch(actionGetOneSpot(spotId))
+        dispatch(actionGetOneSpot(spotId));
+        // dispatch(getAllReviews(spotId))
         // console.log(oneSpot.SpotImages[0].url, `~~~~~~~~~~~~~~~~~~~~~`)
     }, [dispatch, spotId])
 
@@ -46,8 +48,8 @@ const DisplaySingleSpot = () => {
                 {/* <h1>
                 why is my oneSpot undefined...............
             </h1> */}
-                <div className='single-spot-div'>
-                    <img className='single-spotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Your stay is loading...'} />
+                <div className='singleSpotParent'>
+                    <img className='singleSpotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Your stay is loading...'} />
                     <div className='single-spotDetails'>
                         <p key={oneSpot.address}>{oneSpot.address} </p>
                         <p key={oneSpot.avgRating}>{oneSpot.avgRating} </p>
@@ -55,6 +57,9 @@ const DisplaySingleSpot = () => {
                         <p key={oneSpot.country}>{oneSpot.country} </p>
                         <p key={oneSpot.description}>{oneSpot.description} </p>
                         <p key={oneSpot.price}>{oneSpot.price} </p>
+                    </div>
+                    <div>
+                        <SpotReviews />
                     </div>
                 </div>
             </div>
