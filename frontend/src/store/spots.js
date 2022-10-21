@@ -184,7 +184,6 @@ export const actionDeleteSpot = (spotId) => async dispatch => {
 
 // STATE OBJECT ---------------------------------------------------------
 
-const initialState = { allSpots: {}, singleSpot: {} };
 
 // for getting all spots
 // const sortSpot = (spots) => {
@@ -193,6 +192,7 @@ const initialState = { allSpots: {}, singleSpot: {} };
 //     }).map((spot) => spot.id);
 // };
 
+const initialState = { allSpots: {}, singleSpot: {} };
 const spotsReducer = (state = initialState, action) => {
     let newState = {};
     switch (action.type) {

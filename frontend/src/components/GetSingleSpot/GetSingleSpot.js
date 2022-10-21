@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { getAllReviews } from '../../store/reviews';
 
 import { actionGetOneSpot } from '../../store/spots';
 import SpotReviews from '../Reviews/SpotReviews';
@@ -22,8 +23,11 @@ const DisplaySingleSpot = () => {
 
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId))
+        dispatch(getAllReviews())
         // console.log(oneSpot.SpotImages[0].url, `~~~~~~~~~~~~~~~~~~~~~`)
-    }, [dispatch, spotId, oneSpot.price])
+    }, [dispatch, spotId])
+    // }, [dispatch, spotId, oneSpot.price])
+
 
 
     // const spotImgArr = spot?.SpotImages;

@@ -38,19 +38,27 @@ const createReview = (review) => {
 
 const deleteReview = (reviewId) => {
     return {
+
         type: DELETE_REVIEW,
         reviewId
     }
 }
 
 export const getAllReviews = (spotId) => async (dispatch) => {
+    console.log('is this getting here?')
     const response = await fetch(`/api/spots/${spotId}/reviews`);
+    console.log(`~~~~~~~~~~~~response~~~`, response)
+
     if (response.ok) {
+
         const reviews = await response.json();
         dispatch(allReviews(reviews));
+        console.log(`~~~~~~~~~~~~reviews~~~`, reviews)
+        console.log(`~~~~~~~~~~~~response~~~`, response)
+
         return reviews;
     }
-    return null;
+    // return null;
 }
 
 export const getMyReviews = () => async (dispatch) => {
@@ -60,7 +68,7 @@ export const getMyReviews = () => async (dispatch) => {
         dispatch(allReviews(reviews));
         return reviews;
     }
-    return null;
+    // return null;
 }
 
 export const createOneReview = (review, spotId, url) => async (dispatch) => {
@@ -151,11 +159,11 @@ const reviewReducer = (state = initialState, action) => {
         case LOAD_ALL_REVIEWS:
             newState = { ...state };
             action.reviews.Reviews.forEach(review => {
-                const newImgArr = []
+                // const newImgArr = []
                 newState[review.id] = review;
-                review.ReviewImages.forEach(imgObj => newImgArr.push(imgObj.url))
-                newState[review.id].ReviewImages = newImgArr
-                newState = { ...newImgArr }
+                // review.ReviewImages.forEach(imgObj => newImgArr.push(imgObj.url))
+                // newState[review.id].ReviewImages = newImgArr
+                // newState = { ...newImgArr }
             })
             return { ...newState };
 

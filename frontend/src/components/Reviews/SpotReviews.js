@@ -21,12 +21,13 @@ const SpotReviews = () => {
     }, [dispatch, spotId])
 
 
-    const currSpotReviews = Object.values(reviews).filter(review => {
-        // console.log("review.spotId:", review.spotId)
-        return review.spotId === +spotId;
-    })
+    const currSpotReviews = Object.values(reviews)
+    // .filter(review => {
+    // console.log("review.spotId:", review.spotId)
+    //     return review.spotId === +spotId;
+    // })
 
-    // console.log("currSpotReviews from All Reviews for Spot:", currSpotReviews)
+    console.log("currSpotReviews from All Reviews for Spot:", currSpotReviews)
 
     if (!currSpotReviews) return null;
 
@@ -48,14 +49,15 @@ const SpotReviews = () => {
             </div>
             <div className="review-details-container">
                 {currSpotReviews.length !== 0 && currSpotReviews.map(review => {
-                    return review.ReviewImages && (
+                    return (
                         <div className="each-review-detail" key={review.id}>
                             <div>
                                 <div className="each-review-user">{review?.User?.firstName}{" "}{review?.User?.lastName}</div>
                                 <div className="each-review-date">{new Date(review.createdAt).toString().slice(3, -42)}</div>
                             </div>
                             <div>{review.review}</div>
-                            <div>{review.ReviewImages.map(imageUrl => <img className="each-review-img" src={imageUrl} alt={imageUrl} key={imageUrl}></img>)}</div>
+                            {review.userId === currUser.id && <button>delete</button>}
+                            {/* <div>{review.map(imageUrl => <img className="each-review-img" src={imageUrl} alt={imageUrl} key={imageUrl}></img>)}</div> */}
                             {/* {console.log("--------------------===========", review.ReviewImages)} */}
                         </div>
                     )

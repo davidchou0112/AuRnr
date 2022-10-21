@@ -26,7 +26,7 @@ const EditSpotForm = ({ spotId }) => {
 
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId));
-        return () => dispatch(actionGetOneSpot(spotId))
+        // return () => dispatch(actionGetOneSpot(spotId))
     }, [dispatch, spotId]);
 
     // console.log(actionGetOneSpot(spotId))

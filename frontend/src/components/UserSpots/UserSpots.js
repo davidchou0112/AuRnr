@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { actionDeleteSpot, getCurrentUserSpots } from "../../store/spots"
+import { actionDeleteSpot, getAllSpots, getCurrentUserSpots } from "../../store/spots"
 // import { getReviews } from "../../store/reviews"
 import { NavLink, Redirect } from "react-router-dom"
 import "./UserSpots.css"
@@ -19,8 +19,10 @@ const MySpots = () => {
 
     const ownedSpots = spotsData?.filter((spot) => spot.ownerId === sessionUser.id);
 
+    // need to call dispatch getAllspots to rerender our data
     useEffect(() => {
         dispatch(getCurrentUserSpots())
+        dispatch(getAllSpots())
         // return () => dispatch(getCurrentUserSpots())
     }, [dispatch, ownedSpots])
 
