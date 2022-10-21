@@ -30,7 +30,7 @@ function CreateSpotForm({ setShowModal }) {
 
     // for adding images
     const [url, setUrl] = useState('');
-    const [preview, setPreview] = useState('');
+    // const [preview, setPreview] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();

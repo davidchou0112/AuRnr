@@ -5,7 +5,7 @@ import { getAllReviews } from '../../store/reviews';
 
 import { actionGetOneSpot } from '../../store/spots';
 import CreateReviewFormModal from '../CreateReviewFormModal';
-import CreateReviewForm from '../CreateReviewFormModal/CreateReviewForm';
+// import CreateReviewForm from '../CreateReviewFormModal/CreateReviewForm';
 import SpotReviews from '../Reviews/SpotReviews';
 
 import './GetSingleSpot.css'

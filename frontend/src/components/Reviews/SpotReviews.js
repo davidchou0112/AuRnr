@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getAllReviews } from '../../store/reviews';
-import CreateReviewForm from '../CreateReviewFormModal/CreateReviewForm';
-import CreateReviewFormModal from '../CreateReviewFormModal/CreateReviewForm';
+// import CreateReviewForm from '../CreateReviewFormModal/CreateReviewForm';
+// import CreateReviewFormModal from '../CreateReviewFormModal/CreateReviewForm';
 import './SpotReviews.css';
 
 const SpotReviews = () => {
@@ -20,7 +20,7 @@ const SpotReviews = () => {
         dispatch(getAllReviews(spotId))
     }, [dispatch, spotId])
 
-    const sessionUser = useSelector((state) => state.user);
+    // const sessionUser = useSelector((state) => state.user);
 
     const currSpotReviews = Object.values(reviews)
     // .filter(review => {
