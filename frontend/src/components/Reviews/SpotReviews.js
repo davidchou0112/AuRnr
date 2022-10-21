@@ -20,7 +20,7 @@ const SpotReviews = () => {
         dispatch(getAllReviews(spotId))
     }, [dispatch, spotId])
 
-    // const sessionUser = useSelector((state) => state.user);
+    const sessionUser = useSelector((state) => state.user);
 
     const currSpotReviews = Object.values(reviews)
     // .filter(review => {
@@ -28,7 +28,7 @@ const SpotReviews = () => {
     //     return review.spotId === +spotId;
     // })
 
-    console.log("currSpotReviews from All Reviews for Spot:", currSpotReviews)
+    // console.log("currSpotReviews from All Reviews for Spot:", currSpotReviews)
 
     if (!currSpotReviews) return null;
 
@@ -50,16 +50,20 @@ const SpotReviews = () => {
             </div>
             <div className="review-details-container">
                 {currSpotReviews.length !== 0 && currSpotReviews.map(review => {
+                    console.log(`currentSpotReviews~~~~~~~~~~~~~~~~~~~`, currSpotReviews)
                     return (
                         // <div className="each-review-detail" key={review.id}>
                         <div className="each-review-detail" >
 
                             <div>
-                                <div className="each-review-user">{review?.User?.firstName}{" "}{review?.User?.lastName}</div>
-                                <div className="each-review-date">{new Date(review.createdAt).toString().slice(3, -42)}</div>
+                                <div className="each-review-user">By: {review?.User?.firstName}{" "}{review?.User?.lastName}</div>
+                                <div className="each-review-date">On: {new Date(review.createdAt).toString().slice(3, -42)}</div>
                             </div>
-                            <div>{review.review}</div>
+                            {/* review.review */}
+                            <div>{currSpotReviews[0].review}</div>
+                            {review.userId === currUser.id && <button>delete</button>}
                             {/* {sessionUser && review.userId === currUser.id ? <button>delete</button> : null} */}
+
                             {/* <div>{review.map(imageUrl => <img className="each-review-img" src={imageUrl} alt={imageUrl} key={imageUrl}></img>)}</div> */}
                             {/* {console.log("--------------------===========", review.ReviewImages)} */}
                         </div>
