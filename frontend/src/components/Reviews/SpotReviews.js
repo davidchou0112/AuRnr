@@ -41,14 +41,9 @@ const SpotReviews = () => {
                 <label>{currSpotReviews.length}{' '}reviews{' '}</label>
             </div>
             <div className="create-review">{
-                // currSpotReviews.length === 0
-                // &&
-                currUser
-                && spot.ownerId !== userId
-                // && <NavLink to={`/${spot.id}/create-reviews`} style={{ textDecoration: 'none', color: 'rgb(207, 99, 117)'}}>
-                //   Review this Spot...
-                //   </NavLink>
-                && <CreateReviewFormModal />
+                currUser &&
+                spot.ownerId === userId &&
+                <CreateReviewFormModal />
             }
             </div>
             <div className="review-details-container">
