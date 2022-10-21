@@ -41,6 +41,7 @@ function SignupForm() {
 
     return (
         <section className="entire-form">
+            <div className='formLabel'>Sign Up</div>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -79,7 +80,7 @@ function SignupForm() {
                 </label>
                 <label className='input-label'>
 
-                    <input className="input"
+                    <input className="input-field"
                         type='text'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}

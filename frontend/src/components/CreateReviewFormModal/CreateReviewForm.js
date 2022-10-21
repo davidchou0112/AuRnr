@@ -14,7 +14,7 @@ const CreateReviewForm = ({ setModal }) => {
     const [errors, setErrors] = useState([]);
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(5);
-    const [url, setUrl] = useState('');
+    const [url] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();

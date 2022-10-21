@@ -25,7 +25,7 @@ module.exports = {
         price: 5000
       },
       {
-        ownerId: 2,
+        ownerId: 1,
         address: '149 Diamond Street',
         city: 'Arcadia',
         state: 'California',
@@ -35,6 +35,114 @@ module.exports = {
         name: 'House of Diamonds',
         description: 'Bling Bling Bling',
         price: 99999
+      },
+      {
+        ownerId: 1,
+        address: '455 Union St',
+        city: 'Arcata',
+        state: 'California',
+        country: 'United States of America',
+        lat: 38.54,
+        lng: 48.35,
+        name: 'Humboldt Grown',
+        description: 'Grass is greener on this side',
+        price: 4999
+      },
+      {
+        ownerId: 1,
+        address: '455 Union St',
+        city: 'Arcata',
+        state: 'California',
+        country: 'United States of America',
+        lat: 38.54,
+        lng: 48.35,
+        name: 'Humboldt Grown',
+        description: 'Grass is greener on this side',
+        price: 4999
+      },
+      {
+        ownerId: 2,
+        address: '455 Union St',
+        city: 'Arcata',
+        state: 'California',
+        country: 'United States of America',
+        lat: 38.54,
+        lng: 48.35,
+        name: 'Humboldt Grown',
+        description: 'Grass is greener on this side',
+        price: 4999
+      },
+      {
+        ownerId: 2,
+        address: '455 Union St',
+        city: 'Arcata',
+        state: 'California',
+        country: 'United States of America',
+        lat: 38.54,
+        lng: 48.35,
+        name: 'Humboldt Grown',
+        description: 'Grass is greener on this side',
+        price: 4999
+      },
+      {
+        ownerId: 2,
+        address: '455 Union St',
+        city: 'Arcata',
+        state: 'California',
+        country: 'United States of America',
+        lat: 38.54,
+        lng: 48.35,
+        name: 'Humboldt Grown',
+        description: 'Grass is greener on this side',
+        price: 4999
+      },
+      {
+        ownerId: 1,
+        address: '455 Union St',
+        city: 'Arcata',
+        state: 'California',
+        country: 'United States of America',
+        lat: 38.54,
+        lng: 48.35,
+        name: 'Humboldt Grown',
+        description: 'Grass is greener on this side',
+        price: 4999
+      },
+      {
+        ownerId: 3,
+        address: '455 Union St',
+        city: 'Arcata',
+        state: 'California',
+        country: 'United States of America',
+        lat: 38.54,
+        lng: 48.35,
+        name: 'Humboldt Grown',
+        description: 'Grass is greener on this side',
+        price: 4999
+      },
+      {
+        ownerId: 3,
+        address: '455 Union St',
+        city: 'Arcata',
+        state: 'California',
+        country: 'United States of America',
+        lat: 38.54,
+        lng: 48.35,
+        name: 'Humboldt Grown',
+        description: 'Grass is greener on this side',
+        price: 4999
+      },
+      {
+        ownerId: 3,
+        address: '455 Union St',
+        city: 'Arcata',
+        state: 'California',
+        country: 'United States of America',
+        lat: 38.54,
+        lng: 48.35,
+        name: 'Humboldt Grown',
+        description: 'Grass is greener on this side',
+        price: 4999
       },
       {
         ownerId: 3,

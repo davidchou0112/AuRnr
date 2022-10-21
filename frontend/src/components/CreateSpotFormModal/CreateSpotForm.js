@@ -76,10 +76,10 @@ function CreateSpotForm({ setShowModal }) {
 
 
     return (
-        <section className="entire-form">
+        <section className="entire-form"> Create New Spot
             <form onSubmit={handleSubmit} className="create-spot-form" >
                 <label className='input-label'>
-                    <input className="input"
+                    <input className="input-field"
                         type="text"
                         placeholder="Address"
                         min="1"
@@ -90,7 +90,7 @@ function CreateSpotForm({ setShowModal }) {
                 </label>
 
                 <label className='input-label'>
-                    <input className="input"
+                    <input className="input-field"
                         type="text"
                         placeholder="City"
                         min="0"
@@ -102,7 +102,7 @@ function CreateSpotForm({ setShowModal }) {
                 </label>
 
                 <label className='input-label'>
-                    <input className="input"
+                    <input className="input-field"
                         type="text"
                         placeholder="State"
                         min="0"
@@ -114,7 +114,7 @@ function CreateSpotForm({ setShowModal }) {
                 </label >
 
                 <label className='input-label'>
-                    <input className="input"
+                    <input className="input-field"
                         type="text"
                         placeholder="Country"
                         value={country}
@@ -141,7 +141,7 @@ function CreateSpotForm({ setShowModal }) {
                     </label> */}
 
                 <label label className='input-label'>
-                    < input className="input"
+                    < input className="input-field"
                         type="text"
                         placeholder="Name"
                         value={name}
@@ -151,7 +151,7 @@ function CreateSpotForm({ setShowModal }) {
                 </label >
 
                 <label className='input-label'>
-                    <input className="input"
+                    <input className="input-field"
                         type="text"
                         placeholder="Description"
                         value={description}
@@ -160,7 +160,7 @@ function CreateSpotForm({ setShowModal }) {
                 </label >
 
                 <label className='input-label'>
-                    <input className="input"
+                    <input className="input-field"
                         type="number"
                         placeholder="Price"
                         value={price}
@@ -169,7 +169,7 @@ function CreateSpotForm({ setShowModal }) {
                 </label >
 
                 <label className='input-label'>
-                    <input className="input"
+                    <input className="input-field"
                         type="test"
                         placeholder="Image Url"
                         value={url}

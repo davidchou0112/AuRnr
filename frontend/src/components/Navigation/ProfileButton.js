@@ -56,16 +56,16 @@ function ProfileButton({ user }) {
             {showMenu && (
                 <ul className="profile-dropdown">
 
-                    <p>
+                    <p className="options">
                         {user.username}
                     </p>
 
 
-                    <p>
+                    <p className="options">
                         {user.email}
                     </p>
 
-                    <p>
+                    <p className="options">
                         <NavLink to="/current">
                             <button className="logout-button">
                                 My Spots
@@ -73,7 +73,7 @@ function ProfileButton({ user }) {
                         </NavLink>
                     </p>
 
-                    <p>
+                    <p className="options">
                         <button onClick={logout}>Log Out</button>
                     </p>
 

@@ -12,7 +12,7 @@ const DisplaySingleSpot = () => {
     const { spotId } = useParams();
     // console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
 
-    const { spot } = useParams();
+    // const { spot } = useParams();
     // console.log(spot, '------------------------spot----------------'); //undefined
 
     // const oneSpot = useSelector(state => state.singleSpot)
@@ -26,7 +26,7 @@ const DisplaySingleSpot = () => {
     }, [dispatch, spotId])
 
 
-    const spotImgArr = spot?.SpotImages;
+    // const spotImgArr = spot?.SpotImages;
     // console.log("spot from component/singleSpot", spotImgArr)
 
     // let prevImgUrl;
@@ -61,13 +61,10 @@ const DisplaySingleSpot = () => {
         //     return null
         // }
         return (
-            <div>
-                {/* <h1>
-                why is my oneSpot undefined...............
-            </h1> */}
-                <div className='single-spot-div'>
-                    <img className='single-spotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Your stay is loading...'} />
-                    <div className='single-spotDetails'>
+            <div className='single-spot-div'>
+                <div >
+                    <img className='spotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Your stay is loading...'} />
+                    <div className='single-spotDetails' >
                         <p key={oneSpot.address}>{oneSpot.address} </p>
                         <p key={oneSpot.avgRating}>{oneSpot.avgRating} </p>
                         <p key={oneSpot.city}>{oneSpot.city} </p>
@@ -80,6 +77,8 @@ const DisplaySingleSpot = () => {
                     <SpotReviews />
                 </div>
             </div>
+
+
         )
     }
 }

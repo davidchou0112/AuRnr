@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { getAllReviews } from '../../store/reviews';
 import CreateReviewFormModal from '../CreateReviewFormModal/CreateReviewForm';

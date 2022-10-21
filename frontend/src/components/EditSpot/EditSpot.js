@@ -86,6 +86,7 @@ const EditSpotForm = ({ spotId }) => {
     // } else {
     return (
         <section className="entire-form">
+            <div className='formLabel' >Edit a Spot</div>
             <form onSubmit={handleSubmit} className="Edit-form" >
                 <label className='input-label'>
                     <input className="input"

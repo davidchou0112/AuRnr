@@ -34,16 +34,16 @@ function Navigation({ isLoaded }) {
 
     return (
         <div className='nav-bar'>
-            <div className='nav-home-profile'>
+            {/* <div className='nav-home-profile'> */}
 
-                <button >
-                    <NavLink exact to="/">Home</NavLink>
-                </button>
-                <div>
-                    {isLoaded && sessionLinks}
-                </div>
-
+            <button className='home'>
+                <NavLink exact to="/">Home</NavLink>
+            </button>
+            <div>
+                {isLoaded && sessionLinks}
             </div>
+
+            {/* </div> */}
         </div>
 
     );

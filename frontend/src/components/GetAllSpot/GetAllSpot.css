@@ -26,11 +26,28 @@ p {
 .singleSpots-nav {
     text-decoration: none;
     color: inherit;
+    line-break: auto;
+    white-space: normal;
 }
 
 .allSpot-div {
-    display: inline-block;
-    height: fit-content;
-    padding: 20px;
-    position: relative;
+    /* display: flex;
+    flex-direction: column;
+    width: 300px; */
+    /* line-break: auto; */
+}
+
+.spotTexts {
+    white-space: normal;
+    /* line-break: auto; */
+}
+
+
+.allSpotDisplay {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px 24px;
+    /* list-style: */
+    padding: 50px 100px;
+    justify-items: flex-start;
 }

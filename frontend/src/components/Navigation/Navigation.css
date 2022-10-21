@@ -1,12 +1,44 @@
 .nav-bar {
-    justify-content: space-between;
+    position: sticky;
+    display: flex;
+    height: 50px;
     width: 100%;
-    text-align: center;
-
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #EBEBEB;
+    background-color: rgba(255, 255, 255, 0.836);
+    padding: 10px 10px;
+    z-index: 1;
 }
 
 .nav-home-profile {
 
     justify-content: space-between;
     display: inline;
+}
+
+.home {
+    display: flex;
+    justify-content: left;
+}
+
+.profile-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 10px;
+    /* padding: 10px 10px; */
+    height: 200px;
+    width: 180px;
+    background-color: white;
+    box-shadow: 0px 1px 8px #dddddd;
+    border-radius: 10px;
+    border: 1px solid #dddddd;
+    right: 110px;
+    z-index: 1;
+}
+
+.options {
+    width: 150px;
+    height: 2px;
 }

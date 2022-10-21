@@ -35,6 +35,7 @@ function LoginForm() {
 
     return (
         <section className="entire-form">
+            <div className="formLabel">Log In</div>
             <form onSubmit={handleSubmit}>
                 <ul>
                     {errors.map((error, idx) => (

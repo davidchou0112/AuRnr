@@ -1,0 +1,11 @@
+.single-spot-div {
+    height: 50%;
+    width: 80%;
+    border-radius: 15px;
+}
+
+.single-spotDetails {
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+}
