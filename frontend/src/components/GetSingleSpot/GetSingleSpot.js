@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { getAllReviews } from '../../store/reviews';
 
 import { actionGetOneSpot } from '../../store/spots';
+import CreateReviewFormModal from '../CreateReviewFormModal';
+import CreateReviewForm from '../CreateReviewFormModal/CreateReviewForm';
 import SpotReviews from '../Reviews/SpotReviews';
 
 import './GetSingleSpot.css'
@@ -67,6 +69,7 @@ const DisplaySingleSpot = () => {
         return (
             <div className='single-spot-div'>
                 <div >
+                    <div>{oneSpot.name}</div>
                     <img className='spotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Your stay is loading...'} />
                     <div className='single-spotDetails' >
                         <p key={oneSpot.address}>{oneSpot.address} </p>
@@ -76,6 +79,10 @@ const DisplaySingleSpot = () => {
                         <p key={oneSpot.description}>{oneSpot.description} </p>
                         <p key={oneSpot.price}>{oneSpot.price} </p>
                     </div>
+                </div>
+
+                <div>
+                    <CreateReviewFormModal />
                 </div>
                 <div>
                     <SpotReviews />

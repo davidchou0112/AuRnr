@@ -6,9 +6,13 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import CreateSpotFormModal from '../CreateSpotFormModal';
+
+
+
 // import EditSpotFormModal from '../EditSpot';
 
 import './Navigation.css';
+import CreateReviewFormModal from '../CreateReviewFormModal';
 
 
 function Navigation({ isLoaded }) {
@@ -18,6 +22,7 @@ function Navigation({ isLoaded }) {
     if (sessionUser) {
         sessionLinks = (
             <div>
+                {/* <CreateReviewFormModal /> */}
                 <CreateSpotFormModal />
                 <ProfileButton user={sessionUser} />
                 {/* <EditSpotFormModal user={sessionUser} /> */}

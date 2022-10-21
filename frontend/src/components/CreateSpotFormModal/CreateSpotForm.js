@@ -59,9 +59,10 @@ function CreateSpotForm({ setShowModal }) {
         // console.log(newSpot, '@@@@@@@@@this is newSpot~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
         if (newSpot) {
-
-            window.location.reload();
-            history.push(`/`);
+            // console.log('did it reach this ~~~~~~~~~~~~~~~~~~~~~~~~~~createspotform')
+            console.log('this is new spot~~~', newSpot)
+            // window.location.reload();
+            history.push(`/spots/${newSpot.id}`);
             setShowModal(false)
         }
     };

@@ -63,7 +63,7 @@ const EditSpotForm = ({ spotId }) => {
             name,
             description,
             price,
-            url
+            // url
         }
 
         let newSpot = await dispatch(actionUpdateSpot(spots, spotId));
@@ -179,14 +179,14 @@ const EditSpotForm = ({ spotId }) => {
                     />
                 </label >
 
-                <label className='input-label'>
+                {/* <label className='input-label'>
                     <input className="input"
                         type="test"
                         placeholder="Image Url"
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
                     />
-                </label >
+                </label > */}
 
                 {/* <label className="preview-image-label" > Preview Image?
                     <select className='true-false' onChange={(e) => setPreview(e.target.value)}>

@@ -107,16 +107,23 @@ export const actionAddOneSpot = (newSpot, imgData) => async dispatch => {
     })
 
     const newSpotData = await response.json();
+    let imgResponse;
+    // const { url, preview } = imgData;
+    if (response.ok) {
+        imgResponse = await csrfFetch(`/api/spots/${newSpotData.id}/images`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(imgData)
+        });
+    }
+    if (imgResponse.ok) {
+        dispatch(addOneSpot(newSpotData))
+    }
 
     // Adding an image data
-    const { url, preview } = imgData;
-    const imgResponse = await csrfFetch(`/api/spots/${newSpotData.id}/images`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ url, preview })
-    });
+
 
     const images = await imgResponse.json();
 
@@ -205,6 +212,7 @@ const spotsReducer = (state = initialState, action) => {
                 //                  this allSpots is within our initial state object with key of allSpots
                 allSpots: { ...state.allSpots }
             }
+            // console.log(action.)
             action.spots.Spots.forEach(spot => {
                 // console.log({ action })
                 allMySpots[spot.id] = spot;

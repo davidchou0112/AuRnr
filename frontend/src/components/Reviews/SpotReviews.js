@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
 import { getAllReviews } from '../../store/reviews';
+import CreateReviewForm from '../CreateReviewFormModal/CreateReviewForm';
 import CreateReviewFormModal from '../CreateReviewFormModal/CreateReviewForm';
 import './SpotReviews.css';
 
@@ -20,6 +20,7 @@ const SpotReviews = () => {
         dispatch(getAllReviews(spotId))
     }, [dispatch, spotId])
 
+    const sessionUser = useSelector((state) => state.user);
 
     const currSpotReviews = Object.values(reviews)
     // .filter(review => {
@@ -43,20 +44,22 @@ const SpotReviews = () => {
             </div>
             <div className="create-review">{
                 currUser &&
-                spot.ownerId === userId &&
-                <CreateReviewFormModal />
+                spot.ownerId === userId
+                // <CreateReviewForm />
             }
             </div>
             <div className="review-details-container">
                 {currSpotReviews.length !== 0 && currSpotReviews.map(review => {
                     return (
-                        <div className="each-review-detail" key={review.id}>
+                        // <div className="each-review-detail" key={review.id}>
+                        <div className="each-review-detail" >
+
                             <div>
                                 <div className="each-review-user">{review?.User?.firstName}{" "}{review?.User?.lastName}</div>
                                 <div className="each-review-date">{new Date(review.createdAt).toString().slice(3, -42)}</div>
                             </div>
                             <div>{review.review}</div>
-                            {review.userId === currUser.id && <button>delete</button>}
+                            {/* {sessionUser && review.userId === currUser.id ? <button>delete</button> : null} */}
                             {/* <div>{review.map(imageUrl => <img className="each-review-img" src={imageUrl} alt={imageUrl} key={imageUrl}></img>)}</div> */}
                             {/* {console.log("--------------------===========", review.ReviewImages)} */}
                         </div>

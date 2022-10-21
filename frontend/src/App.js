@@ -35,9 +35,7 @@ function App() {
           </Route>
 
 
-          {/* <Route path='/spots/:spotId/edit'>
-            <EditSpotForm />
-          </Route> */}
+
           <Route path='/spots/:spotId/edit'>
             <SpotReviews />
           </Route>
@@ -50,7 +48,7 @@ function App() {
             <MySpots />
           </Route>
 
-          {/* <Route path='/spots/:spotId/reviews'> */}
+
           <Route path='/current'>
             <SpotReviews />
           </Route>

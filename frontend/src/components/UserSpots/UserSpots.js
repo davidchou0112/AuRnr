@@ -24,7 +24,7 @@ const MySpots = () => {
         dispatch(getCurrentUserSpots())
         dispatch(getAllSpots())
         // return () => dispatch(getCurrentUserSpots())
-    }, [dispatch, ownedSpots])
+    }, [dispatch])
 
     if (!sessionUser) {
         return <Redirect to="/" />
@@ -43,7 +43,7 @@ const MySpots = () => {
                 <div >
                     {ownedSpots?.map((spot) => (
                         <div className='allSpot-div'>
-                            <NavLink to={`/spots/${spot.id}`}>
+                            <NavLink className='singleSpots-nav' to={`/spots/${spot.id}`}>
                                 <div >
                                     <div>
                                         <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt={spot.previewImage} />
