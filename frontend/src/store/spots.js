@@ -7,7 +7,7 @@ const GET_SINGLE_SPOT = 'spots/displaySingleSpot'
 const ADD_ONE_SPOT = 'spots/addOneSpot';
 const ADD_IMG = 'spots/addImg';
 const UPDATE_SPOT = 'spots/updateSpot';
-const DELETE_SPOT = 'spots/deleteSpot';
+const DELETE = 'spots/deleteSpot';
 
 // REGULAR ACTION CREATOR------------------------------------------------------
 
@@ -54,7 +54,7 @@ const updateSpot = (spots) => {
 // Delete a spot
 const deleteSpot = (spotId) => {
     return {
-        type: DELETE_SPOT,
+        type: DELETE,
         spotId
     }
 }
@@ -175,7 +175,7 @@ export const actionUpdateSpot = (update, spotId) => async dispatch => {
 // Deleting a spot
 export const actionDeleteSpot = (spotId) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}`, {
-        method: 'DELETE_SPOT'
+        method: 'DELETE'
     });
     if (response.ok) {
         dispatch(deleteSpot(spotId))
@@ -276,7 +276,7 @@ const spotsReducer = (state = initialState, action) => {
 
 
         // Delete a spot 
-        case DELETE_SPOT:
+        case DELETE:
             newState = {
                 ...state,
                 allSpots: { ...state.allSpots },
@@ -287,7 +287,7 @@ const spotsReducer = (state = initialState, action) => {
             return newState;
 
         default:
-            return state;
+            return { ...state };
     }
 };
 

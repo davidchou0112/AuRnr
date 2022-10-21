@@ -48,39 +48,45 @@ function ProfileButton({ user }) {
     //     );
     // }
 
-    return (
-        <>
-            <button onClick={openMenu}>
-                <i className="fas fa-user-circle" />
-            </button>
-            {showMenu && (
-                <ul className="profile-dropdown">
+    if (!user.username) {
+        return 'Refresh'
+    } else {
+        return (
+            <>
+                <button onClick={openMenu}>
+                    <i className="fas fa-user-circle" />
+                </button>
+                {showMenu && (
+                    <ul className="profile-dropdown">
 
-                    <p className="options">
-                        {user.username}
-                    </p>
+                        <p className="options">
+                            {user.username}
+                        </p>
 
 
-                    <p className="options">
-                        {user.email}
-                    </p>
+                        <p className="options">
+                            {user.email}
+                        </p>
 
-                    <p className="options">
-                        <NavLink to="/current">
-                            <button className="logout-button">
-                                My Spots
-                            </button>
-                        </NavLink>
-                    </p>
+                        <p className="options">
+                            <NavLink to="/current">
+                                <button className="logout-button">
+                                    My Spots
+                                </button>
+                            </NavLink>
+                        </p>
 
-                    <p className="options">
-                        <button onClick={logout}>Log Out</button>
-                    </p>
+                        <p className="options">
+                            <button onClick={logout}>Log Out</button>
+                        </p>
 
-                </ul>
-            )}
-        </>
-    );
+                    </ul>
+                )}
+            </>
+        );
+    }
+
+
 }
 
 export default ProfileButton;
