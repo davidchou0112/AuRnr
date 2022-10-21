@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { NavLink } from "react-router-dom";
+// import EditSpotFormModal from "../EditSpot";
 
 // import { useSelector } from 'react-redux';
 // import CreateSpotFormModal from '../CreateSpotFormModal';
@@ -10,6 +11,9 @@ import { NavLink } from "react-router-dom";
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
+
+
+    // const sessionUser = useSelector(state => state.session.user);
 
     const openMenu = () => {
         if (showMenu) return;

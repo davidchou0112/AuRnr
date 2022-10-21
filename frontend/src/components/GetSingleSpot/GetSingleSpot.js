@@ -16,12 +16,15 @@ const DisplaySingleSpot = () => {
     // const oneSpot = useSelector(state => state.singleSpot)
     // const oneSpot = useSelector(state => { if (state.spot.singleSpot) return state.spots.singleSpot });
     const oneSpot = useSelector(state => state.spots.singleSpot);
+    // console.log(`~~~~~~~~spot from spot detail component~~~`, oneSpot)
+
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId))
         // console.log(oneSpot.SpotImages[0].url, `~~~~~~~~~~~~~~~~~~~~~`)
     }, [dispatch, spotId])
 
-    if (!oneSpot.address) {
+    // optional chaining allows us to continue even if undefined is returned ( 'try and catch') delays speed, use carefully
+    if (!oneSpot?.SpotImages?.length) {
         return "Loading..."
     } else {
         // console.log(oneSpot, '~~~~~~~~~~~~~~~~~~oneSpot~~~~~~~~~')
