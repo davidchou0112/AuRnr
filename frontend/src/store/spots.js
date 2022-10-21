@@ -166,6 +166,10 @@ export const actionUpdateSpot = (update, spotId) => async dispatch => {
 
     if (response.ok) {
         const updatedSpot = await response.json();
+<<<<<<< HEAD
+=======
+        console.log(`~~~~~~~~~~~~~updatedSpot from THUNK~~`, updatedSpot);
+>>>>>>> parent of a2060b3... when going into the newly updated display myspot page, the changed data does not display
         dispatch(updateSpot(updatedSpot));
         return updateSpot;
     }
@@ -202,7 +206,7 @@ const spotsReducer = (state = initialState, action) => {
             newState = {
                 ...state,
                 //                  this allSpots is within our initial state object with key of allSpots
-                allSpots: { ...action.spots }
+                allSpots: { ...state.allSpots }
             }
             action.spots.Spots.forEach(spot => {
                 // console.log({ action })
@@ -225,7 +229,7 @@ const spotsReducer = (state = initialState, action) => {
             // action.spots.forEach(spot => {
             //     oneSpot[spot.id] = spot;
             // })
-            // console.log(newState, `~~~~~~~~~~~~~~~~~~~~~~~~~~newState~~~~~~~~~~~~~~`)
+            console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~newState from edit reducer~~~~~~~~~~~~~~`, newState)
             return newState
 
         // Add an Image

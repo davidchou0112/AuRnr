@@ -16,6 +16,8 @@ const DisplaySingleSpot = () => {
     // const oneSpot = useSelector(state => state.singleSpot)
     // const oneSpot = useSelector(state => { if (state.spot.singleSpot) return state.spots.singleSpot });
     const oneSpot = useSelector(state => state.spots.singleSpot);
+    console.log(`~~~~~~~~spot from spot detail component~~~`, oneSpot)
+
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId))
         // console.log(oneSpot.SpotImages[0].url, `~~~~~~~~~~~~~~~~~~~~~`)

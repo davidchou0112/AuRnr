@@ -24,29 +24,16 @@ const DisplayAllSpots = () => {
             <div>
                 {Object.values(allSpot).map(spot => (
 
-                    // <div className='allSpot-div'>
-                    //     <NavLink className='singleSpots-nav' to={`spots/${spot.id}`}>
-                    //         <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt='Your pic is broken...' />
-                    //         <div className='spotDetails'>
-                    //             <p key={spot.address}>{spot.address} </p>
-                    //             <p key={spot.avgRating}>{spot.avgRating} </p>
-                    //             <p key={spot.city}>{spot.city} </p>
-                    //             <p key={spot.country}>{spot.country} </p>
-                    //             <p key={spot.description}>{spot.description} </p>
-                    //             <p key={spot.price}>{spot.price} </p>
-                    //         </div>
-                    //     </NavLink>
-                    // </div>                    
                     <div className='allSpot-div'>
                         <NavLink className='singleSpots-nav' to={`spots/${spot.id}`}>
-                            <img className='spotImage' src={spot.previewImage} alt='Your pic is broken...' />
+                            <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt='Your pic is broken...' />
                             <div className='spotDetails'>
-                                <p >{spot.address} </p>
-                                <p >{spot.avgRating} </p>
-                                <p >{spot.city} </p>
-                                <p >{spot.country} </p>
-                                <p >{spot.description} </p>
-                                <p >{spot.price} </p>
+                                <p key={spot.address}>{spot.address} </p>
+                                <p key={spot.avgRating}>{spot.avgRating} </p>
+                                <p key={spot.city}>{spot.city} </p>
+                                <p key={spot.country}>{spot.country} </p>
+                                <p key={spot.description}>{spot.description} </p>
+                                <p key={spot.price}>{spot.price} </p>
                             </div>
                         </NavLink>
                     </div>
