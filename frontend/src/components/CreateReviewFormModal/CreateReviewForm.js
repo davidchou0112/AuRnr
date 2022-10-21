@@ -24,13 +24,13 @@ const CreateReviewForm = ({ setModal }) => {
             stars: ratingInteger,
             url
         };
-        // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~CreateReview-newReview:", newReview)
+        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~CreateReview-newReview:", newReview)
 
         dispatch(createOneReview(newReview, spotId, url))
             .then(res => history.push(`/spots/${spotId}`))
             .then(res => setModal(false))
             .catch(async (res) => {
-                // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CreateReview-dispatch-res:", res)
+                console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CreateReview-dispatch-res:", res)
                 if (res === undefined) return null;
                 const message = await res.json();
                 if (message && message.errors) {
@@ -39,7 +39,7 @@ const CreateReviewForm = ({ setModal }) => {
                     setErrors([message.message])
                 };
 
-                // console.log("~~~~~~~~~~~~!!!12312123!!!!!!~~~~~~~~~~~~~message", message)
+                console.log("~~~~~~~~~~~~!!!12312123!!!!!!~~~~~~~~~~~~~message", message)
             });
         await dispatch(getAllReviews(spotId));
 

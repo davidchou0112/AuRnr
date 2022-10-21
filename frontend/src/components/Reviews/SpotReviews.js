@@ -23,7 +23,7 @@ const SpotReviews = () => {
 
     const currSpotReviews = Object.values(reviews).filter(review => {
         // console.log("review.spotId:", review.spotId)
-        return review.spotId === spotId;
+        return review.spotId === +spotId;
     })
 
     // console.log("currSpotReviews from All Reviews for Spot:", currSpotReviews)

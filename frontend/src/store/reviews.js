@@ -97,31 +97,33 @@ export const createOneReview = (review, spotId, url) => async (dispatch) => {
     // console.log("~~~~~~~~~~~~~~~~~~~~createOneReview Thunk - newReview:", newReview)
     dispatch(createReview(newReview));
 
-    const imgRes = await csrfFetch(`/api/reviews/${newReview.id}/images`, {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ url })
-    })
+    // const imgRes = await csrfFetch(`/api/reviews/${newReview.id}/images`, {
+    //     method: 'post',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({ url })
+    // })
     // console.log("~~~~~~~~~~~~~~~~~~~~createOneReview Thunk - imgRes:", imgRes)
-    if (!imgRes.ok) {
-        let imgError;
-        if (imgRes.status === 404) {
-            imgError = await imgRes.json();
-            // throw new ValidationError(error.errors, response.statusText);
-            return imgError;
-        } else {
-            let imgErrorJSON;
-            imgError = await imgRes.text();
-            try {
-                imgErrorJSON = JSON.parse(imgError);
-            } catch {
-                throw new Error(imgError);
-            }
-            throw new Error(`${imgErrorJSON.title}: ${imgErrorJSON.message}`)
-        }
-    }
+
+
+    // if (!imgRes.ok) {
+    //     let imgError;
+    //     if (imgRes.status === 404) {
+    //         imgError = await imgRes.json();
+    //         // throw new ValidationError(error.errors, response.statusText);
+    //         return imgError;
+    //     } else {
+    //         let imgErrorJSON;
+    //         imgError = await imgRes.text();
+    //         try {
+    //             imgErrorJSON = JSON.parse(imgError);
+    //         } catch {
+    //             throw new Error(imgError);
+    //         }
+    //         throw new Error(`${imgErrorJSON.title}: ${imgErrorJSON.message}`)
+    //     }
+    // }
 
     // const newImg = await imgRes.json()
     // dispatch(addReviewImg(newReview.id, url))

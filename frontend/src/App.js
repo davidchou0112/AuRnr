@@ -64,7 +64,7 @@ import Navigation from "./components/Navigation";
 import DisplayAllSpots from './components/GetAllSpot/GetAllSpot';
 import DisplaySingleSpot from "./components/GetSingleSpot/GetSingleSpot";
 import CreateSpotFormModal from "./components/CreateSpotFormModal";
-import EditSpotForm from "./components/EditSpot/EditSpot";
+// import EditSpotForm from "./components/EditSpot/EditSpot";
 import MySpots from "./components/UserSpots/UserSpots";
 import SpotReviews from "./components/Reviews/SpotReviews";
 
@@ -90,8 +90,12 @@ function App() {
             <DisplaySingleSpot />
           </Route>
 
-          <Route path='/spots/:spotId/edit'>
+
+          {/* <Route path='/spots/:spotId/edit'>
             <EditSpotForm />
+          </Route> */}
+          <Route path='/spots/:spotId/edit'>
+            <SpotReviews />
           </Route>
 
           <Route path='/spots/create'>

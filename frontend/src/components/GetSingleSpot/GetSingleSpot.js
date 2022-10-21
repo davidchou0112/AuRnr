@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { actionGetOneSpot } from '../../store/spots';
+import SpotReviews from '../Reviews/SpotReviews';
+
 import './GetSingleSpot.css'
 
 const DisplaySingleSpot = () => {
@@ -10,7 +12,7 @@ const DisplaySingleSpot = () => {
     const { spotId } = useParams();
     // console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
 
-    // const { spot } = useParams();
+    const { spot } = useParams();
     // console.log(spot, '------------------------spot----------------'); //undefined
 
     // const oneSpot = useSelector(state => state.singleSpot)
@@ -22,6 +24,23 @@ const DisplaySingleSpot = () => {
         dispatch(actionGetOneSpot(spotId))
         // console.log(oneSpot.SpotImages[0].url, `~~~~~~~~~~~~~~~~~~~~~`)
     }, [dispatch, spotId])
+
+
+    const spotImgArr = spot?.SpotImages;
+    // console.log("spot from component/singleSpot", spotImgArr)
+
+    // let prevImgUrl;
+    // let otherImgUrlArr = [];
+    // if (spotImgArr) {
+    //     for (let img of spotImgArr) {
+    //         if (img.preview === true) {
+    //             prevImgUrl = img.url;
+    //         } else {
+    //             otherImgUrlArr.push(img.url)
+    //         }
+
+    //     }
+
 
     // optional chaining allows us to continue even if undefined is returned ( 'try and catch') delays speed, use carefully
     if (!oneSpot?.SpotImages?.length) {
@@ -57,8 +76,12 @@ const DisplaySingleSpot = () => {
                         <p key={oneSpot.price}>{oneSpot.price} </p>
                     </div>
                 </div>
+                <div>
+                    <SpotReviews />
+                </div>
             </div>
         )
     }
 }
+
 export default DisplaySingleSpot;
