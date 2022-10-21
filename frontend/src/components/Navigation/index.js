@@ -6,10 +6,10 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import CreateSpotFormModal from '../CreateSpotFormModal';
-// import EditSpotFormModal from '../EditSpot';
+import EditSpotForm from '../EditSpot/EditSpot';
+
 
 import './Navigation.css';
-
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
@@ -20,7 +20,7 @@ function Navigation({ isLoaded }) {
             <div>
                 <CreateSpotFormModal />
                 <ProfileButton user={sessionUser} />
-                {/* <EditSpotFormModal user={sessionUser} /> */}
+                <EditSpotForm user={sessionUser} />
             </div>
         );
     } else {

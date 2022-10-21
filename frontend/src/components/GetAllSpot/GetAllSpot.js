@@ -19,7 +19,7 @@ const DisplayAllSpots = () => {
     if (!allSpot) {
         return null
     } else {
-        // the map is now mapping through id, it was originally mapping through object. it was never deconstructing it (now it is)
+        // the map is now maping through id, it was originally maping through object. it was never desconstructing it (now it is)
         return (
             <div>
                 {Object.values(allSpot).map(spot => (

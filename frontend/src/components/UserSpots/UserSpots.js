@@ -4,7 +4,6 @@ import { actionDeleteSpot, getCurrentUserSpots } from "../../store/spots"
 // import { getReviews } from "../../store/reviews"
 import { NavLink, Redirect } from "react-router-dom"
 import "./UserSpots.css"
-import EditSpotFormModal from "../EditSpot"
 
 const MySpots = () => {
 
@@ -44,9 +43,9 @@ const MySpots = () => {
                             <NavLink to={`/spots/${spot.id}`}>
                                 <div >
                                     <div>
-                                        <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt={spot.previewImage} />
+                                        <img key={spot.previewImage} src={spot.previewImage} alt={spot.previewImage} />
                                     </div>
-                                    <div className='spotDetails' >
+                                    <div >
                                         <div>{spot.name}</div>
                                         <div key={spot.name}>{spot.city}, {spot.state}</div>
                                         <div>
@@ -62,12 +61,13 @@ const MySpots = () => {
 
                             <div >
                                 <div>
-
-                                    <EditSpotFormModal spotId={spot.id} />
-
-
+                                    <NavLink to={`/spots/${spot.id}/edit`}>
+                                        <button >
+                                            Edit
+                                        </button>
+                                    </NavLink>
                                 </div>
-                                <button
+                                <button >
                                     onClick={() => dispatch(actionDeleteSpot(spot.id))}>
                                     Delete
                                 </button>
