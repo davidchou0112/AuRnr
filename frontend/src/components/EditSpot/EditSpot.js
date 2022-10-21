@@ -10,7 +10,8 @@ const EditSpotForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    console.log(spotId, `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~spotId from EditSpot`)
+    const { spotId } = useParams();
+    // console.log(spotId, `~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~spotId from EditSpot`)
     const spot = useSelector(state => state.spots.singleSpot);
     // console.log(spot, `~~~~~~~~~this is 'spot' from EditSpot`)
 

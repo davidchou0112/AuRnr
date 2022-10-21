@@ -168,12 +168,15 @@ export const actionUpdateSpot = (update, spotId) => async dispatch => {
         const updatedSpot = await response.json();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         console.log(`~~~~~~~~~~~~~updatedSpot from THUNK~~`, updatedSpot);
 >>>>>>> parent of a2060b3... when going into the newly updated display myspot page, the changed data does not display
 =======
         console.log(`~~~~~~~~~~~~~updatedSpot from THUNK~~`, updatedSpot);
 >>>>>>> parent of a2060b3... when going into the newly updated display myspot page, the changed data does not display
+=======
+>>>>>>> parent of 65657f1... edit function works, single spot display fixed, modals created, edit button hidden properly
         dispatch(updateSpot(updatedSpot));
         return updateSpot;
     }
@@ -233,7 +236,7 @@ const spotsReducer = (state = initialState, action) => {
             // action.spots.forEach(spot => {
             //     oneSpot[spot.id] = spot;
             // })
-            console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~newState from edit reducer~~~~~~~~~~~~~~`, newState)
+            // console.log(newState, `~~~~~~~~~~~~~~~~~~~~~~~~~~newState~~~~~~~~~~~~~~`)
             return newState
 
         // Add an Image
