@@ -236,7 +236,7 @@ const spotsReducer = (state = initialState, action) => {
             // action.spots.forEach(spot => {
             //     oneSpot[spot.id] = spot;
             // })
-            // console.log(newState, `~~~~~~~~~~~~~~~~~~~~~~~~~~newState~~~~~~~~~~~~~~`)
+            console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~newState from edit reducer~~~~~~~~~~~~~~`, newState)
             return newState
 
         // Add an Image
