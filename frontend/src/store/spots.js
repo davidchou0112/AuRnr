@@ -167,6 +167,10 @@ export const actionUpdateSpot = (update, spotId) => async dispatch => {
     if (response.ok) {
         const updatedSpot = await response.json();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        console.log(`~~~~~~~~~~~~~updatedSpot from THUNK~~`, updatedSpot);
+>>>>>>> parent of a2060b3... when going into the newly updated display myspot page, the changed data does not display
 =======
         console.log(`~~~~~~~~~~~~~updatedSpot from THUNK~~`, updatedSpot);
 >>>>>>> parent of a2060b3... when going into the newly updated display myspot page, the changed data does not display
