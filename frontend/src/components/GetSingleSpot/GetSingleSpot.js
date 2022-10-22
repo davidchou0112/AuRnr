@@ -70,7 +70,7 @@ const DisplaySingleSpot = () => {
             <div className='single-spot-div'>
                 <div >
                     <div>{oneSpot.name}</div>
-                    <img className='spotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Your stay is loading...'} />
+                    <img className='spotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Not a proper url'} />
                     <div className='single-spotDetails' >
                         <p key={oneSpot.address}>{oneSpot.address} </p>
                         <p key={oneSpot.avgRating}>{oneSpot.avgRating} </p>

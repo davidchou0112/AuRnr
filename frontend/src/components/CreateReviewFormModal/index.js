@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Modal } from "../../context/Modal";
-import CreateReviewForm from "./CreateReviewForm";
+import React, { useState } from 'react';
+import { Modal } from '../../context/Modal';
+import CreateReviewForm from './CreateReviewForm';
 
 function CreateReviewFormModal({ reviewId }) {
     const [showModal, setShowModal] = useState(false);

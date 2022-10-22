@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-// import { Redirect } from "react-router-dom";
-// import * as sessionActions from "../../store/spots";
-
-import { useHistory } from "react-router-dom";
-import { actionAddOneSpot } from "../../store/spots";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+// import { Redirect } from 'react-router-dom';
+// import * as sessionActions from '../../store/spots';
+import { useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
+import { actionAddOneSpot } from '../../store/spots';
 
 import './CreateSpotForm.css';
 
@@ -27,10 +27,30 @@ function CreateSpotForm({ setShowModal }) {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-
     // for adding images
     const [url, setUrl] = useState('');
     // const [preview, setPreview] = useState('');
+    const [validations, setValidations] = useState([]);
+
+
+
+    // Error handling
+    useEffect(() => {
+        const errors = [];
+        if (!address.length) errors.push('Street address is required')
+        if (!city.length) errors.push('City is required')
+        if (!state.length) errors.push('State is required')
+        if (!country.length) errors.push('Country is required')
+        // if (!lat) errors.push('Lat is required')
+        // if (!lng) errors.push('Lng is required')
+        if (!url) errors.push('URL is required')
+        if (name.length < 3) errors.push('Name must be 3 or more characters');
+        if (!description.length) errors.push('Description is required')
+        if (price < 0) errors.push('Price per day is required')
+        setValidations(errors)
+
+    }, [address, city, state, country, name, description, price, url])
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -77,116 +97,126 @@ function CreateSpotForm({ setShowModal }) {
 
 
     return (
-        <section className="entire-form"> Create New Spot
-            <form onSubmit={handleSubmit} className="create-spot-form" >
+        <section className='entire-form'> Create New Spot
+            <form onSubmit={handleSubmit} className='create-spot-form' >
                 <label className='input-label'>
-                    <input className="input-field"
-                        type="text"
-                        placeholder="Address"
-                        min="1"
+                    <input className='input-field'
+                        type='text'
+                        placeholder='Address'
+                        min='1'
                         required
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </label>
+                {!address.length && <div className="errorHandling">Street address is required</div>}
 
                 <label className='input-label'>
-                    <input className="input-field"
-                        type="text"
-                        placeholder="City"
-                        min="0"
-                        max="100"
+                    <input className='input-field'
+                        type='text'
+                        placeholder='City'
+                        min='0'
+                        max='100'
                         required
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                     />
                 </label>
+                {!city.length && <div className="errorHandling">City is required</div>}
 
                 <label className='input-label'>
-                    <input className="input-field"
-                        type="text"
-                        placeholder="State"
-                        min="0"
-                        max="100"
+                    <input className='input-field'
+                        type='text'
+                        placeholder='State'
+                        min='0'
+                        max='100'
                         required
                         value={state}
                         onChange={(e) => setState(e.target.value)}
                     />
                 </label >
+                {!state.length && <div className="errorHandling">State is required</div>}
 
                 <label className='input-label'>
-                    <input className="input-field"
-                        type="text"
-                        placeholder="Country"
+                    <input className='input-field'
+                        type='text'
+                        placeholder='Country'
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
                     />
                 </label >
+                {!country.length && <div className="errorHandling">Country is required</div>}
 
                 {/* <label> Latitude
                     <input
-                    type="number"
-                        placeholder="Latitude"
+                    type='number'
+                        placeholder='Latitude'
                         value={lat}
                         onChange={(e) => setLat(e.target.value)}
                         />
                         </label>
-                        
+                         {!lat && <div className = "errorHandling">Lat is required</div> }
+
                         <label> Longitude
                         <input
-                        type="number"
-                        placeholder="Longitude"
+                        type='number'
+                        placeholder='Longitude'
                         value={lng}
                         onChange={(e) => setLng(e.target.value)}
                         />
-                    </label> */}
+                    </label> 
+                    {!lng && <div className = "errorHandling">Lng is required</div> } */}
 
                 <label label className='input-label'>
-                    < input className="input-field"
-                        type="text"
-                        placeholder="Name"
+                    < input className='input-field'
+                        type='text'
+                        placeholder='Name'
                         value={name}
                         onChange={(e) => setName(e.target.value)
                         }
                     />
                 </label >
+                {name.length < 3 && <div className="errorHandling">Name must be 3 or more characters</div>}
 
                 <label className='input-label'>
-                    <input className="input-field"
-                        type="text"
-                        placeholder="Description"
+                    <input className='input-field'
+                        type='text'
+                        placeholder='Description'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </label >
+                {!description.length && <div className="errorHandling">Description is required</div>}
 
                 <label className='input-label'>
-                    <input className="input-field"
-                        type="number"
-                        placeholder="Price"
+                    <input className='input-field'
+                        type='number'
+                        placeholder='Price'
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                     />
                 </label >
+                {price <= 0 && <div className="errorHandling">Price is required</div>}
 
                 <label className='input-label'>
-                    <input className="input-field"
-                        type="test"
-                        placeholder="Image Url"
+                    <input className='input-field'
+                        type='test'
+                        placeholder='Image Url'
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
                     />
                 </label >
+                {!url && <div className="errorHandling">Url is required</div>}
 
-                {/* <label className="preview-image-label" > Preview Image?
+                {/* <label className='preview-image-label' > Preview Image?
                     <select className='true-false' onChange={(e) => setPreview(e.target.value)}>
                         <option key='true'>true</option>
                         <option key='false'>false</option>
                     </select >
                 </label> */}
 
-                <button className="button" type="submit">Create new Spot</button>
-                <button className="button" onClick={handleCancelClick} type="button">Cancel</button>
+                <button className='button' type='submit'>Create new Spot</button>
+                <button className='button' onClick={handleCancelClick} type='button'>Cancel</button>
             </form >
         </section >
 
