@@ -44,7 +44,7 @@ function CreateSpotForm({ setShowModal }) {
         // if (!lat) errors.push('Lat is required')
         // if (!lng) errors.push('Lng is required')
         if (!url) errors.push('URL is required')
-        if (name.length < 3) errors.push('Name must be 3 or more characters');
+        if (!name.length) errors.push('Name is required');
         if (!description.length) errors.push('Description is required')
         if (price < 0) errors.push('Price per day is required')
         setValidations(errors)
@@ -176,7 +176,7 @@ function CreateSpotForm({ setShowModal }) {
                         }
                     />
                 </label >
-                {name.length < 3 && <div className="errorHandling">Name must be 3 or more characters</div>}
+                {!name.length && <div className="errorHandling">Name is required</div>}
 
                 <label className='input-label'>
                     <input className='input-field'
@@ -196,7 +196,9 @@ function CreateSpotForm({ setShowModal }) {
                         onChange={(e) => setPrice(e.target.value)}
                     />
                 </label >
-                {price <= 0 && <div className="errorHandling">Price is required</div>}
+                {price === '0' && <div className="errorHandling">For free? </div>}
+                {!price && <div className="errorHandling">Price is required</div>}
+
 
                 <label className='input-label'>
                     <input className='input-field'

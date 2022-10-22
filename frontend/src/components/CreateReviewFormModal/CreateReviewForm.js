@@ -42,16 +42,18 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
                 // console.log("~~~~~~~~~~~~!!!12312123!!!!!!~~~~~~~~~~~~~message", message)
             });
         await dispatch(getAllReviews(spotId));
+        // history.push(`/spots/${spotId}`)
+        // window.location.reload();
 
     }
 
     // // () cancel button is not closing modal
-    // const handleCancelClick = (e) => {
-    //     // e.preventDefault();
-    //     setModal(false);
-    //     history.push(`/spots/${spotId}`);
-    //     // window.location.reload();
-    // }
+    const handleCancelClick = (e) => {
+        // e.preventDefault();
+        // setModal(false);
+        history.push(`/spots/${spotId}`);
+        window.location.reload();
+    }
 
     return (
         <div className="create-review-outer-container">
@@ -105,7 +107,7 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
 
                     <div>
                         <button className="styledButton">Create Review</button>
-                        {/* <button type="button" onClick={handleCancelClick} className="styledButton">Cancel</button> */}
+                        <button type="button" onClick={handleCancelClick} className="styledButton">Cancel</button>
                     </div>
                 </div>
             </form>

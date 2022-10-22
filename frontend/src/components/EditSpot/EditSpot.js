@@ -22,7 +22,10 @@ const EditSpotForm = ({ spotId }) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
-    const [url, setUrl] = useState('');
+    // const [url, setUrl] = useState('');
+
+    const [validations, setValidations] = useState([])
+
 
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId));
@@ -48,7 +51,28 @@ const EditSpotForm = ({ spotId }) => {
         }
     }, [spot]);
 
-    const handleSubmit = async (e) => {
+    useEffect(() => {
+        const errors = [];
+        if (!address.length) errors.push("Street address is required")
+        if (!city.length) errors.push("City is required")
+        if (!state.length) errors.push("State is required")
+        if (!country.length) errors.push("Country is required")
+        if (!name.length) errors.push("Name is required");
+        if (!description.length) errors.push("Description is required")
+        // if (!price) errors.push("Price per day is required")
+        // if (!lat) errors.push("Lat is required")
+        // if (!lng) errors.push("Lng is required")
+        // if (!url) errors.push("URL is required")
+        setValidations(errors)
+
+    }, [address, city, state, country, name, description, price])
+
+
+
+    const handleSubmit = async (e, errors) => {
+
+        // () how do i make handle submit fail if error messages are available 
+        // if (errors.length) {
         e.preventDefault();
 
         // payload = spots
@@ -74,6 +98,7 @@ const EditSpotForm = ({ spotId }) => {
             history.push(`/spots/${spotId}`);
 
         }
+        // }
     }
 
     const handleCancelClick = (e) => {
@@ -99,6 +124,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </label>
+                {!address.length && <div className="errorHandlings">Street address is required</div>}
 
                 <label className='input-label'>
                     <input className="input"
@@ -111,6 +137,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setCity(e.target.value)}
                     />
                 </label>
+                {!city.length && <div className="errorHandlings">City is required</div>}
 
                 <label className='input-label'>
                     <input className="input"
@@ -123,6 +150,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setState(e.target.value)}
                     />
                 </label >
+                {!state.length && <div className="errorHandlings">State is required</div>}
 
                 <label className='input-label'>
                     <input className="input"
@@ -132,24 +160,28 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setCountry(e.target.value)}
                     />
                 </label >
+                {!country.length && <div className="errorHandlings">Country is required</div>}
 
                 {/* <label> Latitude
                     <input
-                    type="number"
+                        type="number"
                         placeholder="Latitude"
                         value={lat}
                         onChange={(e) => setLat(e.target.value)}
-                        />
-                        </label>
-                        
-                        <label> Longitude
-                        <input
+                    />
+                </label>
+                {!lat && <div className="errorHandling">Lat is required</div>}
+
+
+                <label> Longitude
+                    <input
                         type="number"
                         placeholder="Longitude"
                         value={lng}
                         onChange={(e) => setLng(e.target.value)}
-                        />
-                    </label> */}
+                    />
+                </label>
+                {!lng && <div className="errorHandling">Lng is required</div>} */}
 
                 <label label className='input-label'>
                     < input className="input"
@@ -160,6 +192,7 @@ const EditSpotForm = ({ spotId }) => {
                         }
                     />
                 </label >
+                {!name.length && <div className="errorHandlings">Name is required</div>}
 
                 <label className='input-label'>
                     <input className="input"
@@ -169,6 +202,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </label >
+                {!description.length && <div className="errorHandlings">Description is required</div>}
 
                 <label className='input-label'>
                     <input className="input"
@@ -178,6 +212,8 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setPrice(e.target.value)}
                     />
                 </label >
+                {price === `0` && <div className="errorHandlings">For free?</div>}
+                {!price && <div className="errorHandlings">Price is required.</div>}
 
                 {/* <label className='input-label'>
                     <input className="input"
