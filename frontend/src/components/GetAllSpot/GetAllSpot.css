@@ -2,11 +2,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 
 .spotImage {
     width: 100%;
-    max-width: 350px;
+    min-width: 150px;
+    max-width: 650px;
     border-radius: 10px;
 }
 
@@ -30,14 +32,14 @@ p {
     white-space: normal;
 }
 
-.allSpot-div {
-    /* display: flex;
+/* .allSpot-div {
+    display: flex;
     flex-direction: column;
-    width: 300px; */
-    /* line-break: auto; */
-}
+    width: 300px;
+    line-break: auto;
+} */
 
-.spotTexts {
+*/ .spotTexts {
     white-space: normal;
     /* line-break: auto; */
 }
@@ -45,9 +47,10 @@ p {
 
 .allSpotDisplay {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 40px 24px;
     /* list-style: */
     padding: 50px 100px;
     justify-items: flex-start;
+    /* justify-items: center; */
 }

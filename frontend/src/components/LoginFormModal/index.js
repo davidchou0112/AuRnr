@@ -14,7 +14,7 @@
 //     const [errors, setErrors] = useState([]);
 
 //     if (sessionUser) return (
-//         <Redirect to="/" />
+//         <Redirect to='/' />
 //     );
 
 //     const handleSubmit = (e) => {
@@ -35,7 +35,7 @@
 //             <label>
 //                 Username or Email
 //                 <input
-//                     type="text"
+//                     type='text'
 //                     value={credential}
 //                     onChange={(e) => setCredential(e.target.value)}
 //                     required
@@ -44,13 +44,13 @@
 //             <label>
 //                 Password
 //                 <input
-//                     type="password"
+//                     type='password'
 //                     value={password}
 //                     onChange={(e) => setPassword(e.target.value)}
 //                     required
 //                 />
 //             </label>
-//             <button type="submit">Log In</button>
+//             <button type='submit'>Log In</button>
 //         </form>
 //     );
 // }

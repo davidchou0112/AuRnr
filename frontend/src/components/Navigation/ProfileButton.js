@@ -1,9 +1,9 @@
 // frontend/src/components/Navigation/ProfileButton.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { NavLink } from "react-router-dom";
-// import EditSpotFormModal from "../EditSpot";
+import { NavLink } from 'react-router-dom';
+// import EditSpotFormModal from '../EditSpot';
 
 // import { useSelector } from 'react-redux';
 // import CreateSpotFormModal from '../CreateSpotFormModal';
@@ -29,7 +29,7 @@ function ProfileButton({ user }) {
 
         document.addEventListener('click', closeMenu);
 
-        return () => document.removeEventListener("click", closeMenu);
+        return () => document.removeEventListener('click', closeMenu);
     }, [showMenu]);
 
     const logout = (e) => {
@@ -54,30 +54,30 @@ function ProfileButton({ user }) {
         return (
             <>
                 <button onClick={openMenu}>
-                    <i className="fas fa-user-circle" />
+                    <i className='fas fa-user-circle' />
                 </button>
 
                 {showMenu && (
-                    <ul className="profile-dropdown">
+                    <ul className='profile-dropdown'>
 
-                        <p className="options">
+                        <p className='options'>
                             {user.username}
                         </p>
 
 
-                        <p className="options">
+                        <p className='options'>
                             {user.email}
                         </p>
 
-                        <p className="options" >
-                            <NavLink to="/current" >
-                                <button className="logout-button">
+                        <p className='options' >
+                            <NavLink to='/current' >
+                                <button className='logout-button'>
                                     My Spots
                                 </button>
                             </NavLink>
                         </p>
 
-                        <p className="options">
+                        <p className='options'>
                             <button onClick={logout}>Log Out</button>
                         </p>
 

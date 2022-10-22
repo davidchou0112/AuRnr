@@ -1,10 +1,10 @@
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { actionDeleteSpot, getAllSpots, getCurrentUserSpots } from "../../store/spots"
-// import { getReviews } from "../../store/reviews"
-import { NavLink, Redirect } from "react-router-dom"
-import "./UserSpots.css"
-import EditSpotFormModal from "../EditSpot"
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { actionDeleteSpot, getAllSpots, getCurrentUserSpots } from '../../store/spots'
+// import { getReviews } from '../../store/reviews'
+import { NavLink, Redirect } from 'react-router-dom'
+import './UserSpots.css'
+import EditSpotFormModal from '../EditSpot'
 
 const MySpots = () => {
 
@@ -27,7 +27,7 @@ const MySpots = () => {
     }, [dispatch])
 
     if (!sessionUser) {
-        return <Redirect to="/" />
+        return <Redirect to='/' />
     }
 
     console.log('~~~~~~~~~~~~~~~~~ownedSpots~~~~~~~~~~~~~~~~~~~', ownedSpots)
@@ -37,14 +37,14 @@ const MySpots = () => {
         return 'my data is still showing up EMPTY post hard refresh..'
     } else {
         // window.location.reload();
-        <Redirect to="/current" />
+        <Redirect to='/current' />
         return (
-            <div >
-                <div >
+            <div>
+                <div>
                     {ownedSpots?.map((spot) => (
                         <div className='allSpot-div'>
                             <NavLink className='singleSpots-nav' to={`/spots/${spot.id}`}>
-                                <div >
+                                <div>
                                     <div>
                                         <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt={spot.previewImage} />
                                     </div>
@@ -61,7 +61,7 @@ const MySpots = () => {
                                     </div>
                                 </div>
                             </NavLink>
-                            <div >
+                            <div>
                                 <div>
                                     <EditSpotFormModal spotId={spot.id} />
                                 </div>

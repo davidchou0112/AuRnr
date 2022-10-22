@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { createOneReview } from '../../store/reviews';
 import { getAllReviews } from '../../store/reviews';
-import "./CreateReviewForm.css";
+import './CreateReviewForm.css';
 
 const CreateReviewForm = ({ reviewId, setModal }) => {
     const dispatch = useDispatch();
@@ -24,13 +24,13 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
             stars: ratingInteger,
             url
         };
-        // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~CreateReview-newReview:", newReview)
+        // console.log('~~~~~~~~~~~~~~~~~~~~~~~~~CreateReview-newReview:', newReview)
 
         dispatch(createOneReview(newReview, spotId, url))
             .then(res => history.push(`/spots/${spotId}`))
             .then(res => setModal(false))
             .catch(async (res) => {
-                // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CreateReview-dispatch-res:", res)
+                // console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CreateReview-dispatch-res:', res)
                 if (res === undefined) return null;
                 const message = await res.json();
                 if (message && message.errors) {
@@ -39,7 +39,7 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
                     setErrors([message.message])
                 };
 
-                // console.log("~~~~~~~~~~~~!!!12312123!!!!!!~~~~~~~~~~~~~message", message)
+                // console.log('~~~~~~~~~~~~!!!12312123!!!!!!~~~~~~~~~~~~~message', message)
             });
         await dispatch(getAllReviews(spotId));
         // history.push(`/spots/${spotId}`)
@@ -56,29 +56,29 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
     }
 
     return (
-        <div className="create-review-outer-container">
+        <div className='create-review-outer-container'>
             <form onSubmit={handleSubmit}>
                 <div id='createReviewTitle'>Create Review</div>
                 <div id='createReview-fieldContainer'>
                     <ul>
-                        {errors && errors.map((error, idx) => <li key={idx} className="errors-li">{error}</li>)}
+                        {errors && errors.map((error, idx) => <li key={idx} className='errors-li'>{error}</li>)}
                     </ul>
-                    <div className="inputContainer" id="createReview-top-label">
-                        <label className="create-spot-label">Review:
+                    <div className='inputContainer' id='createReview-top-label'>
+                        <label className='create-spot-label'>Review:
                             <textarea
                                 id='review'
                                 placeholder='Providing your review here..'
                                 value={review}
                                 required
                                 onChange={e => setReview(e.target.value)}
-                                className="createReview-review-inputField"
+                                className='createReview-review-inputField'
                             >
                             </textarea>
                         </label>
                     </div>
 
-                    <div className="inputContainer" id="createReview-middle-label">
-                        <label className="create-spot-label">Rating (1 - 5):
+                    <div className='inputContainer' id='createReview-middle-label'>
+                        <label className='create-spot-label'>Rating (1 - 5):
                             <input
                                 type='number'
                                 min='1'
@@ -87,27 +87,27 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
                                 value={rating}
                                 required
                                 onChange={e => setRating(e.target.value)}
-                                className="createReview-inputField"
+                                className='createReview-inputField'
                             />
                         </label>
                     </div>
 
-                    {/* <div className="inputContainer" id="bottom-label">
-                        <label className="create-spot-label">Img url
+                    {/* <div className='inputContainer' id='bottom-label'>
+                        <label className='create-spot-label'>Img url
                             <input
-                                type="text"
-                                placeholder="http://..."
+                                type='text'
+                                placeholder='http://...'
                                 // required
                                 value={url}
                                 onChange={e => setUrl(e.target.value)}
-                                className="createSpot-inputField"
+                                className='createSpot-inputField'
                             />
                         </label>
                     </div> */}
 
                     <div>
-                        <button className="styledButton">Create Review</button>
-                        <button type="button" onClick={handleCancelClick} className="styledButton">Cancel</button>
+                        <button className='styledButton'>Create Review</button>
+                        <button type='button' onClick={handleCancelClick} className='styledButton'>Cancel</button>
                     </div>
                 </div>
             </form>

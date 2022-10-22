@@ -5,7 +5,15 @@
 }
 
 .single-spotDetails {
+    /* justify-items: start; */
+
     position: relative;
     width: 800px;
     margin: 0 auto;
+}
+
+.singleSpotImage {
+
+    width: 1000px;
+    border-radius: 20px;
 }

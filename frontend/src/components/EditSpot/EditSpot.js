@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from 'react-router-dom';
 import { actionGetOneSpot, actionUpdateSpot } from '../../store/spots';
 
 import './EditSpot.css';
@@ -53,16 +53,16 @@ const EditSpotForm = ({ spotId }) => {
 
     useEffect(() => {
         const errors = [];
-        if (!address.length) errors.push("Street address is required")
-        if (!city.length) errors.push("City is required")
-        if (!state.length) errors.push("State is required")
-        if (!country.length) errors.push("Country is required")
-        if (!name.length) errors.push("Name is required");
-        if (!description.length) errors.push("Description is required")
-        // if (!price) errors.push("Price per day is required")
-        // if (!lat) errors.push("Lat is required")
-        // if (!lng) errors.push("Lng is required")
-        // if (!url) errors.push("URL is required")
+        if (!address.length) errors.push('Street address is required')
+        if (!city.length) errors.push('City is required')
+        if (!state.length) errors.push('State is required')
+        if (!country.length) errors.push('Country is required')
+        if (!name.length) errors.push('Name is required');
+        if (!description.length) errors.push('Description is required')
+        // if (!price) errors.push('Price per day is required')
+        // if (!lat) errors.push('Lat is required')
+        // if (!lng) errors.push('Lng is required')
+        // if (!url) errors.push('URL is required')
         setValidations(errors)
 
     }, [address, city, state, country, name, description, price])
@@ -111,128 +111,128 @@ const EditSpotForm = ({ spotId }) => {
     //     return 'Loading...'
     // } else {
     return (
-        <section className="entire-form">
+        <section className='entire-form'>
             <div className='formLabel' >Edit a Spot</div>
-            <form onSubmit={handleSubmit} className="Edit-form" >
+            <form onSubmit={handleSubmit} className='Edit-form' >
                 <label className='input-label'>
-                    <input className="input"
-                        type="text"
-                        placeholder="Address"
-                        min="1"
+                    <input className='input'
+                        type='text'
+                        placeholder='Address'
+                        min='1'
                         required
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </label>
-                {!address.length && <div className="errorHandlings">Street address is required</div>}
+                {!address.length && <div className='errorHandlings'>Street address is required</div>}
 
                 <label className='input-label'>
-                    <input className="input"
-                        type="text"
-                        placeholder="City"
-                        min="0"
-                        max="100"
+                    <input className='input'
+                        type='text'
+                        placeholder='City'
+                        min='0'
+                        max='100'
                         required
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                     />
                 </label>
-                {!city.length && <div className="errorHandlings">City is required</div>}
+                {!city.length && <div className='errorHandlings'>City is required</div>}
 
                 <label className='input-label'>
-                    <input className="input"
-                        type="text"
-                        placeholder="State"
-                        min="0"
-                        max="100"
+                    <input className='input'
+                        type='text'
+                        placeholder='State'
+                        min='0'
+                        max='100'
                         required
                         value={state}
                         onChange={(e) => setState(e.target.value)}
                     />
                 </label >
-                {!state.length && <div className="errorHandlings">State is required</div>}
+                {!state.length && <div className='errorHandlings'>State is required</div>}
 
                 <label className='input-label'>
-                    <input className="input"
-                        type="text"
-                        placeholder="Country"
+                    <input className='input'
+                        type='text'
+                        placeholder='Country'
                         value={country}
                         onChange={(e) => setCountry(e.target.value)}
                     />
                 </label >
-                {!country.length && <div className="errorHandlings">Country is required</div>}
+                {!country.length && <div className='errorHandlings'>Country is required</div>}
 
                 {/* <label> Latitude
                     <input
-                        type="number"
-                        placeholder="Latitude"
+                        type='number'
+                        placeholder='Latitude'
                         value={lat}
                         onChange={(e) => setLat(e.target.value)}
                     />
                 </label>
-                {!lat && <div className="errorHandling">Lat is required</div>}
+                {!lat && <div className='errorHandling'>Lat is required</div>}
 
 
                 <label> Longitude
                     <input
-                        type="number"
-                        placeholder="Longitude"
+                        type='number'
+                        placeholder='Longitude'
                         value={lng}
                         onChange={(e) => setLng(e.target.value)}
                     />
                 </label>
-                {!lng && <div className="errorHandling">Lng is required</div>} */}
+                {!lng && <div className='errorHandling'>Lng is required</div>} */}
 
                 <label label className='input-label'>
-                    < input className="input"
-                        type="text"
-                        placeholder="Name"
+                    < input className='input'
+                        type='text'
+                        placeholder='Name'
                         value={name}
                         onChange={(e) => setName(e.target.value)
                         }
                     />
                 </label >
-                {!name.length && <div className="errorHandlings">Name is required</div>}
+                {!name.length && <div className='errorHandlings'>Name is required</div>}
 
                 <label className='input-label'>
-                    <input className="input"
-                        type="text"
-                        placeholder="Description"
+                    <input className='input'
+                        type='text'
+                        placeholder='Description'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </label >
-                {!description.length && <div className="errorHandlings">Description is required</div>}
+                {!description.length && <div className='errorHandlings'>Description is required</div>}
 
                 <label className='input-label'>
-                    <input className="input"
-                        type="number"
-                        placeholder="Price"
+                    <input className='input'
+                        type='number'
+                        placeholder='Price'
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
                     />
                 </label >
-                {price === `0` && <div className="errorHandlings">For free?</div>}
-                {!price && <div className="errorHandlings">Price is required.</div>}
+                {price === `0` && <div className='errorHandlings'>For free?</div>}
+                {!price && <div className='errorHandlings'>Price is required.</div>}
 
                 {/* <label className='input-label'>
-                    <input className="input"
-                        type="test"
-                        placeholder="Image Url"
+                    <input className='input'
+                        type='test'
+                        placeholder='Image Url'
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
                     />
                 </label > */}
 
-                {/* <label className="preview-image-label" > Preview Image?
+                {/* <label className='preview-image-label' > Preview Image?
                     <select className='true-false' onChange={(e) => setPreview(e.target.value)}>
                         <option key='true'>true</option>
                         <option key='false'>false</option>
                     </select >
                 </label> */}
 
-                <button className="button" type="submit">Edit Spot</button>
-                <button className="button" onClick={handleCancelClick} type="button">Cancel</button>
+                <button className='button' type='submit'>Edit Spot</button>
+                <button className='button' onClick={handleCancelClick} type='button'>Cancel</button>
             </form >
         </section >
     )

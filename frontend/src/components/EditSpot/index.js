@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Modal } from "../../context/Modal";
-import EditSpotForm from "./EditSpot";
+import React, { useState } from 'react';
+import { Modal } from '../../context/Modal';
+import EditSpotForm from './EditSpot';
 
 function EditSpotFormModal({ spotId }) {
     const [showModal, setShowModal] = useState(false);

@@ -1,9 +1,9 @@
 import { csrfFetch } from './csrf';
-const LOAD_ALL_REVIEWS = "reviews/setLoadAllReviews";
-const CREATE_REVIEW = "reviews/setCreateReview";
-const ADD_REVIEW_IMG = "reviews/setAddReviewImg";
-const UPDATE_REVIEW = "reviews/setUpdateReview";
-const DELETE = "reviews/setDeleteReview";
+const LOAD_ALL_REVIEWS = 'reviews/setLoadAllReviews';
+const CREATE_REVIEW = 'reviews/setCreateReview';
+const ADD_REVIEW_IMG = 'reviews/setAddReviewImg';
+const UPDATE_REVIEW = 'reviews/setUpdateReview';
+const DELETE = 'reviews/setDeleteReview';
 
 
 const allReviews = (reviews) => {
@@ -72,9 +72,9 @@ export const getMyReviews = () => async (dispatch) => {
 }
 
 export const createOneReview = (review, spotId, url) => async (dispatch) => {
-    // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~url:", url)
-    // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~review:", review)
-    // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~spotId:", spotId)
+    // console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~url:', url)
+    // console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~review:', review)
+    // console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~spotId:', spotId)
     // review.stars = review.ratingNum;
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: 'post',
@@ -102,7 +102,7 @@ export const createOneReview = (review, spotId, url) => async (dispatch) => {
     }
 
     const newReview = await response.json();
-    // console.log("~~~~~~~~~~~~~~~~~~~~createOneReview Thunk - newReview:", newReview)
+    // console.log('~~~~~~~~~~~~~~~~~~~~createOneReview Thunk - newReview:', newReview)
     dispatch(createReview(newReview));
 
     // const imgRes = await csrfFetch(`/api/reviews/${newReview.id}/images`, {
@@ -112,7 +112,7 @@ export const createOneReview = (review, spotId, url) => async (dispatch) => {
     //     },
     //     body: JSON.stringify({ url })
     // })
-    // console.log("~~~~~~~~~~~~~~~~~~~~createOneReview Thunk - imgRes:", imgRes)
+    // console.log('~~~~~~~~~~~~~~~~~~~~createOneReview Thunk - imgRes:', imgRes)
 
 
     // if (!imgRes.ok) {
@@ -135,9 +135,9 @@ export const createOneReview = (review, spotId, url) => async (dispatch) => {
 
     // const newImg = await imgRes.json()
     // dispatch(addReviewImg(newReview.id, url))
-    // console.log("createOneReview Thunk - newImg:", newImg)
+    // console.log('createOneReview Thunk - newImg:', newImg)
     // newReview['ReviewImages'] = newImg;
-    // console.log("createOneReview Thunk - newReview:", newReview)
+    // console.log('createOneReview Thunk - newReview:', newReview)
     return newReview;
 }
 
@@ -179,7 +179,7 @@ const reviewReducer = (state = initialState, action) => {
         case CREATE_REVIEW:
             newState = { ...state };
             newState[action.review.id] = action.review;
-            // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~reviewReducer-CREATE_REVIEW newState:", newState)
+            // console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~reviewReducer-CREATE_REVIEW newState:', newState)
             return newState;
 
         case ADD_REVIEW_IMG:
@@ -191,11 +191,11 @@ const reviewReducer = (state = initialState, action) => {
                     ...state[action.reviewId]
                 }
             };
-            // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~this is action present:", action)
-            // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~this is review images:", newState[action.reviewId].ReviewImages)
+            // console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~this is action present:', action)
+            // console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~this is review images:', newState[action.reviewId].ReviewImages)
             newState[action.reviewId].ReviewImages = [action.url]
-            // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~this is review post addition:", newState[action.reviewId].ReviewImages)
-            // console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~this is action.url:", action.url)
+            // console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~this is review post addition:', newState[action.reviewId].ReviewImages)
+            // console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~this is action.url:', action.url)
             return newState;
 
         case UPDATE_REVIEW:

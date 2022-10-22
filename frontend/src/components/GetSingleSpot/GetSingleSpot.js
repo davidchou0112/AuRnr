@@ -33,7 +33,7 @@ const DisplaySingleSpot = () => {
 
 
     // const spotImgArr = spot?.SpotImages;
-    // console.log("spot from component/singleSpot", spotImgArr)
+    // console.log('spot from component/singleSpot', spotImgArr)
 
     // let prevImgUrl;
     // let otherImgUrlArr = [];
@@ -50,7 +50,7 @@ const DisplaySingleSpot = () => {
 
     // optional chaining allows us to continue even if undefined is returned ( 'try and catch') delays speed, use carefully
     if (!oneSpot?.SpotImages?.length) {
-        return "Loading..."
+        return 'Loading...'
     } else {
         // console.log(oneSpot, '~~~~~~~~~~~~~~~~~~oneSpot~~~~~~~~~')
         // console.log(oneSpot.SpotImages, `~~~~~~~~~~~~~~~~~~~~~~~~~~~this is~~~~~~~~~`)
@@ -67,18 +67,19 @@ const DisplaySingleSpot = () => {
         //     return null
         // }
         return (
-            <div className='single-spot-div'>
+            // className='single-spot-div'
+            <div key='root'>
                 <div >
-                    <div>{oneSpot.name}</div>
-                    <img className='spotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Not a proper url'} />
-                    <div className='single-spotDetails' >
-                        <p key={oneSpot.address}>{oneSpot.address} </p>
-                        <p key={oneSpot.avgRating}>{oneSpot.avgRating} </p>
-                        <p key={oneSpot.city}>{oneSpot.city} </p>
-                        <p key={oneSpot.country}>{oneSpot.country} </p>
-                        <p key={oneSpot.description}>{oneSpot.description} </p>
-                        <p key={oneSpot.price}>{oneSpot.price} </p>
-                    </div>
+                    <h1>{oneSpot.name}</h1>
+                    <img className='singleSpotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Not a proper url'} />
+                    <div className='single-spotDetails' ></div>
+                    <p key={oneSpot.address}>{oneSpot.address} </p>
+                    <p key={oneSpot.avgRating}>{oneSpot.avgRating} </p>
+                    <p key={oneSpot.city}>{oneSpot.city} </p>
+                    <p key={oneSpot.country}>{oneSpot.country} </p>
+                    <p key={oneSpot.description}>{oneSpot.description} </p>
+                    <p key={oneSpot.price}>{oneSpot.price} </p>
+
                 </div>
 
                 <div>
