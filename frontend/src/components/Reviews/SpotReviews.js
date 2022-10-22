@@ -8,7 +8,7 @@ import './SpotReviews.css';
 
 const SpotReviews = ({ reviewId }) => {
     const sessionUser = useSelector((state) => state.session.user);
-    const history = useHistory
+    const history = useHistory();
     const dispatch = useDispatch();
     const { spotId } = useParams();
     console.log(`~~~~~~~~~~~~~~~~~~~~~~~~this is spotId:`, spotId);
@@ -20,8 +20,9 @@ const SpotReviews = ({ reviewId }) => {
 
     const currSpotReviews = Object.values(reviews)
     console.log(currSpotReviews, `!!!!!!!!!!~~~~~currSpotReviews~~~~~~~~~~~~!!!!!!!!!!`);
-    console.log(currSpotReviews.id, `!!!!!!!!!!~~~~~currSpotReviews.id~~~~~~~~~~~~!!!!!!!!!!`);
+    // console.log(currSpotReviews[0].userId, `!!!!!!!!!!~~~~~currSpotReviews.id~~~~~~~~~~~~!!!!!!!!!!`);
 
+    // const reviewId = currSpotReviews[0].userId;
 
     useEffect(() => {
         dispatch(getAllReviews(spotId))
@@ -37,7 +38,7 @@ const SpotReviews = ({ reviewId }) => {
         await dispatch(deleteOneReview(reviewId))
         e.prevent.Default();
 
-        // history.push('/');
+        history.push('/');
 
     }
 

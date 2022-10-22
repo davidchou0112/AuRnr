@@ -11,6 +11,7 @@ import CreateSpotFormModal from './components/CreateSpotFormModal';
 // import EditSpotForm from './components/EditSpot/EditSpot';
 import MySpots from './components/UserSpots/UserSpots';
 import SpotReviews from './components/Reviews/SpotReviews';
+import MyReviews from './components/MyReviews/MyReviews';
 
 
 function App() {
@@ -34,8 +35,6 @@ function App() {
             <DisplaySingleSpot />
           </Route>
 
-
-
           <Route path='/spots/:spotId/edit'>
             <SpotReviews />
           </Route>
@@ -48,9 +47,16 @@ function App() {
             <MySpots />
           </Route>
 
-
-          <Route path='/current'>
+          <Route path='/:spotId/reviews'>
             <SpotReviews />
+          </Route>
+
+          <Route path='/my-reviews'>
+            <MyReviews />
+          </Route>
+
+          <Route>
+            PageNotFound
           </Route>
 
         </Switch>

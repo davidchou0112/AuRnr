@@ -70,8 +70,16 @@ function ProfileButton({ user }) {
                         </p>
 
                         <p className='options' >
+                            <NavLink to='/my-reviews' >
+                                <button className=''>
+                                    My Reviews
+                                </button>
+                            </NavLink>
+                        </p>
+
+                        <p className='options' >
                             <NavLink to='/current' >
-                                <button className='logout-button'>
+                                <button className=''>
                                     My Spots
                                 </button>
                             </NavLink>
