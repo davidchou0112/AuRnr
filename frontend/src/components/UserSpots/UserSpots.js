@@ -56,7 +56,7 @@ const MySpots = () => {
                                                 ${spot.price}
                                             </strong>
                                             &nbsp;
-                                            night
+                                            / night
                                         </div>
                                     </div>
                                 </div>
