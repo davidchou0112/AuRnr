@@ -53,7 +53,7 @@ const MyReviews = () => {
                                 <div>{review.review}</div>
                                 {/* <div>{review?.ReviewImages?.map(imageUrl => <img  src={imageUrl} alt={imageUrl} key={imageUrl}></img>)}</div> */}
                                 <div>
-                                    <button onClick={() => deleteReviewClickEvent(review.id)}>Delete</button>
+                                    <button className='button' onClick={() => deleteReviewClickEvent(review.id)}>Delete</button>
                                 </div>
                             </div>
                         )
