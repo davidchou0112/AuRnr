@@ -56,29 +56,29 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
     }
 
     return (
-        <div className='create-review-outer-container'>
-            <form onSubmit={handleSubmit}>
-                <div id='createReviewTitle'>Create Review</div>
-                <div id='createReview-fieldContainer'>
+        <div >
+            <form className='entire-form' onSubmit={handleSubmit}>
+                <div >Create Review</div>
+                <div >
                     <ul>
                         {errors && errors.map((error, idx) => <li key={idx} className='errors-li'>{error}</li>)}
                     </ul>
-                    <div className='inputContainer' id='createReview-top-label'>
-                        <label className='create-spot-label'>Review:
+                    <div >
+                        <label input-label>Review:
                             <textarea
                                 id='review'
                                 placeholder='Providing your review here..'
                                 value={review}
                                 required
                                 onChange={e => setReview(e.target.value)}
-                                className='createReview-review-inputField'
+                                className='textArea'
                             >
                             </textarea>
                         </label>
                     </div>
 
-                    <div className='inputContainer' id='createReview-middle-label'>
-                        <label className='create-spot-label'>Rating (1 - 5):
+                    <div>
+                        <label input-label>Rating (1 - 5):
                             <input
                                 type='number'
                                 min='1'
@@ -92,8 +92,8 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
                         </label>
                     </div>
 
-                    {/* <div className='inputContainer' id='bottom-label'>
-                        <label className='create-spot-label'>Img url
+                    {/* <div>
+                        <label input-label>Img url
                             <input
                                 type='text'
                                 placeholder='http://...'
@@ -106,8 +106,8 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
                     </div> */}
 
                     <div>
-                        <button className='styledButton'>Create Review</button>
-                        <button type='button' onClick={handleCancelClick} className='styledButton'>Cancel</button>
+                        <button className='button'>Create Review</button>
+                        <button className='button' onClick={handleCancelClick} >Cancel</button>
                     </div>
                 </div>
             </form>
