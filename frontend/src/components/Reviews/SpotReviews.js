@@ -1,35 +1,67 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { getAllReviews } from '../../store/reviews';
+import { useHistory, useParams } from 'react-router-dom';
+import { deleteOneReview, getAllReviews } from '../../store/reviews';
 // import CreateReviewForm from '../CreateReviewFormModal/CreateReviewForm';
 // import CreateReviewFormModal from '../CreateReviewFormModal/CreateReviewForm';
 import './SpotReviews.css';
 
-const SpotReviews = () => {
+const SpotReviews = ({ reviewId }) => {
+    const sessionUser = useSelector((state) => state.session.user);
+    const history = useHistory
     const dispatch = useDispatch();
     const { spotId } = useParams();
-    // console.log(`~~~~~~~~~~~~~~~~~~~~~~~~this is spotId:`, spotId);
+    console.log(`~~~~~~~~~~~~~~~~~~~~~~~~this is spotId:`, spotId);
     const reviews = useSelector(state => state.reviews)
-    // console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`,)
+    console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`,)
     const spot = useSelector(state => state.spots.singleSpot);
     const currUser = useSelector(state => state.session.user)
-    // console.log("reviews state from All Reviews for Spot:", reviews)
+    console.log("reviews state from All Reviews for Spot:", reviews)
+
+    const currSpotReviews = Object.values(reviews)
+    console.log(currSpotReviews, `!!!!!!!!!!~~~~~currSpotReviews~~~~~~~~~~~~!!!!!!!!!!`);
+    console.log(currSpotReviews.id, `!!!!!!!!!!~~~~~currSpotReviews.id~~~~~~~~~~~~!!!!!!!!!!`);
+
 
     useEffect(() => {
         dispatch(getAllReviews(spotId))
+
     }, [dispatch, spotId])
 
-    const sessionUser = useSelector((state) => state.user);
 
-    const currSpotReviews = Object.values(reviews)
+    // deleteOneReview
+    const clickReviewDelete = async (reviewId, e) => {
+
+        console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~this is reviewId:::`, reviewId)
+
+        await dispatch(deleteOneReview(reviewId))
+        e.prevent.Default();
+
+        // history.push('/');
+
+    }
+
+
+    // const [reviewId, setReviewId] = useState();
+    // useEffect(() => {
+    //     dispatch(deleteOneReview(currSpotReviews.id))
+
+    // }, [dispatch, currSpotReviews.id])
+
+    // useEffect(() => {
+    //     dispatch(deleteOneReview(reviewId))
+
+    // }, [dispatch, reviewId])
+
+
+    // console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sessionUser:~~`, sessionUser)
+
     // .filter(review => {
     // console.log("review.spotId:", review.spotId)
     //     return review.spotId === +spotId;
     // })
 
     // console.log("currSpotReviews from All Reviews for Spot:", currSpotReviews)
-
     if (!currSpotReviews) return null;
 
     let userId
@@ -57,20 +89,42 @@ const SpotReviews = () => {
 
                             <div>
                                 <div className="each-review-user">By: {review?.User?.firstName}{" "}{review?.User?.lastName}</div>
-                                <div className="each-review-date">On: {new Date(review.createdAt).toString().slice(3, -42)}</div>
-                            </div>
-                            {/* review.review */}
-                            <div>{currSpotReviews[0].review}</div>
-                            {review.userId === currUser.id && <button>delete</button>}
-                            {/* {sessionUser && review.userId === currUser.id ? <button>delete</button> : null} */}
+                                <div className="each-review-date">On: {new Date(review.createdAt).toString('').slice(3, -42)}</div>
+                                {/* {review.spotId === spotId ? currSpotReviews : null} */}
+                                {/* {currSpotReviews.review} */}
+                                {/* {review.review} */}
+                                {/* {review.userId === currUser.id &&
+                                    <button onClick={reviewId => setReviewId(currUser.id)}>
+                                        delete
+                                    </button>} */}
+                                <div>~ {currSpotReviews[0].review} ~</div>
 
+                                {/* sort of working */}
+                                {/* {sessionUser && review.userId === currUser.id ? <button >delete</button> : null} */}
+
+
+                                {/* <button onClick={deleteOneReview(review.id)}>Delete</button> */}
+
+                                {sessionUser && review.userId === currUser.id ? <button onClick={clickReviewDelete}>Delete</button> : null}
+
+
+
+                                {/* not working
+                                <div>
+                                    <button onClick={deleteOneReview(reviewId)}>
+                                        Delete
+                                    </button>
+                                </div> */}
+
+
+                            </div>
                             {/* <div>{review.map(imageUrl => <img className="each-review-img" src={imageUrl} alt={imageUrl} key={imageUrl}></img>)}</div> */}
                             {/* {console.log("--------------------===========", review.ReviewImages)} */}
                         </div>
                     )
                 })}
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

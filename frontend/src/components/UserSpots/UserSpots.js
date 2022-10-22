@@ -10,10 +10,10 @@ const MySpots = () => {
 
     const dispatch = useDispatch();
     const allSpots = useSelector(state => state.spots.allSpots);
-    // console.log(allSpots, `~~~~~~~~~~~~~~~~~~~~~~~~~~~ allSpots~~~~~ data`);
+    console.log(allSpots, `~~~~~~~~~~~~~~~~~~~~~~~~~~~ allSpots~~~~~ data`);
 
     const spotsData = Object.values(allSpots);
-    // console.log(spotsData, `~~~~~~~~~~~~~~~~~~~~~~~~~spotsData~~~~!@!@!@!~`);
+    console.log(spotsData, `~~~~~~~~~~~~~~~~~~~~~~~~~spotsData~~~~!@!@!@!~`);
 
     const sessionUser = useSelector(state => state.session.user);
 
@@ -30,7 +30,7 @@ const MySpots = () => {
         return <Redirect to="/" />
     }
 
-    // console.log('~~~~~~~~~~~~~~~~~ownedSpots~~~~~~~~~~~~~~~~~~~', ownedSpots)
+    console.log('~~~~~~~~~~~~~~~~~ownedSpots~~~~~~~~~~~~~~~~~~~', ownedSpots)
 
 
     if (!spotsData) {
