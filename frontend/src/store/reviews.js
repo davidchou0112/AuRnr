@@ -4,7 +4,7 @@ const CREATE_REVIEW = 'reviews/setCreateReview';
 const ADD_REVIEW_IMG = 'reviews/setAddReviewImg';
 const UPDATE_REVIEW = 'reviews/setUpdateReview';
 const DELETE = 'reviews/setDeleteReview';
-
+const CLEARREVIEW = 'reviews/clearReview'
 
 const allReviews = (reviews) => {
     return {
@@ -41,6 +41,12 @@ const deleteReview = (reviewId) => {
 
         type: DELETE,
         reviewId
+    }
+}
+
+export const clearSpot = () => {
+    return {
+        type: CLEARREVIEW
     }
 }
 
@@ -208,6 +214,12 @@ const reviewReducer = (state = initialState, action) => {
             console.log(`~~~~~~~~~~~~~~~~~~dis newState::`, newState)
             delete newState[action.reviewId]
             return newState;
+
+
+        case CLEARREVIEW:
+            newState = {};
+            return newState;
+
 
         default:
             return state;

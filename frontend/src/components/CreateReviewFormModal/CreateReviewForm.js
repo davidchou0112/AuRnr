@@ -49,10 +49,11 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
 
     // // () cancel button is not closing modal
     const handleCancelClick = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
         // setModal(false);
-        history.push(`/spots/${spotId}`);
-        window.location.reload();
+        return null;
+        // history.push(`/spots/${spotId}`);
+        // window.location.reload();
     }
 
     return (
@@ -107,7 +108,7 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
 
                     <div>
                         <button className='button'>Create Review</button>
-                        <button className='button' onClick={handleCancelClick} >Cancel</button>
+                        {/* <button className='button' onClick={handleCancelClick} >Cancel</button> */}
                     </div>
                 </div>
             </form>

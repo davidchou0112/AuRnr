@@ -37,7 +37,7 @@ function CreateSpotForm({ setShowModal }) {
     // Error handling
     useEffect(() => {
         const errors = [];
-        if (!address.length) errors.push('Street address is required')
+        if (!address.length || address.length < 3) errors.push('Street address is required')
         if (!city.length) errors.push('City is required')
         if (!state.length) errors.push('State is required')
         if (!country.length) errors.push('Country is required')
@@ -54,6 +54,7 @@ function CreateSpotForm({ setShowModal }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (validations.length) return null;
         const spotInfo = {
             address,
             city,
@@ -69,6 +70,7 @@ function CreateSpotForm({ setShowModal }) {
         }
 
         const imgInfo = { url, preview: true };
+        if (validations.length) return
 
         // let newSpot = await dispatch(sessionActions.actionAddOneSpot(spotInfo))
         let newSpot = await actionAddOneSpot(spotInfo, imgInfo)(dispatch)
