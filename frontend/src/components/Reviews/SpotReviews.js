@@ -36,7 +36,8 @@ const SpotReviews = ({ reviewId }) => {
 
 
     const reviewsArr = Object.values(reviews)
-    const reviewUser = reviewsArr.filter(review => review.userId === sessionUser.id)
+    let reviewUser;
+    if (sessionUser) reviewUser = reviewsArr.filter(review => review.userId === sessionUser.id)
     console.log(reviewUser, `~~~~~~~~~~~reviewUser~~`)
     // {!reviewUser && sessionUser && owner?.id !== sessionUser?.id } 
 
@@ -118,7 +119,7 @@ const SpotReviews = ({ reviewId }) => {
                     )
                 })}
             </div >
-            {!reviewUser.length && sessionUser && owner?.id !== sessionUser?.id && (<CreateReviewFormModal />)}
+            {sessionUser && !reviewUser.length && owner?.id !== sessionUser?.id && (<CreateReviewFormModal />)}
 
         </div >
     )
