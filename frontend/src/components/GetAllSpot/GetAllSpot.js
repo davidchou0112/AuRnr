@@ -28,17 +28,17 @@ const DisplayAllSpots = () => {
                         <NavLink className='singleSpots-nav' to={`spots/${spot.id}`}>
                             <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt='Not a proper url.' />
                             <div >
-                                <p key={spot.name}>{spot.name}
+                                <div key={spot.name}>{spot.name}
                                     <i>★</i>
                                     &nbsp;
-                                    {spot.avgRating > 0 ? Number(spot.avgRating) : 'New'}</p>
+                                    {spot.avgRating > 0 ? Number(spot.avgRating) : 'New'}</div>
                                 {/* <p key={spot.address}>{spot.address} </p> */}
                                 {/* <p key={spot.avgRating}>{spot.avgRating} Stars</p> */}
 
-                                <p key={spot.city}>{spot.city}, {spot.state} </p>
-                                {/* <p key={spot.country}>{spot.country}</p> */}
-                                {/* <p key={spot.description}>{spot.description} </p> */}
-                                <p key={spot.price}>${spot.price} night </p>
+                                <div key={spot.city}>{spot.city}, {spot.state} </div>
+                                {/* <div key={spot.country}>{spot.country}</div> */}
+                                {/* <div key={spot.description}>{spot.description} </div> */}
+                                <div key={spot.price}>${spot.price} night </div>
                             </div>
                         </NavLink>
                     </div>

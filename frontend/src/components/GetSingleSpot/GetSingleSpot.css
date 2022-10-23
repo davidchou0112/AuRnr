@@ -5,7 +5,6 @@
 }
 
 .single-spotDetails {
-
     justify-content: center;
     position: relative;
     width: 800px;
@@ -13,7 +12,7 @@
 }
 
 .singleSpotImage {
-
-    width: 800px;
+    justify-content: center;
+    width: 100%;
     border-radius: 20px;
 }
