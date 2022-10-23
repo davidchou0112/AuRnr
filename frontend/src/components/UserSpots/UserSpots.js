@@ -40,7 +40,9 @@ const MySpots = () => {
         <Redirect to='/current' />
         return (
             <div>
+
                 <div>
+                    <h1>My Spots</h1>
                     {ownedSpots?.map((spot) => (
                         <div className='allSpot-div'>
                             <NavLink className='singleSpots-nav' to={`/spots/${spot.id}`}>
@@ -56,7 +58,7 @@ const MySpots = () => {
                                                 ${spot.price}
                                             </strong>
                                             &nbsp;
-                                            / night
+                                            night
                                         </div>
                                     </div>
                                 </div>

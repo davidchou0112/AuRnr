@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { deleteOneReview, getAllReviews } from '../../store/reviews';
+import CreateReviewFormModal from '../CreateReviewFormModal';
 // import CreateReviewForm from '../CreateReviewFormModal/CreateReviewForm';
 // import CreateReviewFormModal from '../CreateReviewFormModal/CreateReviewForm';
 import './SpotReviews.css';
@@ -101,13 +102,15 @@ const SpotReviews = ({ reviewId }) => {
                                     </button>} */}
                                 <div>~ {currSpotReviews[0].review} ~</div>
 
+                                {/* testing delete buttons here */}
+
                                 {/* sort of working */}
                                 {/* {sessionUser && review.userId === currUser.id ? <button >delete</button> : null} */}
 
 
                                 {/* <button onClick={deleteOneReview(review.id)}>Delete</button> */}
 
-                                {sessionUser && review.userId === currUser.id ? <button onClick={clickReviewDelete}>Delete</button> : null}
+                                {/* {sessionUser && review.userId === currUser.id ? <button onClick={clickReviewDelete}>Delete</button> : null} */}
 
 
 
@@ -122,10 +125,14 @@ const SpotReviews = ({ reviewId }) => {
                             </div>
                             {/* <div>{review.map(imageUrl => <img className="each-review-img" src={imageUrl} alt={imageUrl} key={imageUrl}></img>)}</div> */}
                             {/* {console.log("--------------------===========", review.ReviewImages)} */}
+
+
                         </div>
+
                     )
                 })}
             </div >
+            <CreateReviewFormModal />
         </div >
     )
 }

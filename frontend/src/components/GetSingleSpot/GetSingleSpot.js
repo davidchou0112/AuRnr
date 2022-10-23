@@ -21,7 +21,7 @@ const DisplaySingleSpot = () => {
     // const oneSpot = useSelector(state => state.singleSpot)
     // const oneSpot = useSelector(state => { if (state.spot.singleSpot) return state.spots.singleSpot });
     const oneSpot = useSelector(state => state.spots.singleSpot);
-    // console.log(`~~~~~~~~spot from spot detail component~~~`, oneSpot)
+    console.log(`-------~~~~~------------~~~spot from spot detail component~---------~~`, oneSpot)
 
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId))
@@ -70,27 +70,32 @@ const DisplaySingleSpot = () => {
             // className='single-spot-div'
             <div key='root'>
                 <div >
-                    <h1>{oneSpot.name} - ${oneSpot.price} night</h1>
+                    <h1>{oneSpot.name}  ${oneSpot.price} night
+                        <p>
+                            <i>★</i>
+                            &nbsp;
+                            {oneSpot.avgStarRating > 0 ? oneSpot.avgStarRating : 'New'}
+
+                            {/* I want to display the number of reviews here */}
+                            {/* {oneSpot.numReviews > 0 ? oneSpot.numReviews : ''} */}
+
+                        </p>
+                    </h1>
+
                     <img className='singleSpotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Not a proper url'} />
                     <div className='single-spotDetails' ></div>
+
                     <p key={oneSpot.address}>{oneSpot.address} </p>
-                    {/* <p key={oneSpot.avgRating}>{oneSpot.avgRating} </p> */}
                     <p key={oneSpot.city}>{oneSpot.city}, {oneSpot.state} </p>
                     <p key={oneSpot.country}>{oneSpot.country} </p>
                     <p key={oneSpot.description}>{oneSpot.description} </p>
-                    {/* <p key={oneSpot.price}>${oneSpot.price} / night</p> */}
 
                 </div>
 
-                <div>
-                    <CreateReviewFormModal />
-                </div>
                 <div>
                     <SpotReviews />
                 </div>
             </div>
-
-
         )
     }
 }
