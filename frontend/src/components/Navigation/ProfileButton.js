@@ -73,7 +73,7 @@ function ProfileButton({ user }) {
 
                         <p className='options' >
                             <NavLink to='/current' >
-                                <button className=''>
+                                <button className='profileButtons'>
                                     My Spots
                                 </button>
                             </NavLink>
@@ -81,14 +81,14 @@ function ProfileButton({ user }) {
 
                         <p className='options' >
                             <NavLink to='/my-reviews' >
-                                <button className=''>
+                                <button className='profileButtons'>
                                     My Reviews
                                 </button>
                             </NavLink>
                         </p>
 
                         <p className='options'>
-                            <button onClick={logout}>Log Out</button>
+                            <button className='profileButtons' onClick={logout}>Log Out</button>
                         </p>
 
                     </ul>

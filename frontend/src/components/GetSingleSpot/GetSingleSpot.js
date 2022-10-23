@@ -55,9 +55,8 @@ const DisplaySingleSpot = () => {
 
                     <img className='singleSpotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Not a proper url'} />
 
-                    <p key={oneSpot.address}>{oneSpot.address} </p>
-                    <p key={oneSpot.city}>{oneSpot.city}, {oneSpot.state} </p>
-                    <p key={oneSpot.country}>{oneSpot.country} </p>
+                    <div className='singleSpotAddress'>{oneSpot.address}, {oneSpot.city}, {oneSpot.state} {oneSpot.country}</div>
+
                     <br></br>
                     <div key={oneSpot.description}>{oneSpot.description} </div>
                 </div>
