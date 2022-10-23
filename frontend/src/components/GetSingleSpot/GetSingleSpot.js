@@ -1,19 +1,18 @@
 import { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getAllReviews } from '../../store/reviews';
-
 import { actionGetOneSpot } from '../../store/spots';
-import CreateReviewFormModal from '../CreateReviewFormModal';
-// import CreateReviewForm from '../CreateReviewFormModal/CreateReviewForm';
 import SpotReviews from '../Reviews/SpotReviews';
-
 import './GetSingleSpot.css'
 
 const DisplaySingleSpot = () => {
     const dispatch = useDispatch();
     const { spotId } = useParams();
-    // console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
 
     // const { spot } = useParams();
     // console.log(spot, '------------------------spot----------------'); //undefined
@@ -25,48 +24,18 @@ const DisplaySingleSpot = () => {
 
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId))
-        dispatch(getAllReviews())
+            .then(() => dispatch(getAllReviews()))
+            .then(() => setIsLoaded(true))
         // console.log(oneSpot.SpotImages[0].url, `~~~~~~~~~~~~~~~~~~~~~`)
     }, [dispatch, spotId])
     // }, [dispatch, spotId, oneSpot.price])
-
-
-
-    // const spotImgArr = spot?.SpotImages;
-    // console.log('spot from component/singleSpot', spotImgArr)
-
-    // let prevImgUrl;
-    // let otherImgUrlArr = [];
-    // if (spotImgArr) {
-    //     for (let img of spotImgArr) {
-    //         if (img.preview === true) {
-    //             prevImgUrl = img.url;
-    //         } else {
-    //             otherImgUrlArr.push(img.url)
-    //         }
-
-    //     }
 
 
     // optional chaining allows us to continue even if undefined is returned ( 'try and catch') delays speed, use carefully
     if (!oneSpot?.SpotImages?.length) {
         return 'Loading...'
     } else {
-        // console.log(oneSpot, '~~~~~~~~~~~~~~~~~~oneSpot~~~~~~~~~')
-        // console.log(oneSpot.SpotImages, `~~~~~~~~~~~~~~~~~~~~~~~~~~~this is~~~~~~~~~`)
-        // const oneSpot1 = useSelector(state => state.spots)
-        // console.log(oneSpot1, '~~~~~~~~~~~~~~~~~~oneSpot1~~~~~~~~~')
-
-        // const oneSpot2 = useSelector(state => state)
-        // console.log(oneSpot2, '~~~~~~~~~~~~~~~~~~oneSpot2~~~~~~~~~')
-
-        // console.log(oneSpot.spots.singleSpot, '~~~~!!~~~~~~~~~oneSpot.singleSpot~~~~~~!!!~~~')
-
-
-        // if (!Object.values(oneSpot).length) {
-        //     return null
-        // }
-        return (
+        return isLoaded && (
             // className='single-spot-div'
             <div key='root'>
                 <div >
@@ -83,13 +52,11 @@ const DisplaySingleSpot = () => {
                     </h1>
 
                     <img className='singleSpotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Not a proper url'} />
-                    <div className='single-spotDetails' ></div>
 
                     <p key={oneSpot.address}>{oneSpot.address} </p>
                     <p key={oneSpot.city}>{oneSpot.city}, {oneSpot.state} </p>
                     <p key={oneSpot.country}>{oneSpot.country} </p>
                     <p key={oneSpot.description}>{oneSpot.description} </p>
-
                 </div>
 
                 <div>

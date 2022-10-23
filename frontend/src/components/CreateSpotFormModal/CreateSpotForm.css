@@ -25,3 +25,7 @@
     padding: 24px;
     border-radius: 6px;
 }
+
+.errorHandling {
+    color: #c13515;
+}

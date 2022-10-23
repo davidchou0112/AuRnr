@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 // import EditSpotFormModal from '../EditSpot';
 
 // import { useSelector } from 'react-redux';
@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
+    const history = useHistory();
     const [showMenu, setShowMenu] = useState(false);
 
 
@@ -35,7 +36,7 @@ function ProfileButton({ user }) {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logout());
-        window.location.reload();
+        history.push('/')
     };
 
 

@@ -46,15 +46,17 @@ const deleteReview = (reviewId) => {
 
 export const getAllReviews = (spotId) => async (dispatch) => {
     console.log('is this getting here?')
+    console.log(`~~~~~~~~~~~~spotId~~~`, spotId)
+
     const response = await fetch(`/api/spots/${spotId}/reviews`);
-    console.log(`~~~~~~~~~~~~response~~~`, response)
+    // console.log(`~~~~~~~~~~~~response~~~`, response)
 
     if (response.ok) {
 
         const reviews = await response.json();
         dispatch(allReviews(reviews));
-        console.log(`~~~~~~~~~~~~reviews~~~`, reviews)
-        console.log(`~~~~~~~~~~~~response~~~`, response)
+        // console.log(`~~~~~~~~~~~~reviews~~~`, reviews)
+        // console.log(`~~~~~~~~~~~~response~~~`, response)
 
         return reviews;
     }

@@ -12,9 +12,10 @@ const SpotReviews = ({ reviewId }) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { spotId } = useParams();
+    const [isLoaded, setIsLoaded] = useState(false);
     console.log(`~~~~~~~~~~~~~~~~~~~~~~~~this is spotId:`, spotId);
     const reviews = useSelector(state => state.reviews)
-    console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`,)
+    console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`, reviews)
     const spot = useSelector(state => state.spots.singleSpot);
     const currUser = useSelector(state => state.session.user)
     console.log("reviews state from All Reviews for Spot:", reviews)
@@ -26,50 +27,39 @@ const SpotReviews = ({ reviewId }) => {
     // const reviewId = currSpotReviews[0].userId;
 
     useEffect(() => {
+
         dispatch(getAllReviews(spotId))
+            .then(() => setIsLoaded(true))
 
     }, [dispatch, spotId])
 
-
     // deleteOneReview
-    const clickReviewDelete = async (reviewId, e) => {
-
-        console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~this is reviewId:::`, reviewId)
-
-        await dispatch(deleteOneReview(reviewId))
-        e.prevent.Default();
-
-        history.push('/');
-
-    }
-
-
+    // const clickReviewDelete = async (reviewId, e) => {
+    //     console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~this is reviewId:::`, reviewId)
+    //     await dispatch(deleteOneReview(reviewId))
+    //     e.prevent.Default();
+    //     history.push('/');
+    // }
     // const [reviewId, setReviewId] = useState();
     // useEffect(() => {
     //     dispatch(deleteOneReview(currSpotReviews.id))
-
     // }, [dispatch, currSpotReviews.id])
-
     // useEffect(() => {
     //     dispatch(deleteOneReview(reviewId))
-
     // }, [dispatch, reviewId])
-
-
     // console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~sessionUser:~~`, sessionUser)
-
     // .filter(review => {
     // console.log("review.spotId:", review.spotId)
     //     return review.spotId === +spotId;
     // })
-
     // console.log("currSpotReviews from All Reviews for Spot:", currSpotReviews)
+
     if (!currSpotReviews) return null;
 
     let userId
     if (currUser) userId = currUser.id;
 
-    return (
+    return isLoaded && (
         <div>
             <div className="review-title">
                 <i >★</i>
@@ -80,14 +70,12 @@ const SpotReviews = ({ reviewId }) => {
             <div className="create-review">{
                 currUser &&
                 spot.ownerId === userId
-                // <CreateReviewForm />
             }
             </div>
             <div className="review-details-container">
                 {currSpotReviews.length !== 0 && currSpotReviews.map(review => {
                     console.log(`currentSpotReviews~~~~~~~~~~~~~~~~~~~`, currSpotReviews)
                     return (
-                        // <div className="each-review-detail" key={review.id}>
                         <div className="each-review-detail" >
 
                             <div>
