@@ -68,7 +68,7 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
                         <label input-label>Review:
                             <textarea
                                 id='review'
-                                placeholder='Providing your review here..'
+                                placeholder='Provide your review here..'
                                 value={review}
                                 required
                                 onChange={e => setReview(e.target.value)}

@@ -7,8 +7,9 @@
 
 .spotImage {
     width: 100%;
-    min-width: 150px;
+    min-width: 50px;
     max-width: 650px;
+    min-height: 150px;
     border-radius: 10px;
 }
 

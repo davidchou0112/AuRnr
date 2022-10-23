@@ -99,57 +99,58 @@ function CreateSpotForm({ setShowModal }) {
 
 
     return (
-        <section className='entire-form'> Create New Spot
-            <form onSubmit={handleSubmit} className='create-spot-form' >
-                <label className='input-label'>
-                    <input className='input-field'
-                        type='text'
-                        placeholder='Address'
-                        min='1'
-                        required
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                    />
-                </label>
-                {!address.length && <div className="errorHandling">Street address is required</div>}
+        <div className='modalForm'>
+            <section className='entire-form'> Create New Spot
+                <form onSubmit={handleSubmit} className='create-spot-form' >
+                    <label className='input-label'>
+                        <input className='input-field'
+                            type='text'
+                            placeholder='Address'
+                            min='1'
+                            required
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                        />
+                    </label>
+                    {!address.length && <div className="errorHandling">Street address is required</div>}
 
-                <label className='input-label'>
-                    <input className='input-field'
-                        type='text'
-                        placeholder='City'
-                        min='0'
-                        max='100'
-                        required
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                    />
-                </label>
-                {!city.length && <div className="errorHandling">City is required</div>}
+                    <label className='input-label'>
+                        <input className='input-field'
+                            type='text'
+                            placeholder='City'
+                            min='0'
+                            max='100'
+                            required
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                        />
+                    </label>
+                    {!city.length && <div className="errorHandling">City is required</div>}
 
-                <label className='input-label'>
-                    <input className='input-field'
-                        type='text'
-                        placeholder='State'
-                        min='0'
-                        max='100'
-                        required
-                        value={state}
-                        onChange={(e) => setState(e.target.value)}
-                    />
-                </label >
-                {!state.length && <div className="errorHandling">State is required</div>}
+                    <label className='input-label'>
+                        <input className='input-field'
+                            type='text'
+                            placeholder='State'
+                            min='0'
+                            max='100'
+                            required
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                        />
+                    </label >
+                    {!state.length && <div className="errorHandling">State is required</div>}
 
-                <label className='input-label'>
-                    <input className='input-field'
-                        type='text'
-                        placeholder='Country'
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                    />
-                </label >
-                {!country.length && <div className="errorHandling">Country is required</div>}
+                    <label className='input-label'>
+                        <input className='input-field'
+                            type='text'
+                            placeholder='Country'
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                        />
+                    </label >
+                    {!country.length && <div className="errorHandling">Country is required</div>}
 
-                {/* <label> Latitude
+                    {/* <label> Latitude
                     <input
                     type='number'
                         placeholder='Latitude'
@@ -169,60 +170,61 @@ function CreateSpotForm({ setShowModal }) {
                     </label> 
                     {!lng && <div className = "errorHandling">Lng is required</div> } */}
 
-                <label label className='input-label'>
-                    < input className='input-field'
-                        type='text'
-                        placeholder='Name'
-                        value={name}
-                        onChange={(e) => setName(e.target.value)
-                        }
-                    />
-                </label >
-                {!name.length && <div className="errorHandling">Name is required</div>}
+                    <label label className='input-label'>
+                        < input className='input-field'
+                            type='text'
+                            placeholder='Name'
+                            value={name}
+                            onChange={(e) => setName(e.target.value)
+                            }
+                        />
+                    </label >
+                    {!name.length && <div className="errorHandling">Name is required</div>}
 
-                <label className='input-label'>
-                    <input className='input-field'
-                        type='text'
-                        placeholder='Description'
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    />
-                </label >
-                {!description.length && <div className="errorHandling">Description is required</div>}
+                    <label className='input-label'>
+                        <input className='input-field'
+                            type='text'
+                            placeholder='Description'
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                        />
+                    </label >
+                    {!description.length && <div className="errorHandling">Description is required</div>}
 
-                <label className='input-label'>
-                    <input className='input-field'
-                        type='number'
-                        placeholder='Price'
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                    />
-                </label >
-                {price === '0' && <div className="errorHandling">For free? </div>}
-                {!price && <div className="errorHandling">Price is required</div>}
+                    <label className='input-label'>
+                        <input className='input-field'
+                            type='number'
+                            placeholder='Price'
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                        />
+                    </label >
+                    {price === '0' && <div className="errorHandling">For free? </div>}
+                    {!price && <div className="errorHandling">Price is required</div>}
 
 
-                <label className='input-label'>
-                    <input className='input-field'
-                        type='test'
-                        placeholder='Image Url'
-                        value={url}
-                        onChange={(e) => setUrl(e.target.value)}
-                    />
-                </label >
-                {!url && <div className="errorHandling">Url is required</div>}
+                    <label className='input-label'>
+                        <input className='input-field'
+                            type='test'
+                            placeholder='Image Url'
+                            value={url}
+                            onChange={(e) => setUrl(e.target.value)}
+                        />
+                    </label >
+                    {!url && <div className="errorHandling">Url is required</div>}
 
-                {/* <label className='preview-image-label' > Preview Image?
+                    {/* <label className='preview-image-label' > Preview Image?
                     <select className='true-false' onChange={(e) => setPreview(e.target.value)}>
                         <option key='true'>true</option>
                         <option key='false'>false</option>
                     </select >
                 </label> */}
 
-                <button className='button' type='submit'>Create new Spot</button>
-                <button className='button' onClick={handleCancelClick} type='button'>Cancel</button>
-            </form >
-        </section >
+                    <button className='button' type='submit'>Create new Spot</button>
+                    <button className='button' onClick={handleCancelClick} type='button'>Cancel</button>
+                </form >
+            </section >
+        </div>
 
     )
 

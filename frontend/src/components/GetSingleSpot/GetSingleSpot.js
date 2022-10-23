@@ -38,7 +38,7 @@ const DisplaySingleSpot = () => {
         return isLoaded && (
             // className='single-spot-div'
             <div key='root'>
-                <div >
+                <div className='single-spotDetails'>
                     <h1>{oneSpot.name}  ${oneSpot.price} night
                         <p>
                             <i>★</i>
