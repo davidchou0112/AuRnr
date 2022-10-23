@@ -37,14 +37,14 @@ function CreateSpotForm({ setShowModal }) {
     // Error handling
     useEffect(() => {
         const errors = [];
-        if (!address.length || address.length < 3) errors.push('Street address is required')
+        if (!address.length) errors.push('Street address is required')
         if (!city.length) errors.push('City is required')
         if (!state.length) errors.push('State is required')
         if (!country.length) errors.push('Country is required')
         // if (!lat) errors.push('Lat is required')
         // if (!lng) errors.push('Lng is required')
         if (!url) errors.push('URL is required')
-        if (!name.length) errors.push('Name is required');
+        if (!name.length || name.length < 3) errors.push('Name is required');
         if (!description.length) errors.push('Description is required')
         if (price < 0) errors.push('Price per day is required')
         setValidations(errors)
