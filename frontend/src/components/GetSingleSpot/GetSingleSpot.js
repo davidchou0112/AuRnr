@@ -56,8 +56,10 @@ const DisplaySingleSpot = () => {
                     <p key={oneSpot.address}>{oneSpot.address} </p>
                     <p key={oneSpot.city}>{oneSpot.city}, {oneSpot.state} </p>
                     <p key={oneSpot.country}>{oneSpot.country} </p>
+                    <br></br>
                     <p key={oneSpot.description}>{oneSpot.description} </p>
                 </div>
+
 
                 <div>
                     <SpotReviews />

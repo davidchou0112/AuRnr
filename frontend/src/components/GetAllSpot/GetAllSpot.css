@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .spotImage {
@@ -43,4 +44,8 @@ p {
     padding: 50px 100px;
     justify-items: flex-start;
 
+}
+
+.name-rating {
+    justify-content: space-between;
 }

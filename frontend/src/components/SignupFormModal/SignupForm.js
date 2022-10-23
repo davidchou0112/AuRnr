@@ -43,7 +43,7 @@ function SignupForm() {
         <section className="entire-form">
             <div className='formLabel'>Sign Up</div>
             <form onSubmit={handleSubmit}>
-                <ul>
+                <ul className='errorHandling'>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
                 <label className='input-label'>
