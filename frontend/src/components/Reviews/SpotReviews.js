@@ -71,7 +71,8 @@ const SpotReviews = ({ reviewId }) => {
     return (
         <div>
             <div className="review-title">
-                <i>Average Rating:</i>
+                <i >★</i>
+                &nbsp;
                 <span>{' '}{spot.avgStarRating === "NaN" ? `No Rating` : spot.avgStarRating}{` · `}</span>
                 <i>{currSpotReviews.length}{' '}reviews{' '}</i>
             </div>

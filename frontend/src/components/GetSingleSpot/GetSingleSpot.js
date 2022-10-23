@@ -70,11 +70,11 @@ const DisplaySingleSpot = () => {
             // className='single-spot-div'
             <div key='root'>
                 <div >
-                    <h1>{oneSpot.name} - ${oneSpot.price} / night</h1>
+                    <h1>{oneSpot.name} - ${oneSpot.price} night</h1>
                     <img className='singleSpotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Not a proper url'} />
                     <div className='single-spotDetails' ></div>
                     <p key={oneSpot.address}>{oneSpot.address} </p>
-                    <p key={oneSpot.avgRating}>{oneSpot.avgRating} </p>
+                    {/* <p key={oneSpot.avgRating}>{oneSpot.avgRating} </p> */}
                     <p key={oneSpot.city}>{oneSpot.city}, {oneSpot.state} </p>
                     <p key={oneSpot.country}>{oneSpot.country} </p>
                     <p key={oneSpot.description}>{oneSpot.description} </p>
