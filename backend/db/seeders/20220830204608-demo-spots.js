@@ -33,7 +33,7 @@ module.exports = {
         lat: 35.25,
         lng: 14.42,
         name: 'House of Diamonds',
-        description: 'Bling Bling Bling',
+        description: 'looong descriptionlooong descriptionlooong descriptionlooong descriptionlooong descriptionlooong descriptionlooong descriptionlooong description',
         price: 99999
       },
       {
