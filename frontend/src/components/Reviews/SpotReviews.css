@@ -1,0 +1,13 @@
+.reviewDisplay {
+    padding-top: 20px;
+}
+
+.each-review-detail {
+    display: flex;
+    flex-direction: row;
+    padding-top: 5px;
+}
+
+.reviewsContent {
+    padding-right: 50px;
+}

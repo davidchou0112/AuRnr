@@ -67,7 +67,7 @@ const MySpots = () => {
                                 <div>
                                     <EditSpotFormModal spotId={spot.id} />
                                 </div>
-                                <button
+                                <button className='deleteButton'
                                     onClick={() => dispatch(actionDeleteSpot(spot.id))}>
                                     Delete
                                 </button>

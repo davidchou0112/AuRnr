@@ -43,7 +43,7 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
             });
         await dispatch(getAllReviews(spotId));
         // history.push(`/spots/${spotId}`)
-        // window.location.reload();
+        window.location.reload();
 
     }
 

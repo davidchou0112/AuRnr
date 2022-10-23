@@ -89,32 +89,35 @@ const SpotReviews = ({ reviewId }) => {
     if (currUser) userId = currUser.id;
 
     return isLoaded && (
-        <div>
+        <div className='reviewDisplay'>
+            {/* <stronger>See what others have to say!</stronger> */}
             <div className="review-title">
                 <i >★</i>
                 &nbsp;
                 <span>{' '}{spot.avgStarRating === "NaN" ? `No Rating` : spot.avgStarRating}{` · `}</span>
                 <i>{currSpotReviews.length}{' '}reviews{' '}</i>
             </div>
-            <div className="create-review">{
+
+            {/* <div className="create-review">{
                 currUser &&
                 spot.ownerId === userId
             }
-            </div>
-            <div className="review-details-container">
+            </div> */}
+
+            <div className="each-review-detail" >
                 {currSpotReviews.length !== 0 && currSpotReviews.map(review => {
-                    console.log(`currentSpotReviews~~~~~~~~~~~~~~~~~~~`, currSpotReviews)
                     return (
-                        <div className="each-review-detail" >
+                        <div>
 
-                            <div>
-                                <div className="each-review-user">By: {review?.User?.firstName}{" "}{review?.User?.lastName}</div>
-                                <div className="each-review-date">On: {new Date(review.createdAt).toString('').slice(3, -42)}</div>
-                                <div>~ {currSpotReviews[0].review} ~</div>
+                            <div className='reviewsContent'>
 
+                                <div className='fas fa-user-circle'>{review?.User?.firstName}{" "}{review?.User?.lastName}</div>
+                                <small>{new Date(review.createdAt).toString('').slice(3, -42)}</small>
+                                <div>"{currSpotReviews[0].review}"</div>
                             </div>
 
                         </div>
+
 
                     )
                 })}

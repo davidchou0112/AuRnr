@@ -44,6 +44,8 @@ const DisplaySingleSpot = () => {
                             <i>★</i>
                             &nbsp;
                             {oneSpot.avgStarRating > 0 ? oneSpot.avgStarRating : 'New'}
+                            &nbsp;
+                            Hosted by {oneSpot.Owner.firstName} {oneSpot.Owner.lastName}
 
                             {/* I want to display the number of reviews here */}
                             {/* {oneSpot.numReviews > 0 ? oneSpot.numReviews : ''} */}
