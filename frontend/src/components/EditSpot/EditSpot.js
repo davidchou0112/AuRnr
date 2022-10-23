@@ -59,7 +59,7 @@ const EditSpotForm = ({ spotId }) => {
         if (!country.length) errors.push('Country is required')
         if (!name.length) errors.push('Name is required');
         if (!description.length) errors.push('Description is required')
-        // if (!price) errors.push('Price per day is required')
+        if (!price) errors.push('Price per day is required')
         // if (!lat) errors.push('Lat is required')
         // if (!lng) errors.push('Lng is required')
         // if (!url) errors.push('URL is required')
@@ -76,6 +76,7 @@ const EditSpotForm = ({ spotId }) => {
         e.preventDefault();
         // if (validations.length) return null;
 
+        if (validations.length) return null;
         // payload = spots
         const spots = {
             id: spotId,
@@ -213,7 +214,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setPrice(e.target.value)}
                     />
                 </label >
-                {price === `0` && <div className='errorHandling'>For free?</div>}
+                {/* {price === `0` && <div className='errorHandling'>For free?</div>} */}
                 {!price && <div className='errorHandling'>Price is required.</div>}
 
                 {/* <label className='input-label'>

@@ -43,10 +43,10 @@ function CreateSpotForm({ setShowModal }) {
         if (!country.length) errors.push('Country is required')
         // if (!lat) errors.push('Lat is required')
         // if (!lng) errors.push('Lng is required')
-        if (!url) errors.push('URL is required')
         if (!name.length) errors.push('Name is required and less than 50 characters');
         if (!description.length) errors.push('Description is required')
-        if (price < 0) errors.push('Price per day is required')
+        if (price < 1) errors.push('Price per day is required')
+        if (!url.match(/\.(img|jpg|jpeg|png)$/)) { errors.push("Please enter a URL ending with img, jpg, jpeg or png") }
         setValidations(errors)
 
     }, [address, city, state, country, name, description, price, url])
@@ -199,8 +199,8 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setPrice(e.target.value)}
                         />
                     </label >
-                    {price === '0' && <div className="errorHandling">For free? </div>}
-                    {!price && <div className="errorHandling">Price is required</div>}
+                    {/* {price < 1 && <div className="errorHandling">No Free Stays</div>} */}
+                    {!price && <div className="errorHandling">Price is required, no free stays</div>}
 
 
                     <label className='input-label'>
@@ -211,7 +211,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setUrl(e.target.value)}
                         />
                     </label >
-                    {!url && <div className="errorHandling">Url is required</div>}
+                    {!url && <div className="errorHandling">Please enter a URL ending with img, jpg, jpeg or png</div>}
 
                     {/* <label className='preview-image-label' > Preview Image?
                     <select className='true-false' onChange={(e) => setPreview(e.target.value)}>
