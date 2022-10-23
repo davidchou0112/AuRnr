@@ -52,7 +52,7 @@ export const clearSpot = () => {
 
 export const getAllReviews = (spotId) => async (dispatch) => {
     console.log('is this getting here?')
-    console.log(`~~~~~~~~~~~~spotId~~~`, spotId)
+    // console.log(`~~~~~~~~~~~~spotId~~~`, spotId)
 
     const response = await fetch(`/api/spots/${spotId}/reviews`);
     // console.log(`~~~~~~~~~~~~response~~~`, response)

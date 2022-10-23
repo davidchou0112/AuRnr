@@ -44,7 +44,7 @@ function CreateSpotForm({ setShowModal }) {
         // if (!lat) errors.push('Lat is required')
         // if (!lng) errors.push('Lng is required')
         if (!url) errors.push('URL is required')
-        if (!name.length || name.length < 3) errors.push('Name is required');
+        if (!name.length) errors.push('Name is required and less than 50 characters');
         if (!description.length) errors.push('Description is required')
         if (price < 0) errors.push('Price per day is required')
         setValidations(errors)
