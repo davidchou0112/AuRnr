@@ -34,7 +34,7 @@ const MyReviews = () => {
             <div>
                 <h1>My Reviews</h1>
 
-                <div>
+                <div className='reviews-outer-container'>
                     <div>
                         {currSpotReviews.length !== 0 ? currSpotReviews.map(review => {
                             return (
@@ -50,10 +50,10 @@ const MyReviews = () => {
                                     <div>
                                         <div >{new Date(review?.createdAt).toString().slice(3, -42)}</div>
                                     </div>
-                                    <div>{review.review}</div>
+                                    <div className='review-details'>{review.review}</div>
                                     {/* <div>{review?.ReviewImages?.map(imageUrl => <img  src={imageUrl} alt={imageUrl} key={imageUrl}></img>)}</div> */}
                                     <div>
-                                        <button className='button' onClick={() => deleteReviewClickEvent(review.id)}>Delete</button>
+                                        <button className='delete-review-button' onClick={() => deleteReviewClickEvent(review.id)}>Delete</button>
                                     </div>
                                 </div>
                             )

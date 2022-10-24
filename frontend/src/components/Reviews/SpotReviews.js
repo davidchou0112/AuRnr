@@ -113,7 +113,7 @@ const SpotReviews = ({ reviewId }) => {
 
                                 <div className='fas fa-user-circle'> {review?.User?.firstName}{" "}{review?.User?.lastName}</div>
                                 <small>{new Date(review.createdAt).toString('').slice(3, -42)}</small>
-                                <div>"{currSpotReviews[0].review}"</div>
+                                <div className='reviewComment'>"{currSpotReviews[0].review}"</div>
                             </div>
 
                         </div>

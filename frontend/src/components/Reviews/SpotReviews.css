@@ -11,3 +11,11 @@
 .reviewsContent {
     padding-right: 50px;
 }
+
+.reviewComment {
+    display: inline-block;
+    word-break: break-word;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis
+}

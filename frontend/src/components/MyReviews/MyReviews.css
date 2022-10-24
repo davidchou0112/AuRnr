@@ -1,0 +1,23 @@
+.reviews-outer-container {
+    width: 400px;
+    /* height: 200px */
+}
+
+.review-details {
+    display: inline-block;
+    word-break: break-word;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.delete-review-button {
+    background-color: #de1561;
+    color: #f8c5d5;
+    width: auto;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 5px;
+    margin-top: 15px;
+}

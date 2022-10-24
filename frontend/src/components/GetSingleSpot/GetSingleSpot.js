@@ -58,7 +58,7 @@ const DisplaySingleSpot = () => {
                     <div className='singleSpotAddress'>{oneSpot.address}, {oneSpot.city}, {oneSpot.state} {oneSpot.country}</div>
 
                     <br></br>
-                    <div key={oneSpot.description}>{oneSpot.description} </div>
+                    <div className='description'>{oneSpot.description} </div>
                 </div>
 
 

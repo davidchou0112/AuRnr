@@ -20,3 +20,11 @@
 .singleSpotAddress {
     padding-top: 10px;
 }
+
+.description {
+    display: inline-block;
+    word-break: break-word;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
