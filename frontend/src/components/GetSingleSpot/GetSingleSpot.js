@@ -59,11 +59,12 @@ const DisplaySingleSpot = () => {
 
                     <br></br>
                     <div className='description'>{oneSpot.description} </div>
-                </div>
 
 
-                <div>
-                    <SpotReviews />
+
+                    <div>
+                        <SpotReviews />
+                    </div>
                 </div>
             </div>
         )

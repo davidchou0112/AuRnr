@@ -40,9 +40,9 @@ const MySpots = () => {
         <Redirect to='/current' />
         return (
             <div>
+                <h1 className='user-spots-title'>My Spots</h1>
+                <div className='user-spots'>
 
-                <div>
-                    <h1>My Spots</h1>
                     {ownedSpots?.map((spot) => (
                         <div className='allSpot-div'>
                             <NavLink className='singleSpots-nav' to={`/spots/${spot.id}`}>

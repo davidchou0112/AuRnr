@@ -6,3 +6,20 @@
     margin-bottom: 2px;
     height: auto;
 }
+
+.user-spots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    grid-gap: 40px 24px;
+    padding: 50px 100px;
+    justify-items: flex-start;
+}
+
+.user-spots-title {
+    margin: auto;
+    width: 60%;
+    padding-top: 20px;
+    padding-left: 45%;
+    justify-content: center;
+}
