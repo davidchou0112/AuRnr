@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { getMyReviews, deleteOneReview } from '../../store/reviews'
+import { getMyReviews, deleteOneReview, clearSpot } from '../../store/reviews'
 import './MyReviews.css'
 
 const MyReviews = () => {
@@ -18,6 +18,7 @@ const MyReviews = () => {
 
     useEffect(() => {
         dispatch(getMyReviews());
+        // return () => dispatch(clearSpot());
         // dispatch(getAllSpots());
     }, [dispatch])
 
@@ -30,7 +31,9 @@ const MyReviews = () => {
 
 
     const deleteReviewClickEvent = async (reviewId) => {
+        // window.alert('Are you sure you want to delete?')
         await dispatch(deleteOneReview(reviewId))
+        await dispatch(clearSpot());
         history.push("/my-reviews");
     }
 

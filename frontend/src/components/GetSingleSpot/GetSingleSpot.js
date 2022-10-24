@@ -43,7 +43,7 @@ const DisplaySingleSpot = () => {
                         <p>
                             <i>★</i>
                             &nbsp;
-                            {oneSpot.avgStarRating > 0 ? oneSpot.avgStarRating : 'New'}
+                            {oneSpot.avgStarRating > 0 ? oneSpot.avgStarRating.toString().slice(0, 4) : 'New'}
                             &nbsp;
                             Hosted by {oneSpot.Owner.firstName} {oneSpot.Owner.lastName}
 

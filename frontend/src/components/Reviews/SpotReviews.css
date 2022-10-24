@@ -9,13 +9,15 @@
 }
 
 .reviewsContent {
-    padding-right: 50px;
+    /* padding-right: 50px; */
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); */
 }
 
 .reviewComment {
-    display: inline-block;
+    display: grid;
     word-break: break-word;
-    width: 100%;
+    width: 60%;
     overflow: hidden;
     text-overflow: ellipsis
 }

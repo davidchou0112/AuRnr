@@ -4,7 +4,9 @@ const CREATE_REVIEW = 'reviews/setCreateReview';
 const ADD_REVIEW_IMG = 'reviews/setAddReviewImg';
 const UPDATE_REVIEW = 'reviews/setUpdateReview';
 const DELETE = 'reviews/setDeleteReview';
-const CLEARREVIEW = 'reviews/clearReview'
+const CLEARREVIEW = 'reviews/clearReview';
+// const RESET = 'reviews/reset';
+
 
 const allReviews = (reviews) => {
     return {
@@ -49,6 +51,9 @@ export const clearSpot = () => {
         type: CLEARREVIEW
     }
 }
+
+
+
 
 export const getAllReviews = (spotId) => async (dispatch) => {
     console.log('is this getting here?')
