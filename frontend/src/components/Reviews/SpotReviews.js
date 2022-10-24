@@ -38,15 +38,15 @@ const SpotReviews = ({ reviewId }) => {
     const reviewsArr = Object.values(reviews)
     let reviewUser;
     if (sessionUser) reviewUser = reviewsArr.filter(review => review.userId === sessionUser.id)
-    console.log(reviewUser, `~~~~~~~~~~~reviewUser~~`)
+    // console.log(reviewUser, `~~~~~~~~~~~reviewUser~~`)
     // {!reviewUser && sessionUser && owner?.id !== sessionUser?.id } 
 
 
     // !reviewUser && sessionUser && owner?.id !== sessionUser?.id
     // console.log(!reviewUser, `this is !reviewUser`)
     // console.log(sessionUser)
-    console.log(owner, `~~~~~~~~~~~~~`)
-    console.log(owner.id, `~~~~~~~~~~~owner.id`)
+    // console.log(owner, `~~~~~~~~~~~~~`)
+    // console.log(owner.id, `~~~~~~~~~~~owner.id`)
 
 
 

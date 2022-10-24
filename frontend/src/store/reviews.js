@@ -56,7 +56,7 @@ export const clearSpot = () => {
 
 
 export const getAllReviews = (spotId) => async (dispatch) => {
-    console.log('is this getting here?')
+    // console.log('is this getting here?')
     // console.log(`~~~~~~~~~~~~spotId~~~`, spotId)
 
     const response = await fetch(`/api/spots/${spotId}/reviews`);
@@ -219,7 +219,7 @@ const reviewReducer = (state = initialState, action) => {
 
         case DELETE:
             newState = { ...state };
-            console.log(`~~~~~~~~~~~~~~~~~~dis newState::`, newState)
+            // console.log(`~~~~~~~~~~~~~~~~~~dis newState::`, newState)
             delete newState[action.reviewId]
             return newState;
 
