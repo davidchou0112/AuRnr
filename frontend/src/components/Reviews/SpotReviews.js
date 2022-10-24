@@ -92,7 +92,7 @@ const SpotReviews = ({ reviewId }) => {
         <div className='reviewDisplay'>
             {/* <stronger>See what others have to say!</stronger> */}
             <div className="review-title">
-                <i >★</i>
+                <i>★</i>
                 &nbsp;
                 <span>{' '}{spot.avgStarRating === "NaN" ? `No Rating` : spot.avgStarRating}{` · `}</span>
                 <i>{currSpotReviews.length}{' '}reviews{' '}</i>

@@ -33,20 +33,18 @@ function LoginForm() {
         return dispatch(sessionActions.login({ credential, password })).catch(
             async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(Object.values(data.errors));
+                if (data && data.message) setErrors(Object.values(data.message));
             }
         );
     };
 
     return (
-        <section className='entire-form'>
+        <section className='login-form'>
             <div className='formLabel'>Log In</div>
             <form onSubmit={handleSubmit}>
-                <ul className='errorHandling'>
-                    {errors?.map((error) => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
+                <p className='errorHandling'>
+                    {errors}
+                </p>
                 <div className='label-and-input'>
                     <label className='input-label'>
 

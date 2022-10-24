@@ -40,7 +40,7 @@ function SignupForm() {
     };
 
     return (
-        <section className="entire-form">
+        <section className="signUpForm">
             <div className='formLabel'>Sign Up</div>
             <form onSubmit={handleSubmit}>
                 <ul className='errorHandling'>

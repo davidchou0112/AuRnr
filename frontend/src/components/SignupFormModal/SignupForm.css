@@ -4,5 +4,14 @@
     border-radius: 5px;
     padding: 2px;
     margin: 2px;
+    margin-right: 20px;
     height: auto;
+}
+
+.signUpForm {
+    height: auto;
+    width: 300px;
+    padding: 24px;
+    border-radius: 6px;
+    z-index: 4;
 }

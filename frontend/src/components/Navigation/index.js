@@ -75,15 +75,18 @@ function Navigation({ isLoaded }) {
         <div className='nav-bar'>
             {/* <div className='nav-home-profile'> */}
 
-            <button className='home'>
-                <NavLink exact to="/">Home</NavLink>
-            </button>
+            <NavLink exact to="/">
+                <img className='icon' src="https://drive.google.com/uc?export=view&id=1oKqO6s967Pf7IfphJ4LP_R8GYQfc2a4U" alt='favicon.png' />
+
+
+            </NavLink>
+
             <div>
                 {isLoaded && sessionLinks}
             </div>
 
-            {/* </div> */}
-        </div>
+            {/* </div>  */}
+        </div >
 
     );
 }

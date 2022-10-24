@@ -107,7 +107,7 @@ const EditSpotForm = ({ spotId }) => {
     };
 
     return (
-        <section className='entire-form'>
+        <section className='edit-form'>
             <div className='formLabel' >Edit a Spot</div>
             {errors &&
                 <ul className="errorHandling">

@@ -32,3 +32,11 @@
     margin: 2px;
     height: auto;
 }
+
+.login-form {
+    height: auto;
+    width: 300px;
+    padding: 24px;
+    border-radius: 6px;
+    z-index: 3;
+}

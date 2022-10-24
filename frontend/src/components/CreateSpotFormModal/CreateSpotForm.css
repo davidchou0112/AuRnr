@@ -25,6 +25,7 @@
     width: 300px;
     padding: 24px;
     border-radius: 6px;
+    z-index: 5;
 }
 
 .errorHandling {
@@ -33,6 +34,7 @@
 
 .modalForm {
     display: inline-block;
+    z-index: 3;
     /* border-radius: 200px; */
 }
 

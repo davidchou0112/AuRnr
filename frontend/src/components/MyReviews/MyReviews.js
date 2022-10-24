@@ -12,6 +12,7 @@ const MyReviews = () => {
     const userId = useSelector(state => state.session.user.id);
     const reviews = useSelector(state => state.reviews);
 
+
     // console.log("!!!!!!!!!!!!!!!", reviews)
 
 
@@ -23,6 +24,10 @@ const MyReviews = () => {
     const currSpotReviews = Object.values(reviews).filter(review => {
         return review.userId === +userId;
     })
+
+
+
+
 
     const deleteReviewClickEvent = async (reviewId) => {
         await dispatch(deleteOneReview(reviewId))

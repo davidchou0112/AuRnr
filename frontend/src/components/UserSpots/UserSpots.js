@@ -73,7 +73,8 @@ const MySpots = () => {
                                 </button>
                             </div>
                         </div>
-                    ))}
+                    ))
+                    }
                 </div>
             </div>
         )

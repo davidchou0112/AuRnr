@@ -1,11 +1,11 @@
 .nav-bar {
-    position: sticky;
+    /* position: sticky; */
     display: flex;
-    height: 50px;
+    height: 35px;
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #EBEBEB;
+    border-bottom: 1px solid #ece5e5;
     background-color: rgba(255, 255, 255, 0.836);
     padding: 10px 10px;
     z-index: 1;
@@ -34,7 +34,9 @@
     border-radius: 10px;
     border: 1px solid #dddddd;
     right: 110px;
-    z-index: 1;
+    z-index: 2;
+    /* top: 80%; */
+    right: 1%;
 }
 
 .options {
@@ -49,4 +51,21 @@
     padding: 2px;
     margin: 2px;
     height: auto;
+}
+
+.profile-button {
+    background-color: #de1461;
+    color: #f8c5d5;
+    border-radius: 5px;
+    padding: 2px;
+    padding-right: 2px;
+    margin: 2px;
+    margin-right: 15px;
+    height: auto;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
 }
