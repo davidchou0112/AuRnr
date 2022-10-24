@@ -42,8 +42,8 @@ const CreateReviewForm = ({ reviewId, setModal }) => {
                 // console.log('~~~~~~~~~~~~!!!12312123!!!!!!~~~~~~~~~~~~~message', message)
             });
         await dispatch(getAllReviews(spotId));
-        // history.push(`/spots/${spotId}`)
-        window.location.reload();
+        history.push(`/spots/${spotId}`)
+        // window.location.reload();
 
     }
 

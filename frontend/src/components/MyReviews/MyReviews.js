@@ -33,8 +33,9 @@ const MyReviews = () => {
     const deleteReviewClickEvent = async (reviewId) => {
         // window.alert('Are you sure you want to delete?')
         await dispatch(deleteOneReview(reviewId))
-        await dispatch(clearSpot());
-        history.push("/my-reviews");
+        // await dispatch(clearSpot());
+        // history.push("/my-reviews");
+        window.location.reload()
     }
 
     return (
