@@ -1,5 +1,5 @@
 // frontend/src/components/LoginFormModal/LoginForm.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
 
@@ -11,12 +11,17 @@ function LoginForm() {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
+    // validation test
+    // const [errors, setErrors] = useState(false);
+
     // Creating a demo user button for quicker login
     const [passwordError, setPasswordError] = useState('')
     const [credentialError, setCredentialError] = useState('')
+
+
     const demoUserButton = (e) => {
-        setPasswordError('');
-        setCredentialError('');
+        // setPasswordError('');
+        // setCredentialError('');
         setCredential('Demo-lition');
         setPassword('password');
     }
@@ -28,7 +33,7 @@ function LoginForm() {
         return dispatch(sessionActions.login({ credential, password })).catch(
             async (res) => {
                 const data = await res.json();
-                if (data && data.errors) setErrors(data.errors);
+                if (data && data.errors) setErrors(Object.values(data.errors));
             }
         );
     };
@@ -37,9 +42,9 @@ function LoginForm() {
         <section className='entire-form'>
             <div className='formLabel'>Log In</div>
             <form onSubmit={handleSubmit}>
-                <ul>
-                    {errors.map((error, idx) => (
-                        <li key={idx}>{error}</li>
+                <ul className='errorHandling'>
+                    {errors?.map((error) => (
+                        <li key={error}>{error}</li>
                     ))}
                 </ul>
                 <div className='label-and-input'>

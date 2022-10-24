@@ -33,7 +33,7 @@ const DisplaySingleSpot = () => {
 
     // optional chaining allows us to continue even if undefined is returned ( 'try and catch') delays speed, use carefully
     if (!oneSpot?.SpotImages?.length) {
-        return 'Loading...'
+        return 'Spot does not exist.'
     } else {
         return isLoaded && (
             // className='single-spot-div'

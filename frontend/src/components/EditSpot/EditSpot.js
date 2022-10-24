@@ -53,15 +53,15 @@ const EditSpotForm = ({ spotId }) => {
 
     useEffect(() => {
         const errors = [];
-        if (!address || address.length > 20) errors.push("Address is required and must be less than 20 characters")
+        if (!address || address.length > 30) errors.push("Address is required and must be less than 20 characters")
         if (!city || city.length > 15) errors.push("City is required and must be less than 15 characters")
         if (!state || state.length > 10) errors.push("State is required and must be less than 10 characters")
-        if (!country || country.length > 15) errors.push("Country is required and must be less than 15 characters")
+        if (!country || country.length > 20) errors.push("Country is required and must be less than 15 characters")
         // if (!lat) errors.push('Lat is required')
         // if (!lng) errors.push('Lng is required')
-        if (!name || name.length > 20) errors.push("Name is required and must be less than 20 characters")
+        if (!name || name.length > 10) errors.push("Name is required and must be less than 20 characters")
         if (!description || description.length > 250) errors.push("Description is required and must be be less than 250 characters")
-        if (!price || price < 1) errors.push('Price per day is required')
+        if (!price || price < 1) errors.push('Price per day has to be greater than 0')
         // if (!url.match(/\.(img|jpg|jpeg|png)$/)) errors.push("Please enter a URL ending with img, jpg, jpeg or png")
         setValidations(errors)
 
@@ -106,9 +106,6 @@ const EditSpotForm = ({ spotId }) => {
         history.push('/');
     };
 
-    // if (!spot.address) {
-    //     return 'Loading...'
-    // } else {
     return (
         <section className='entire-form'>
             <div className='formLabel' >Edit a Spot</div>

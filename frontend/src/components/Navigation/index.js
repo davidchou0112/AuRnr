@@ -6,6 +6,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import CreateSpotFormModal from '../CreateSpotFormModal';
+import { useEffect, useState } from 'react';
 
 
 
@@ -17,6 +18,39 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
+
+
+    // const [showMenu, setShowMenu] = useState(false)
+
+
+    // // const openMenu = () => {
+    // //   if (showMenu) return;
+    // //   setShowMenu(true);
+    // // };
+
+
+    // const dropdown = () => {
+    //     if (showMenu) {
+    //         return 'show-drop-menu'
+    //     } else {
+    //         return 'hide-drop-menu'
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     if (!showMenu) return;
+
+    //     const closeMenu = () => {
+    //         setShowMenu(false);
+    //     };
+
+    //     document.addEventListener('click', closeMenu);
+
+    //     return () => document.removeEventListener("click", closeMenu);
+    // }, [showMenu]);
+
+
+
 
     let sessionLinks;
     if (sessionUser) {
