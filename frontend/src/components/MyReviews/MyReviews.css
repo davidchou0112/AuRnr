@@ -21,3 +21,11 @@
     margin: 5px;
     margin-top: 15px;
 }
+
+.reviews-display {
+    margin: auto;
+    width: 60%;
+    padding-top: 20px;
+    padding-left: 25%;
+    justify-content: center;
+}

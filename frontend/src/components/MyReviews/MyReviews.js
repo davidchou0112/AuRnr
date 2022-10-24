@@ -31,7 +31,7 @@ const MyReviews = () => {
 
     return (
         <>
-            <div>
+            <div className='reviews-display'>
                 <h1>My Reviews</h1>
 
                 <div className='reviews-outer-container'>
