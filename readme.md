@@ -1527,7 +1527,7 @@ Live Site: [AuRnr](https://api-project-airbnb.herokuapp.com/)
 
 <h2> Features </h2>
 
-<h3> Sign Up - Log In - Log Out: </h3>
+<h3>Log In/Log Out: </h3>
 
 https://drive.google.com/file/d/17lzt2hMms2hXreKmy7CUcq35oTIlJVEL/view?usp=sharing
 <br>
