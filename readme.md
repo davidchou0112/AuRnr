@@ -1,4 +1,4 @@
-<a href="https://drive.google.com/uc?export=view&id=1t4ZJbND9DU2KAQl3UJCespOsv-PjNZJQ"><img src="https://drive.google.com/uc?export=view&id=1t4ZJbND9DU2KAQl3UJCespOsv-PjNZJQ" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+<!-- <a href="https://drive.google.com/file/d/1lfZMd8NxdeCDjvDWDE7DewHkx7FLgQUS"><img src="https://drive.google.com/file/d/1lfZMd8NxdeCDjvDWDE7DewHkx7FLgQUS" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 
 https://drive.google.com/uc?export=view&id=1t4ZJbND9DU2KAQl3UJCespOsv-PjNZJQ
@@ -1478,4 +1478,112 @@ Return spots filtered by query parameters.
         "maxPrice": "Minimum price must be greater than or equal to 0"
       }
     }
-    ```
+    ``` -->
+
+<a href="https://drive.google.com/file/d/1lfZMd8NxdeCDjvDWDE7DewHkx7FLgQUS"><img src="https://drive.google.com/file/d/1lfZMd8NxdeCDjvDWDE7DewHkx7FLgQUS" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+
+AuRnr is a clone website inspired by [Airbnb](https://airbnb.com). 
+<br>
+<br>
+Live Site: [AuRnr](https://api-project-airbnb.herokuapp.com/) 
+<br>
+<br>
+<br>
+
+<h2>Wiki Links:</h2>
+
+- [API Documentation](https://github.com/davidchou0112/API-Project/tree/2577e940776f84ce90bb899805ed7426853a5475)
+- [Database Schema](https://drive.google.com/uc?export=view&id=1t4ZJbND9DU2KAQl3UJCespOsv-PjNZJQ)
+
+- Feature List: (login/logout, display all/single spot, create/delete/update spot, create/delete/update review)
+
+
+<br>
+<br>
+
+
+<h3> Languages: </h3>
+
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+
+
+<h3>Frontend:</a>
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+
+
+
+<h3>Backend:</h3>
+
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
+![postgresql](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=PostgreSQL&logoColor=white)
+
+<br>
+<br>
+
+<h2> Features </h2>
+
+<h3> Sign Up - Log In - Log Out: </h3>
+
+https://drive.google.com/file/d/17lzt2hMms2hXreKmy7CUcq35oTIlJVEL/view?usp=sharing
+
+<br>
+<br>
+
+<h3> Single Spot Browser:</h3>
+https://drive.google.com/file/d/1Qq0LG4LnBKDP2aLOv2nnMPm1dH0MBJI_/view?usp=sharing
+
+<br>
+<br>
+
+<h3> Create a Spot:</h3>
+https://drive.google.com/file/d/1RSzJVOt9XnK-zdSkrq5bmmqTwR0dRZIb/view?usp=sharing
+<br>
+<br>
+
+<h3> My Spots:</h3>
+https://drive.google.com/file/d/1-A-hYI0ostrn4l5N0gBtXOpdoCEmW3hX/view?usp=sharing
+
+<br>
+<br>
+
+<h3> Create Review:</h3>
+https://drive.google.com/file/d/152l7RidZmfaS-Rtm_2plksra1E5vcvj8/view?usp=sharing
+<br>
+<br>
+
+<h3> Delete Review:</h3>
+https://drive.google.com/file/d/1_EYyNufF9IUCSh-MnH_9vTxJL5RQMswo/view?usp=sharing
+<br>
+<br>
+
+
+<h2> Run Locally </h2>
+
+1. Clone my repository or download zip:
+```
+https://github.com/davidchou0112/API-Project
+```
+2. Within your terminal, install dependencies in both front end and backend:
+```
+npm install
+```
+3. Migrate and seed existing database:
+```
+npm run dbms
+```
+4. Start the server in both backend and frontend directory:
+```
+npm start
+```
+<br>
+<br>
+
+<h2> Let's Get Connected! </h2>
+
+<a href="https://www.linkedin.com/in/david-chou/" target="_blank">![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)</a>
