@@ -1497,7 +1497,6 @@ Live Site: [AuRnr](https://api-project-airbnb.herokuapp.com/)
 
 - Feature List: (login/logout, display all/single spot, create/delete/update spot, create/delete/update review)
 
-
 <br>
 <br>
 
@@ -1531,13 +1530,11 @@ Live Site: [AuRnr](https://api-project-airbnb.herokuapp.com/)
 <h3> Sign Up - Log In - Log Out: </h3>
 
 https://drive.google.com/file/d/17lzt2hMms2hXreKmy7CUcq35oTIlJVEL/view?usp=sharing
-
 <br>
 <br>
 
 <h3> Single Spot Browser:</h3>
 https://drive.google.com/file/d/1Qq0LG4LnBKDP2aLOv2nnMPm1dH0MBJI_/view?usp=sharing
-
 <br>
 <br>
 
