@@ -10,6 +10,8 @@
     padding: 2px;
     margin: 2px;
     height: auto;
+    cursor: pointer;
+
 }
 
 .edit-form {

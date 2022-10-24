@@ -51,6 +51,7 @@
     padding: 2px;
     margin: 2px;
     height: auto;
+    cursor: pointer;
 }
 
 .profile-button {
@@ -62,6 +63,7 @@
     margin: 2px;
     margin-right: 15px;
     height: auto;
+    cursor: pointer;
 }
 
 .icon {

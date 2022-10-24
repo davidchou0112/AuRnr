@@ -5,6 +5,7 @@
     padding: 4px;
     margin-bottom: 2px;
     height: auto;
+    cursor: pointer;
 }
 
 .user-spots {

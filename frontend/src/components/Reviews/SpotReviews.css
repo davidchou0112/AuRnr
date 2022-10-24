@@ -3,21 +3,32 @@
 }
 
 .each-review-detail {
+    /* border: 2px solid black; */
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    /* grid-template-columns: repeat(3, 400px); */
+    width: inherit;
+    /* margin: 5px 5px 5px 20px; */
     padding-top: 5px;
 }
 
 .reviewsContent {
-    /* padding-right: 50px; */
-    display: grid;
+    /* padding-right: 5px; */
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin: 0px;
+    margin: 5px 5px 5px 0px;
+
     /* grid-template-columns: repeat(3, 1fr); */
 }
 
 .reviewComment {
     display: grid;
     word-break: break-word;
-    width: 60%;
+    width: 100%;
     overflow: hidden;
     text-overflow: ellipsis
 }

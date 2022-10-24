@@ -15,6 +15,7 @@
     padding: 4px;
     margin: 5px;
     margin-top: 15px;
+    cursor: pointer;
 }
 
 .input-field {
@@ -31,6 +32,7 @@
     padding: 2px;
     margin: 2px;
     height: auto;
+    cursor: pointer;
 }
 
 .login-form {
