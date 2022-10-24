@@ -25,7 +25,7 @@ const EditSpotForm = ({ spotId }) => {
     // const [url, setUrl] = useState('');
 
     const [validations, setValidations] = useState([])
-
+    const [errors, setErrors] = useState(false);
 
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId));
@@ -53,16 +53,16 @@ const EditSpotForm = ({ spotId }) => {
 
     useEffect(() => {
         const errors = [];
-        if (!address.length) errors.push('Street address is required')
-        if (!city.length) errors.push('City is required')
-        if (!state.length) errors.push('State is required')
-        if (!country.length) errors.push('Country is required')
-        if (!name.length) errors.push('Name is required');
-        if (!description.length) errors.push('Description is required')
-        if (!price) errors.push('Price per day is required')
+        if (!address || address.length > 20) errors.push("Address is required and must be less than 20 characters")
+        if (!city || city.length > 15) errors.push("City is required and must be less than 15 characters")
+        if (!state || state.length > 10) errors.push("State is required and must be less than 10 characters")
+        if (!country || country.length > 15) errors.push("Country is required and must be less than 15 characters")
         // if (!lat) errors.push('Lat is required')
         // if (!lng) errors.push('Lng is required')
-        // if (!url) errors.push('URL is required')
+        if (!name || name.length > 20) errors.push("Name is required and must be less than 20 characters")
+        if (!description || description.length > 250) errors.push("Description is required and must be be less than 250 characters")
+        if (!price || price < 1) errors.push('Price per day is required')
+        // if (!url.match(/\.(img|jpg|jpeg|png)$/)) errors.push("Please enter a URL ending with img, jpg, jpeg or png")
         setValidations(errors)
 
     }, [address, city, state, country, name, description, price])
@@ -71,43 +71,40 @@ const EditSpotForm = ({ spotId }) => {
 
     const handleSubmit = async (e, errors) => {
 
-        // () how do i make handle submit fail if error messages are available 
-        // if (errors.length) {
+
         e.preventDefault();
-        // if (validations.length) return null;
+        setErrors(true)
+        if (!validations.length) {
+            const spots = {
+                id: spotId,
+                address,
+                city,
+                state,
+                country,
+                // lat,
+                // lng, 
+                name,
+                description,
+                price,
+                // url
+            }
 
-        if (validations.length) return null;
-        // payload = spots
-        const spots = {
-            id: spotId,
-            address,
-            city,
-            state,
-            country,
-            // lat,
-            // lng, 
-            name,
-            description,
-            price,
-            // url
+            let newSpot = await dispatch(actionUpdateSpot(spots, spotId));
+            // let newSpot = await actionUpdateSpot(spots, spots.id);
+
+            if (newSpot) {
+                // window.location.reload();
+                history.push(`/spots/${spotId}`);
+                setErrors(false)
+            }
+            // }
         }
-
-        let newSpot = await dispatch(actionUpdateSpot(spots, spotId));
-        // let newSpot = await actionUpdateSpot(spots, spots.id);
-
-        if (newSpot) {
-            // window.location.reload();
-            history.push(`/spots/${spotId}`);
-
-        }
-        // }
     }
-
+    // payload = spots
     const handleCancelClick = (e) => {
         e.preventDefault();
         history.push('/');
     };
-
 
     // if (!spot.address) {
     //     return 'Loading...'
@@ -115,6 +112,14 @@ const EditSpotForm = ({ spotId }) => {
     return (
         <section className='entire-form'>
             <div className='formLabel' >Edit a Spot</div>
+            {errors &&
+                <ul className="errorHandling">
+                    {validations.length > 0 &&
+                        validations.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                </ul>
+            }
             <form onSubmit={handleSubmit} className='Edit-form' >
                 <label className='input-label'>
                     <input className='input'
@@ -126,7 +131,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </label>
-                {!address.length && <div className='errorHandling'>Street address is required</div>}
+                {/* {!address.length && <div className='errorHandling'>Street address is required</div>} */}
 
                 <label className='input-label'>
                     <input className='input'
@@ -139,7 +144,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setCity(e.target.value)}
                     />
                 </label>
-                {!city.length && <div className='errorHandling'>City is required</div>}
+                {/* {!city.length && <div className='errorHandling'>City is required</div>} */}
 
                 <label className='input-label'>
                     <input className='input'
@@ -152,7 +157,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setState(e.target.value)}
                     />
                 </label >
-                {!state.length && <div className='errorHandling'>State is required</div>}
+                {/* {!state.length && <div className='errorHandling'>State is required</div>} */}
 
                 <label className='input-label'>
                     <input className='input'
@@ -162,7 +167,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setCountry(e.target.value)}
                     />
                 </label >
-                {!country.length && <div className='errorHandling'>Country is required</div>}
+                {/* {!country.length && <div className='errorHandling'>Country is required</div>} */}
 
                 {/* <label> Latitude
                     <input
@@ -172,7 +177,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setLat(e.target.value)}
                     />
                 </label>
-                {!lat && <div className='errorHandling'>Lat is required</div>}
+                // {!lat && <div className='errorHandling'>Lat is required</div>}
 
 
                 <label> Longitude
@@ -183,7 +188,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setLng(e.target.value)}
                     />
                 </label>
-                {!lng && <div className='errorHandling'>Lng is required</div>} */}
+                // {!lng && <div className='errorHandling'>Lng is required</div>} */}
 
                 <label label className='input-label'>
                     < input className='input'
@@ -194,7 +199,7 @@ const EditSpotForm = ({ spotId }) => {
                         }
                     />
                 </label >
-                {!name.length && <div className='errorHandling'>Name is required</div>}
+                {/* {!name.length && <div className='errorHandling'>Name is required</div>} */}
 
                 <label className='input-label'>
                     <input className='input'
@@ -204,7 +209,7 @@ const EditSpotForm = ({ spotId }) => {
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </label >
-                {!description.length && <div className='errorHandling'>Description is required</div>}
+                {/* {!description.length && <div className='errorHandling'>Description is required</div>} */}
 
                 <label className='input-label'>
                     <input className='input'
@@ -215,7 +220,7 @@ const EditSpotForm = ({ spotId }) => {
                     />
                 </label >
                 {/* {price === `0` && <div className='errorHandling'>For free?</div>} */}
-                {!price && <div className='errorHandling'>Price is required.</div>}
+                {/* {!price && <div className='errorHandling'>Price is required.</div>} */}
 
                 {/* <label className='input-label'>
                     <input className='input'
