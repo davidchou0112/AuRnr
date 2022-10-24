@@ -45,7 +45,7 @@ function CreateSpotForm({ setShowModal }) {
         // if (!lng) errors.push('Lng is required')
         if (!name || name.length > 10) errors.push("Name is required and must be less than 20 characters")
         if (!description || description.length > 250) errors.push("Description is required and must be be less than 250 characters")
-        if (!price || price < 1) errors.push('Price per day has to be greater than 0')
+        if (!price || price < 1) errors.push('Price has to be greater than 0')
         if (!url.match(/\.(img|jpg|jpeg|png)$/)) errors.push("Please enter a URL ending with img, jpg, jpeg or png")
         setValidations(errors)
 
