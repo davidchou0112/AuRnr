@@ -31,21 +31,21 @@ function CreateSpotForm({ setShowModal }) {
     const [url, setUrl] = useState('');
     // const [preview, setPreview] = useState('');
     const [validations, setValidations] = useState([]);
-
+    const [errors, setErrors] = useState(false);
 
 
     // Error handling
     useEffect(() => {
         const errors = [];
-        if (!address.length) errors.push('Street address is required')
-        if (!city.length) errors.push('City is required')
-        if (!state.length) errors.push('State is required')
-        if (!country.length) errors.push('Country is required')
+        if (!address || address.length > 20) errors.push("Address is required and must be less than 20 characters")
+        if (!city || city.length > 15) errors.push("City is required and must be less than 15 characters")
+        if (!state || state.length > 10) errors.push("State is required and must be less than 10 characters")
+        if (!country || country.length > 15) errors.push("Country is required and must be less than 15 characters")
         // if (!lat) errors.push('Lat is required')
         // if (!lng) errors.push('Lng is required')
-        if (!name.length) errors.push('Name is required and less than 50 characters');
-        if (!description.length) errors.push('Description is required')
-        if (price < 1) errors.push('Price per day is required')
+        if (!name || name.length > 20) errors.push("Name is required and must be less than 20 characters")
+        if (!description || description.length > 250) errors.push("Description is required and must be be less than 250 characters")
+        if (!price || price < 1) errors.push('Price per day is required')
         if (!url.match(/\.(img|jpg|jpeg|png)$/)) { errors.push("Please enter a URL ending with img, jpg, jpeg or png") }
         setValidations(errors)
 
@@ -54,40 +54,43 @@ function CreateSpotForm({ setShowModal }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (validations.length) return null;
-        const spotInfo = {
-            address,
-            city,
-            state,
-            country,
-            // lat,
-            // lng,
-            name,
-            description,
-            price,
-            url,
-            preview: true
-        }
+        setErrors(true)
+        if (!validations.length) {
+            const spotInfo = {
+                address,
+                city,
+                state,
+                country,
+                // lat,
+                // lng,
+                name,
+                description,
+                price,
+                url,
+                preview: true
+            }
 
-        const imgInfo = { url, preview: true };
-        if (validations.length) return
+            const imgInfo = { url, preview: true };
 
-        // let newSpot = await dispatch(sessionActions.actionAddOneSpot(spotInfo))
-        let newSpot = await actionAddOneSpot(spotInfo, imgInfo)(dispatch)
-        // dispatch(newSpot);
-        // dispatch(actionAddOneSpot(spotInfo))
+            // let newSpot = await dispatch(sessionActions.actionAddOneSpot(spotInfo))
+            let newSpot = await actionAddOneSpot(spotInfo, imgInfo)(dispatch)
+            // dispatch(newSpot);
+            // dispatch(actionAddOneSpot(spotInfo))
 
-        // console.log(imgInfo, '!!!!!!!this is imgInfo~~~~~~~~~~~~~~~~~~~~~~~~~~')
-        // console.log(newSpot, '@@@@@@@@@this is newSpot~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            // console.log(imgInfo, '!!!!!!!this is imgInfo~~~~~~~~~~~~~~~~~~~~~~~~~~')
+            // console.log(newSpot, '@@@@@@@@@this is newSpot~~~~~~~~~~~~~~~~~~~~~~~~~~')
 
-        if (newSpot) {
-            // console.log('did it reach this ~~~~~~~~~~~~~~~~~~~~~~~~~~createspotform')
-            console.log('this is new spot~~~', newSpot)
-            // window.location.reload();
-            history.push(`/spots/${newSpot.id}`);
-            setShowModal(false)
-        }
-    };
+            if (newSpot) {
+                // console.log('did it reach this ~~~~~~~~~~~~~~~~~~~~~~~~~~createspotform')
+                // console.log('this is new spot~~~', newSpot)
+                // window.location.reload();
+                history.push(`/spots/${newSpot.id}`);
+                setShowModal(false)
+                setErrors(false)
+            }
+        };
+    }
+
 
 
     const handleCancelClick = (e) => {
@@ -101,6 +104,14 @@ function CreateSpotForm({ setShowModal }) {
     return (
         <div className='modalForm'>
             <section className='entire-form'> Create New Spot
+                {errors &&
+                    <ul className="errorHandling">
+                        {validations.length > 0 &&
+                            validations.map(error => (
+                                <li key={error}>{error}</li>
+                            ))}
+                    </ul>
+                }
                 <form onSubmit={handleSubmit} className='create-spot-form' >
                     <label className='input-label'>
                         <input className='input-field'
@@ -112,7 +123,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setAddress(e.target.value)}
                         />
                     </label>
-                    {!address.length && <div className="errorHandling">Street address is required</div>}
+                    {/* {!address.length && <div className="errorHandling">Street address is required</div>} */}
 
                     <label className='input-label'>
                         <input className='input-field'
@@ -125,7 +136,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setCity(e.target.value)}
                         />
                     </label>
-                    {!city.length && <div className="errorHandling">City is required</div>}
+                    {/* {!city.length && <div className="errorHandling">City is required</div>} */}
 
                     <label className='input-label'>
                         <input className='input-field'
@@ -138,7 +149,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setState(e.target.value)}
                         />
                     </label >
-                    {!state.length && <div className="errorHandling">State is required</div>}
+                    {/* {!state.length && <div className="errorHandling">State is required</div>} */}
 
                     <label className='input-label'>
                         <input className='input-field'
@@ -148,7 +159,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setCountry(e.target.value)}
                         />
                     </label >
-                    {!country.length && <div className="errorHandling">Country is required</div>}
+                    {/* {!country.length && <div className="errorHandling">Country is required</div>} */}
 
                     {/* <label> Latitude
                     <input
@@ -158,7 +169,7 @@ function CreateSpotForm({ setShowModal }) {
                         onChange={(e) => setLat(e.target.value)}
                         />
                         </label>
-                         {!lat && <div className = "errorHandling">Lat is required</div> }
+                        //  {!lat && <div className = "errorHandling">Lat is required</div> }
 
                         <label> Longitude
                         <input
@@ -168,7 +179,7 @@ function CreateSpotForm({ setShowModal }) {
                         onChange={(e) => setLng(e.target.value)}
                         />
                     </label> 
-                    {!lng && <div className = "errorHandling">Lng is required</div> } */}
+                    // {!lng && <div className = "errorHandling">Lng is required</div> } */}
 
                     <label label className='input-label'>
                         < input className='input-field'
@@ -179,7 +190,7 @@ function CreateSpotForm({ setShowModal }) {
                             }
                         />
                     </label >
-                    {!name.length && <div className="errorHandling">Name is required</div>}
+                    {/* {!name.length && <div className="errorHandling">Name is required</div>} */}
 
                     <label className='input-label'>
                         <input className='input-field'
@@ -189,7 +200,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </label >
-                    {!description.length && <div className="errorHandling">Description is required</div>}
+                    {/* {!description.length && <div className="errorHandling">Description is required</div>} */}
 
                     <label className='input-label'>
                         <input className='input-field'
@@ -200,7 +211,7 @@ function CreateSpotForm({ setShowModal }) {
                         />
                     </label >
                     {/* {price < 1 && <div className="errorHandling">No Free Stays</div>} */}
-                    {!price && <div className="errorHandling">Price is required, no free stays</div>}
+                    {/* {!price && <div className="errorHandling">Price is required, no free stays</div>} */}
 
 
                     <label className='input-label'>
@@ -211,7 +222,7 @@ function CreateSpotForm({ setShowModal }) {
                             onChange={(e) => setUrl(e.target.value)}
                         />
                     </label >
-                    {!url && <div className="errorHandling">Please enter a URL ending with img, jpg, jpeg or png</div>}
+                    {/* {!url && <div className="errorHandling">Please enter a URL ending with img, jpg, jpeg or png</div>} */}
 
                     {/* <label className='preview-image-label' > Preview Image?
                     <select className='true-false' onChange={(e) => setPreview(e.target.value)}>
