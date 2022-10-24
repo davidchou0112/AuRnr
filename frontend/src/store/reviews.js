@@ -165,15 +165,18 @@ const reviewReducer = (state = initialState, action) => {
     let newState = {};
     switch (action.type) {
         case LOAD_ALL_REVIEWS:
-            newState = { ...state };
-            action.reviews.Reviews.forEach(review => {
-                // const newImgArr = []
-                newState[review.id] = review;
-                // review.ReviewImages.forEach(imgObj => newImgArr.push(imgObj.url))
-                // newState[review.id].ReviewImages = newImgArr
-                // newState = { ...newImgArr }
-            })
-            return { ...newState };
+            // newState = { ...state };
+            // action.reviews.Reviews.forEach(review => {
+            //     // const newImgArr = []
+            //     newState[review.id] = review;
+            //     // review.ReviewImages.forEach(imgObj => newImgArr.push(imgObj.url))
+            //     // newState[review.id].ReviewImages = newImgArr
+            //     // newState = { ...newImgArr }
+            // })
+            // return { ...newState };
+            return {
+                ...action.reviews.Reviews
+            }
 
 
         // action.reviews.Reviews.forEach(review => {
