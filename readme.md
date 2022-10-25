@@ -1,4 +1,4 @@
-<!-- <a href="https://drive.google.com/file/d/1lfZMd8NxdeCDjvDWDE7DewHkx7FLgQUS"><img src="https://drive.google.com/file/d/1lfZMd8NxdeCDjvDWDE7DewHkx7FLgQUS" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+<!-- <a href="https://drive.google.com/uc?export=view&id=1t4ZJbND9DU2KAQl3UJCespOsv-PjNZJQ"><img src="https://drive.google.com/uc?export=view&id=1t4ZJbND9DU2KAQl3UJCespOsv-PjNZJQ" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 
 
 https://drive.google.com/uc?export=view&id=1t4ZJbND9DU2KAQl3UJCespOsv-PjNZJQ
@@ -1480,8 +1480,8 @@ Return spots filtered by query parameters.
     }
     ``` -->
 
-<a href="https://drive.google.com/file/d/1lfZMd8NxdeCDjvDWDE7DewHkx7FLgQUS"><img src="https://drive.google.com/file/d/1lfZMd8NxdeCDjvDWDE7DewHkx7FLgQUS" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
-
+<a href="https://drive.google.com/uc?export=view&id=1lfZMd8NxdeCDjvDWDE7DewHkx7FLgQUS"><img src="https://drive.google.com/uc?export=view&id=1lfZMd8NxdeCDjvDWDE7DewHkx7FLgQUS" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+<br>
 AuRnr is a clone website inspired by [Airbnb](https://airbnb.com). 
 <br>
 <br>
@@ -1494,6 +1494,8 @@ Live Site: [AuRnr](https://api-project-airbnb.herokuapp.com/)
 
 - [API Documentation](https://github.com/davidchou0112/API-Project/tree/2577e940776f84ce90bb899805ed7426853a5475)
 - [Database Schema](https://drive.google.com/uc?export=view&id=1t4ZJbND9DU2KAQl3UJCespOsv-PjNZJQ)
+
+
 
 - Feature List: (login/logout, display all/single spot, create/delete/update spot, create/delete/update review)
 
@@ -1514,7 +1516,6 @@ Live Site: [AuRnr](https://api-project-airbnb.herokuapp.com/)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 
 
-
 <h3>Backend:</h3>
 
 ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
@@ -1528,6 +1529,8 @@ Live Site: [AuRnr](https://api-project-airbnb.herokuapp.com/)
 <h2> Features </h2>
 
 <h3>Log In/Log Out: </h3>
+
+<!-- <a href="https://drive.google.com/uc?export=view&id=17lzt2hMms2hXreKmy7CUcq35oTIlJVEL"><img src="https://drive.google.com/uc?export=view&id=17lzt2hMms2hXreKmy7CUcq35oTIlJVEL" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" /> -->
 
 https://drive.google.com/file/d/17lzt2hMms2hXreKmy7CUcq35oTIlJVEL/view?usp=sharing
 <br>
@@ -1583,4 +1586,4 @@ npm start
 
 <h2> Let's Get Connected! </h2>
 
-<a href="https://www.linkedin.com/in/david-chou/" target="_blank">![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)</a>
+<a href="https://www.linkedin.com/in/david-chou-a47026249/" target="_blank">![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)</a>
