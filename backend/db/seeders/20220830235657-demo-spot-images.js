@@ -14,7 +14,7 @@ module.exports = {
     await queryInterface.bulkInsert('SpotImages', [
       {
         spotId: 1,
-        url: "https://w6h9m9r2.rocketcdn.me/wp-content/uploads/2022/06/Mansions-in-Southern-California-Jay-Valento.webp",
+        url: "https://images.hausples.com.pg/blog_search_images/bilas-3-135h-pngfp-edm.jpg",
         preview: true
       },
       {

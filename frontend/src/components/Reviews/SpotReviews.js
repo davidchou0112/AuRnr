@@ -17,7 +17,7 @@ const SpotReviews = ({ reviewId }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     // console.log(`~~~~~~~~~~~~~~~~~~~~~~~~this is spotId:`, spotId);
     const reviews = useSelector(state => state.reviews)
-    console.log(`~~~~~~!!~~~~~~reviews~~~~~~~~!!~~~~~~~~~~~~`, reviews)
+    // console.log(`~~~~~~!!~~~~~~reviews~~~~~~~~!!~~~~~~~~~~~~`, reviews)
     const spot = useSelector(state => state.spots.singleSpot);
 
 
@@ -26,7 +26,7 @@ const SpotReviews = ({ reviewId }) => {
 
     const currUser = useSelector(state => state.session.user)
     // console.log("reviews state from All Reviews for Spot:", reviews)
-    console.log(currUser, `currUser here`)
+    // console.log(currUser, `currUser here`)
 
     const currSpotReviews = Object.values(reviews)
     // console.log(currSpotReviews, `!!!!!!!!!!~~~~~currSpotReviews~~~~~~~~~~~~!!!!!!!!!!`);

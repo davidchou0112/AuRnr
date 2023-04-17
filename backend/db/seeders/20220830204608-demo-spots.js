@@ -58,7 +58,7 @@ module.exports = {
         lng: 48.35,
         name: 'Math is King',
         description: 'Pure mathematics is, in its way, the poetry of logical ideas. — Albert Einstein, German theoretical physicist  ',
-        price: 4999
+        price: 629
       },
       {
         ownerId: 2,
@@ -74,87 +74,87 @@ module.exports = {
       },
       {
         ownerId: 2,
-        address: '455 Union St',
-        city: 'Arcata',
+        address: '723 West St',
+        city: 'Eureka',
         state: 'California',
         country: 'United States of America',
         lat: 38.54,
         lng: 48.35,
-        name: 'Humboldt Grown',
-        description: 'Grass is greener on this side',
-        price: 4999
+        name: 'Don Hector',
+        description: 'Closest homes to the best nearshore fishing off the docks!',
+        price: 499
       },
       {
         ownerId: 2,
-        address: '455 Union St',
-        city: 'Arcata',
+        address: '882 E State St',
+        city: 'San Francisco',
         state: 'California',
         country: 'United States of America',
         lat: 38.54,
         lng: 48.35,
-        name: 'Humboldt Grown',
-        description: 'Grass is greener on this side',
-        price: 4999
+        name: 'Humble Beginnings',
+        description: 'The start of something new begins at this doorstep.',
+        price: 599
       },
       {
         ownerId: 1,
-        address: '455 Union St',
-        city: 'Arcata',
+        address: '24 Small Rd',
+        city: 'Santa Fe',
         state: 'California',
         country: 'United States of America',
         lat: 38.54,
         lng: 48.35,
-        name: 'Humboldt Grown',
-        description: 'Grass is greener on this side',
-        price: 4999
+        name: 'Home Sweet Home',
+        description: 'They say home is where the heart is!',
+        price: 99
       },
       {
         ownerId: 3,
-        address: '455 Union St',
-        city: 'Arcata',
+        address: '82 Welfare Dr',
+        city: 'El Dorado',
         state: 'California',
         country: 'United States of America',
         lat: 38.54,
         lng: 48.35,
-        name: 'Humboldt Grown',
-        description: 'Grass is greener on this side',
-        price: 4999
+        name: 'City of Gold',
+        description: 'Drifting across the river and pass that waterfall... treasure lies ahead.',
+        price: 199
       },
       {
         ownerId: 3,
-        address: '455 Union St',
-        city: 'Arcata',
+        address: '74 S Alice St',
+        city: 'Arcadia',
         state: 'California',
         country: 'United States of America',
         lat: 38.54,
         lng: 48.35,
-        name: 'Humboldt Grown',
-        description: 'Grass is greener on this side',
-        price: 4999
+        name: 'Sakura Falls',
+        description: 'Situated in the heart of Arcadia, surrounded by the top eateries!',
+        price: 89
       },
       {
         ownerId: 3,
-        address: '455 Union St',
-        city: 'Arcata',
+        address: '112 First Ave',
+        city: 'El Monte',
         state: 'California',
         country: 'United States of America',
         lat: 38.54,
         lng: 48.35,
-        name: 'Humboldt Grown',
-        description: 'Grass is greener on this side',
-        price: 4999
+        name: 'The Great Escape',
+        description: 'If you are looking to take a break from all the worries of work and life, look no further!',
+        price: 149
       },
       {
         ownerId: 3,
-        address: '455 Union St',
-        city: 'Arcata',
+        address: '712 San Gabriel',
+        city: 'Rosemead',
         state: 'California',
         country: 'United States of America',
         lat: 38.54,
         lng: 48.35,
-        name: 'Humboldt Grown',
-        description: 'Grass is greener on this side',
-        price: 4999
+        name: 'Csardas Del Monte',
+        description: 'A home restructed to provide the best and highest quality appliances for all your musical needs!',
+        price: 99
       }
     ])
   },

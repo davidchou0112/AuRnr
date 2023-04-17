@@ -12,7 +12,7 @@ const DisplaySingleSpot = () => {
     const { spotId } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
 
-    console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
+    // console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
 
     // const { spot } = useParams();
     // console.log(spot, '------------------------spot----------------'); //undefined
@@ -20,7 +20,7 @@ const DisplaySingleSpot = () => {
     // const oneSpot = useSelector(state => state.singleSpot)
     // const oneSpot = useSelector(state => { if (state.spot.singleSpot) return state.spots.singleSpot });
     const oneSpot = useSelector(state => state.spots.singleSpot);
-    console.log(`-------~~~~~------------~~~spot from spot detail component~---------~~`, oneSpot)
+    // console.log(`-------~~~~~------------~~~spot from spot detail component~---------~~`, oneSpot)
 
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId))
@@ -46,17 +46,10 @@ const DisplaySingleSpot = () => {
                             {oneSpot.avgStarRating > 0 ? oneSpot.avgStarRating.toString().slice(0, 4) : 'New'}
                             &nbsp;
                             Hosted by {oneSpot.Owner.firstName} {oneSpot.Owner.lastName}
-
-                            {/* I want to display the number of reviews here */}
-                            {/* {oneSpot.numReviews > 0 ? oneSpot.numReviews : ''} */}
-
                         </p>
                     </h1>
-
                     <img className='singleSpotImage' key={oneSpot.SpotImages[0].url} src={oneSpot.SpotImages[0].url} alt={'Not a proper url'} />
-
                     <div className='singleSpotAddress'>{oneSpot.address}, {oneSpot.city}, {oneSpot.state} {oneSpot.country}</div>
-
                     <br></br>
                     <div className='description'>{oneSpot.description} </div>
 
