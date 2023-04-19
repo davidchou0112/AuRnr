@@ -10,33 +10,27 @@ const MySpots = () => {
 
     const dispatch = useDispatch();
     const allSpots = useSelector(state => state.spots.allSpots);
-    // console.log(allSpots, `~~~~~~~~~~~~~~~~~~~~~~~~~~~ allSpots~~~~~ data`);
 
     const spotsData = Object.values(allSpots);
-    // console.log(spotsData, `~~~~~~~~~~~~~~~~~~~~~~~~~spotsData~~~~!@!@!@!~`);
 
     const sessionUser = useSelector(state => state.session.user);
 
     const ownedSpots = spotsData?.filter((spot) => spot.ownerId === sessionUser.id);
 
-    // need to call dispatch getAllspots to rerender our data
     useEffect(() => {
         dispatch(getCurrentUserSpots())
         dispatch(getAllSpots())
-        // return () => dispatch(getCurrentUserSpots())
     }, [dispatch])
 
     if (!sessionUser) {
         return <Redirect to='/' />
     }
 
-    // console.log('~~~~~~~~~~~~~~~~~ownedSpots~~~~~~~~~~~~~~~~~~~', ownedSpots)
 
 
     if (!spotsData) {
         return 'my data is still showing up EMPTY post hard refresh..'
     } else {
-        // window.location.reload();
         <Redirect to='/current' />
         return (
             <div>
@@ -50,7 +44,7 @@ const MySpots = () => {
                                     <div>
                                         <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt={spot.previewImage} />
                                     </div>
-                                    <div className='spotDetails' >
+                                    <div className='spotDetails'>
                                         <div>{spot.name}</div>
                                         <div key={spot.name}>{spot.city}, {spot.state}</div>
                                         <div>
@@ -63,7 +57,7 @@ const MySpots = () => {
                                     </div>
                                 </div>
                             </NavLink>
-                            <div>
+                            <div className='spotDetails' >
                                 <div>
                                     <EditSpotFormModal spotId={spot.id} />
                                 </div>

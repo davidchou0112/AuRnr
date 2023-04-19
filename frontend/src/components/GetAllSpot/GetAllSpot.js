@@ -34,12 +34,9 @@ const DisplayAllSpots = () => {
                                         ★{spot.avgRating > 0 ? Number(spot.avgRating) : 'New'}
                                     </div>
                                 </div>
-                                {/* <p key={spot.address}>{spot.address} </p> */}
-                                {/* <p key={spot.avgRating}>{spot.avgRating} Stars</p> */}
+
                                 <div className='location-price'>
                                     <div key={spot.city}>{spot.city}, {spot.state} </div>
-                                    {/* <div key={spot.country}>{spot.country}</div> */}
-                                    {/* <div key={spot.description}>{spot.description} </div> */}
                                     <div key={spot.price}>${spot.price} night </div>
                                 </div>
 
