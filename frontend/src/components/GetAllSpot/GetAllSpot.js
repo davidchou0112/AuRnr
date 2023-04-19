@@ -27,7 +27,7 @@ const DisplayAllSpots = () => {
                     <div className='allSpot-div'>
                         <NavLink className='singleSpots-nav' to={`spots/${spot.id}`}>
                             <img className='spotImage' key={spot.previewImage} src={spot.previewImage} alt='Not a proper url.' />
-                            <div >
+                            <div className='locationDescription'>
                                 <div>
                                     <div className='name-rating'>{spot.name}
                                         &nbsp;

@@ -16,6 +16,7 @@ const DisplaySingleSpot = () => {
     const { spotId } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
 
+    const oneSpot = useSelector(state => state.spots.singleSpot);
     // console.log(spotId, `~~~~~~~~~~~~~~~~spotId~~~~~~~~~~~~~~~~~~`);
 
     // const { spot } = useParams();
@@ -23,24 +24,19 @@ const DisplaySingleSpot = () => {
 
     // const oneSpot = useSelector(state => state.singleSpot)
     // const oneSpot = useSelector(state => { if (state.spot.singleSpot) return state.spots.singleSpot });
-    const oneSpot = useSelector(state => state.spots.singleSpot);
     // console.log(`-------~~~~~------------~~~spot from spot detail component~---------~~`, oneSpot)
 
     useEffect(() => {
         dispatch(actionGetOneSpot(spotId))
             .then(() => dispatch(getAllReviews()))
             .then(() => setIsLoaded(true))
-        // console.log(oneSpot.SpotImages[0].url, `~~~~~~~~~~~~~~~~~~~~~`)
     }, [dispatch, spotId])
-    // }, [dispatch, spotId, oneSpot.price])
 
 
-    // optional chaining allows us to continue even if undefined is returned ( 'try and catch') delays speed, use carefully
     if (!oneSpot?.SpotImages?.length) {
         return 'Spot does not exist.'
     } else {
         return isLoaded && (
-            // className='single-spot-div'
             <div key='root'>
                 <div className='single-spotDetails'>
                     <h1>{oneSpot.name}  ${oneSpot.price} night
@@ -56,8 +52,10 @@ const DisplaySingleSpot = () => {
                     <div className='singleSpotAddress'>{oneSpot.address}, {oneSpot.city}, {oneSpot.state} {oneSpot.country}</div>
                     <br></br>
 
-                    <div className='singleSpotHeadline'>About this location:</div>
-                    <div className='description'>{oneSpot.description} </div>
+                    <div className='descriptionWrapper'>
+                        <div className='singleSpotHeadline'>About this location:</div>
+                        <div className='description'>{oneSpot.description} </div>
+                    </div>
 
                     <div className='singleSpotLnBr'></div>
 
@@ -87,12 +85,13 @@ const DisplaySingleSpot = () => {
 
                     <div>
                         <img src={aircover} />
-                        <div className='aircoverDescription'>Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.</div>
+                        <div className='aircoverDescription'>Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues including trouble checking in.</div>
                     </div>
 
                     <div className='singleSpotLnBr'></div>
 
                     <div>
+                        <div className='reviewsHeadline'>Reviews</div>
                         <SpotReviews />
                     </div>
                 </div>

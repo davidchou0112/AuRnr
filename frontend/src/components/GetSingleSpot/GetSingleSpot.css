@@ -19,6 +19,12 @@
 
 .singleSpotAddress {
     padding-top: 10px;
+    margin-left: 10px;
+}
+
+.descriptionWrapper {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .description {
@@ -60,4 +66,9 @@
 
 .aircoverDescription {
     margin: 5px;
+}
+
+.reviewsHeadline {
+    font-weight: bold;
+    font-size: larger;
 }
