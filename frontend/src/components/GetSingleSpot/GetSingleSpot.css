@@ -7,7 +7,7 @@
 .single-spotDetails {
     justify-content: center;
     position: relative;
-    width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -27,4 +27,37 @@
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis
+}
+
+.singleSpotLnBr {
+    width: 880px;
+    height: 1px;
+    background-color: #dddddd;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.singleSpotHeadline {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.singleSpotDescription {
+    color: grey;
+    padding-bottom: 15px;
+}
+
+.singleSpotInfo {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+.badges {
+    margin-right: 20px;
+    width: 50px;
+}
+
+.aircoverDescription {
+    margin: 5px;
 }
