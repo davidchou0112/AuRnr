@@ -45,7 +45,7 @@ const deleteBooking = (bookingId) => {
 
 //thunks
 export const fetchAllBookings = (spotId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/spots/${spotId}/bookings`)
+    const res = await fetch(`/api/spots/${spotId}/bookings`)
     if (res.ok) {
         const spotBookings = await res.json()
 

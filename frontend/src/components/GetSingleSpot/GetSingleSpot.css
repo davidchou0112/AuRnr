@@ -72,3 +72,104 @@
     font-weight: bold;
     font-size: larger;
 }
+
+/* Bookings */
+.bk-form {
+    align-items: center;
+    max-width: 372px;
+}
+
+.ckin-out {
+    display: flex;
+    flex-direction: row;
+    border: solid #c8c8c8 1px;
+    border-bottom-left-radius: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: none;
+    height: 60px;
+    width: 320px;
+}
+
+.ckin {
+    display: flex;
+    flex-direction: column;
+    border: solid #c8c8c8 1px;
+    border-left: none;
+    border-top: none;
+    border-bottom: none;
+    width: 160px;
+    justify-content: center;
+}
+
+.booking-label {
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.ckout {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    justify-content: center;
+    /* border: solid #c8c8c8 1px;
+    border-left: none; */
+    width: 160px;
+}
+
+#ck-guest {
+    display: flex;
+    border: solid #c8c8c8 1px;
+    border-top-left-radius: none;
+    border-top-right-radius: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 50px;
+    width: 320px;
+    justify-content: center;
+    align-items: center;
+}
+
+#bk-btn {
+    width: 320px;
+    height: 47px;
+    background-color: #e41d56;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#bk_fine_text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #7e7e7e;
+    margin-bottom: 20px;
+}
+
+.bk_fee_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 320px;
+}
+
+.bk_fees {
+    margin-bottom: 14px;
+    text-decoration: underline;
+    color: #5c5c5c;
+    max-width: 200px;
+}
+
+.bk_fee_misc_price {
+    color: #5c5c5c;
+}
+
+.bk_total_price {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 320px;
+}
