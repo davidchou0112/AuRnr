@@ -66,7 +66,6 @@ function ProfileButton({ user }) {
                             {user.username}
                         </p>
 
-
                         <p className='options'>
                             {user.email}
                         </p>
@@ -75,6 +74,14 @@ function ProfileButton({ user }) {
                             <NavLink to='/current' >
                                 <button className='profileButtons'>
                                     My Spots
+                                </button>
+                            </NavLink>
+                        </p>
+
+                        <p className='options' >
+                            <NavLink to='/my-bookings' >
+                                <button className='profileButtons'>
+                                    My Bookings
                                 </button>
                             </NavLink>
                         </p>

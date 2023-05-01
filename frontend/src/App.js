@@ -12,6 +12,7 @@ import CreateSpotFormModal from './components/CreateSpotFormModal';
 import MySpots from './components/UserSpots/UserSpots';
 import SpotReviews from './components/Reviews/SpotReviews';
 import MyReviews from './components/MyReviews/MyReviews';
+import UserBookings from './components/MyBookings/MyBookings';
 
 
 function App() {
@@ -53,6 +54,10 @@ function App() {
 
           <Route path='/my-reviews'>
             <MyReviews />
+          </Route>
+
+          <Route path='/my-bookings'>
+            <UserBookings />
           </Route>
 
           <Route>

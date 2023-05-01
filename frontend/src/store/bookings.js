@@ -77,7 +77,6 @@ export const createBookingThunk = (spotId, payload) => async (dispatch) => {
     }
     else {
         const errorRes = await res.json()
-        console.log('thunk got here qqqqqqqqqqqqqqqqq', errorRes)
         return res
     }
 }

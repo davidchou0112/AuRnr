@@ -10,7 +10,7 @@ const BkComfirmationModal = ({ showBkConfirmation, setShowBkConfirmation }) => {
             {
                 showBkConfirmation &&
                 <Modal
-                    onClose={() => history.push('/')}
+                    onClose={() => history.push('/my-bookings')}
                 >
                     <BookingConfirmation setShowBkConfirmation={setShowBkConfirmation} />
                 </Modal>

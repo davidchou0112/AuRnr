@@ -27,7 +27,6 @@
     flex-direction: column;
     position: absolute;
     margin-top: 10px;
-    height: 230px;
     width: 180px;
     background-color: white;
     box-shadow: 0px 1px 8px #dddddd;
@@ -35,8 +34,8 @@
     border: 1px solid #dddddd;
     right: 110px;
     z-index: 2;
-    /* top: 80%; */
     right: 1%;
+    padding-bottom: 15px;
 }
 
 .options {

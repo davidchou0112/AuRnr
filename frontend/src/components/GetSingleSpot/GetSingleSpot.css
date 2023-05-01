@@ -22,6 +22,10 @@
     margin-left: 10px;
 }
 
+.descriptionAndBooking {
+    display: flex;
+}
+
 .descriptionWrapper {
     margin-left: 10px;
     margin-right: 10px;
@@ -36,7 +40,6 @@
 }
 
 .singleSpotLnBr {
-    width: 880px;
     height: 1px;
     background-color: #dddddd;
     margin-top: 30px;
@@ -77,6 +80,12 @@
 .bk-form {
     align-items: center;
     max-width: 372px;
+    margin-left: 10px;
+    margin-top: 15px;
+    height: 360px;
+    box-shadow: 0px 0px 2px 0px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .ckin-out {
@@ -124,7 +133,8 @@
     border-top-right-radius: none;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    height: 30px;
     width: 320px;
     justify-content: center;
     align-items: center;
@@ -140,6 +150,7 @@
     cursor: pointer;
     font-weight: bold;
     font-size: 16px;
+    margin-top: 25px;
 }
 
 #bk_fine_text {
@@ -172,4 +183,11 @@
     flex-direction: row;
     justify-content: space-between;
     width: 320px;
+}
+
+.errorMessage {
+    color: red;
+    font-size: small;
+    text-align: center;
+    margin-bottom: 10px;
 }
